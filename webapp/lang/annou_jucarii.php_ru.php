@@ -1,0 +1,31 @@
+<?php
+$lang['Pagina cu imagini pe care le puteti deplasa unde doriti, si ele vor ramane acolo la toate paginile'] = 'Cтраница с изображениями, которые вы можете разместить где желаете, и они останутся там на всех страницах';
+$lang['Lista de imagini "zburătoare" (dupa ce termini sa aranjezi imaginile, nu uita să apeşi "Salvează")'] = 'Список "летающих" картинок (после окончания расстановки изображений, не забудь нажать "Сохранить"';
+$lang['Pînă cînd nu aveţi nici o imagine "zburătoare", făceţi click pe una din cele de mai jos si ea va apărea sus în colţ-ul stîng lîngă logou ! Şi automat va apărea şi aici în listă.'] = 'Пока что у вас нет "летающих" изображений, кликните на одной их тех что расположены ниже и она появится в левом верхнем углу, рядом с лого! Также она добавится в этот список';
+$lang['Pagina cu imagini pe care le puteţi deplasa unde vreţi, şi ele vor ramane în poziţia dorită pe toate paginile !'] = 'Страница с изображениями которые вы можете передвигать куда желаете, и они останутся там на всех страницах!';
+$lang['Metoda pefectă pentru a împodobi site-ul pe gustul propriu !'] = 'Идеальный способ украсить сайт по собственному вкусу!';
+$lang['Mai jos aveţi imagini, cu ele puteţi înfrumuseţa site-ul.'] = 'Ниже находятся изображения которыми вы можете украсить сайт.';
+$lang['Asta se face în 2 paşi simpli'] = 'Это делается в два простых шага';
+$lang['1. Făceţi un click pe imaginea carea v-a plăcut, un duplicat de a ei va apărea în colţul stîng-sus a site-ului(lîngă logou sus), el poate fi mutat prin "apucare" şi deplasare în poziţia dorită.'] = '1. Кликните на понравившемся вам изображении, её дубликат появится в левом-верхнем углу сайта (рядом с лого). Изображение можно передвигать методом Drag\'n\'Drop (нажать кнопку мыши на изображении, передвинуть изображение, отпустить кнопку).';
+$lang['2. După ce aranjaţi şi vă place cum arată, trebuie să salvaţi schimbările.'] = '2. После того как вы распределите изображения вы должны сохранить их расположение.';
+$lang['Nici o imagine nu vă place ? Puteţi adăuga una proprie, scrieţi adresa ei (ex. /imagestorage/395843_a05.gif) apsati adauga, şi ea va apărea în colţul stîng a paginii, apoi o puteti muta unde doriti.'] = 'Вам не нравятся изображения? Можете добавить своё личное, напишите её адрес (например: /imagestorage/395843_a05.gif) нажмите "Добавить", и она отобразится в левом верхнем углу страницы и вы сможете передвинуть её куда пожелаете.';
+$lang['Adresa spre imagine'] = 'Адрес изображения';
+$lang['Adaugă'] = 'Добавить';
+$lang['Mai jos sunt imaginile <a href="/forum.php?action=viewtopic&topicid=55490" target="_blank">găsite de alţi utilizatori</a>, ai găsit şi tu ceva interesant ? Împărţeşte-te cu restul !'] = 'Ниже находятся изображения <a href="/forum.php?action=viewtopic&topicid=55490" target="_blank">найденные другими пользователями</a>, ты тоже нашёл что-то интересное? Поделись с остальными!';
+$lang['Acum fii creativ ! %) S-a primit ceva frumos ? <a href="/forum.php?action=viewtopic&topicid=57918">Arată-ne aici</a> !'] = 'Теперь будь креативен! %) Получилось что-то красивое? Покажи нам здесь!';
+$lang['Brazi, jucărele, stele, clopoţei'] = 'Ёлки, игрушки, звёзды, колокольчики';
+$lang['Stiu ca din centrul capitalei a fost "furat" bradul, din fericire de aici nu-l poate fura nimeni :)'] = 'Знаю что из центра столицы "украли" ёлку, к счастью отсюда её никто не украдёт :)';
+$lang['Apasă pe mine'] = 'Нажми на меня';
+$lang['Moşi Crăciuni, Saci'] = 'Деды Морозы, Мешки';
+$lang['Zăpadă - Oameni de zăpadă'] = 'Снег - Снежные люди';
+$lang['Bare iluminate'] = 'Гирлянды';
+$lang['Diferite elemente'] = 'Различные элементы';
+$lang['Sperăm că vă place ideea noastră, vă mulţumim că sunteţi cu noi !'] = 'Надеемся что вам понравилась наша идея, благодарим вас за то что вы с нами!';
+$lang['Sărbători fericite ! :)'] = 'Счастливых праздников ! :)';
+$lang['Eu sunt ghidul tău artificial :)'] = 'Я твой виртуальный гид :)';
+$lang['In dreapta mea sunt imagini, apasă pe vreo una.'] = 'Справа от меня изображения, нажми на любое.';
+$lang['Imaginea <b>a apărut</b> în colţul stîng sus(lingă logo), trebuie să te duci în sus!'] = 'Изображение <b>появилось</b> в левом верхнем углу (рядом с лого), надо идти наверх!';
+$lang['După ce aranjezi totul, apasă pe butonul "Salvează".'] = 'После того как расставишь всё, нажми на кнопку "Сохранить".';
+$lang['Salvează'] = 'Сохранить';
+$lang['Şterge'] = 'Удалить';
+?>

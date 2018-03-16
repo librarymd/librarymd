@@ -1,0 +1,9 @@
+# Edit passwords
+
+mysql_root_password: "PLEASE_EDIT_THE_PASSWORD_7672596721"
+mysql_webapp_password: "PLEASE_EDIT_THE_PASSWORD_9672596721"
+mysql_sphinx_password: "PLEASE_EDIT_THE_PASSWORD_4572363549"
+
+mysql_webapp_db: "webapp"
+
+webapp_app_key: "THIS_SHOULD_BE_EDITED"

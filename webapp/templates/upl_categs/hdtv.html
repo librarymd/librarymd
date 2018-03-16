@@ -1,0 +1,261 @@
+<table id="table_upload" border="1" cellpadding="5" cellspacing="0" width="675">
+<col style="width: 75px;" align="left"><col>
+<tbody id="table_upload_tbody">
+
+<tr>
+  <td><span class="lang-ro-hide-all">Titlul original</span><span class="lang-ru-hide-all">Оринальное название</span>(*)</td>
+  <td>
+  <input name="movie_original_name" id="movie_original_name" style="width: 530px;" maxlength="90" type="text"><br>
+    (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: The Fifth Element)<br>
+    <input type="button" value="Caută pe IMDb" id="search_imdb">
+    <input type="button" value="Caută pe youtube trailerul" id="search_youtube">
+    <input type="button" value="Ambele" id="search_ambele"><br>
+    <span class="lang-ro-hide-all">Filmele rusești pe IMDb sunt scrise cu litere latine.</span><span class="lang-ru-hide-all">Русские фильмы на IMDb написаны латинскими буквами.</span>
+  </td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Titlul tradus</span><span class="lang-ru-hide-all">Перевод названия</span>(*)</td>
+  <td><label for="translated_same_original"><span class="lang-ro-hide-all">La fel ca și originalul</span><span class="lang-ru-hide-all">Как и оригинал</span></label><input type="checkbox" id="translated_same_original" name="translated_same_original" value="1"><br>
+  <input name="movie_translated_name" style="width: 530px;" maxlength="90" type="text"><br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: Al Сincilea Element or Пятый Елемент)</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Adresa IMDb</span><span class="lang-ru-hide-all">Адрес IMDb</span>(*)</td>
+  <td><input name="imdb_link" style="width: 530px;" maxlength="90" type="text" value=""><br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: http://www.imdb.com/title/tt0060196/)
+  <br>
+  <span class="lang-ro-hide-all"><b>Verificați ca link-ul să corespundă cu filmul care îl încărcați.</b> (atenție la an, pot fi filme cu același nume dar ani diferiți, deasemenea verificați actorii)</span><span class="lang-ru-hide-all"><b>Проверьте чтобы ссылка соответствовала фильму который вы загружаете</b> (обратите внимание на год, возможно могут существовать фильмы с одинаковыми названиями но с разными годами, также проверяйте актёров)</span><br>
+  <span class="lang-ro-hide-all">Nu există pe IMDb</span><span class="lang-ru-hide-all">Не существует на IMDb</span> <input type="checkbox" name="imdb_doesnt_exist" id="imdb_doesnt_exist"><br>
+  <span class="lang-ro-hide-all">Nota filmului va fi preluată într-un mod automat de pe IMDb.</span><span class="lang-ru-hide-all">Оценка фильма будет автоматически вставлена с IMDb.</span><br>
+  <span class="lang-ro-hide-all">Filmul va putea fi găsit după id-ul de pe IMDb.</span><span class="lang-ru-hide-all">Фильм можно будет найти по id на IMDb.</span>
+  </td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Adresa spre trailerul de pe youtube</span><span class="lang-ru-hide-all">Адрес трэйлера</span>(*)</td>
+  <td><input name="youtube_link" style="width: 530px;" maxlength="90" type="text" value=""><br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: http://www.youtube.com/watch?v=13EUXqIwDkQ)
+  <br>
+  <span class="lang-ro-hide-all"><b>Verificați ca link-ul să corespundă cu filmul care îl încărcați.</b></span><span class="lang-ru-hide-all"><b>Проверьте чтобы ссылка соответствовала фильму который вы загружаете</b></span><br>
+  <span class="lang-ro-hide-all">Nu există trailer pe youtube</span><span class="lang-ru-hide-all">Нету трейлера на youtube</span> <input type="checkbox" name="trailer_doesnt_exist" id="trailer_doesnt_exist"><br>
+  <span class="lang-ro-hide-all">(dacă merge vorba de un film care nu are trailer, vă sugerăm să făceți trailer (<a href="/forum.php?action=viewtopic&topicid=175744" target="_blank">cum de făcut trailer?</a>) și să-l încărcați pe youtube, puteți întreba aici, poate ați căutat rău?)<br>
+  De la începutul trailerului este ceva inutil ? <a href="/forum.php?action=viewtopic&topicid=361692#9" target="_blank">Vezi cum de făcut ca clipul să se pornească de la o secundă anumită</a>.</span>
+  <span class="lang-ru-hide-all">(если речь идет о фильме без трейлера, мы вам советуем самим сделать трейлер (<a href="/forum.php?action=viewtopic&topicid=175744" target="_blank">как сделать трейлер?</a>) и загрузить его на youtube, можете спросить тут, возможно вы плохо искали?)<br>
+  В начале трейлера есть что-то бесполезное? <a href="/forum.php?action=viewtopic&topicid=361692#9" target="_blank">Смотри как сделать, чтоб фильм начинался с определенной секунды.</a></span>
+  </td>
+</tr>
+
+<tr>
+  <td><label for="serial"><span class="lang-ro-hide-all">Serial</span><span class="lang-ru-hide-all">Сериал</span></a></label><input type="checkbox" name="serial" value="1" id="serial"></td>
+  <td><label for="season"><span class="lang-ro-hide-all">Sezon</span><span class="lang-ru-hide-all">Сезон</span></label> <input name="season" size="7" maxlength="15" type="text" disabled="true" class="disabled"> <label for="episode"><span class="lang-ro-hide-all">Episod</span><span class="lang-ru-hide-all">Серия</span></label> <input name="episode" size="7" maxlength="15" type="text" disabled="true" class="disabled">
+  <br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span> <span class="lang-ro-hide-all">Sezon</span><span class="lang-ru-hide-all">Сезон</span>: 1 <span class="lang-ro-hide-all">Episod</span><span class="lang-ru-hide-all">Серия</span>: 2 or <span class="lang-ro-hide-all">Sezon</span><span class="lang-ru-hide-all">Сезон</span>: 1 or <span class="lang-ro-hide-all">Sezon</span><span class="lang-ru-hide-all">Сезон</span>: 1-3 or <span class="lang-ro-hide-all">Sezon</span><span class="lang-ru-hide-all">Сезон</span>: 1 <span class="lang-ro-hide-all">Episod</span><span class="lang-ru-hide-all">Серия</span> 1-3)
+  </td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">An</span><span class="lang-ru-hide-all">Год</span>(*)</td>
+  <td><input name="year" size="15" maxlength="30" type="text"> <font id="year_display" color="#CC3300"></font>
+  <br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: 1997, 1997-2005 or 1997,1998,2001,2002)</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Țara</span><span class="lang-ru-hide-all">Страна</span>(*)</td>
+  <td><input name="country" size="60" maxlength="60" type="text">
+  <br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: USA, Australia)<br>
+  <span class="lang-ro-hide-all">Datele despre Țară,Gen,Regie(Director),Scenariu(Writers),Actori(Cast) poate fi luată <b>de pe pagina IMDb</b> care ați scris-o mai sus.</span><span class="lang-ru-hide-all">Данные о Стране, Жанре, Режиссёре(Director), Сценарии (Writers), Актерах (Cast) могут быть найдены на страничке IMDb, которую вы указали выше.</span>
+  </td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Gen</span><span class="lang-ru-hide-all">Жанр</span>(*)</td>
+  <td><img src="./pic/upload_form/calendar.gif" id="movie_genres_onclick_show" style="cursor:pointer;"><input style="width: 508px;" maxlength="70" Readonly type="text" id="movie_genres_input">
+  <input type="hidden" name="movie_genres_list_ids">
+  <br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: Action / Adventure / Sci-Fi)
+<div class="plutitorul" id="movie_genres_all_list" style="width:245px;">
+<!-- First column -->
+<div style="width:80px;float:left;">
+<input id="genre1" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Action<br>
+<input id="genre20" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Animation<br>
+<input id="genre2" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Adventure<br>
+<input id="genre3" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Biography<br>
+<input id="genre4" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Comedy<br>
+<input id="genre5" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Crime<br>
+<input id="genre6" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Drama<br>
+</div>
+<!-- Second column -->
+<div style="width:85px;float:left;">
+<input id="genre19" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Detectiv<br>
+<input id="genre21" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Documentary<br>
+<input id="genre7" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Family<br>
+<input id="genre8" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Fantasy<br>
+<input id="genre9" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>History<br>
+<input id="genre10" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Horror<br>
+<input id="genre18" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Mystical<br>
+</div>
+<!-- Third column -->
+<div style="width:80px;float:left;">
+<input id="genre11" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Music<br>
+<input id="genre12" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Romance<br>
+<input id="genre13" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Sci-Fi<br>
+<input id="genre14" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Sport<br>
+<input id="genre15" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Thriller<br>
+<input id="genre16" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>War<br>
+<input id="genre17" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Western<br>
+&nbsp;
+</div>
+
+</div>
+
+  </td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Regie</span><span class="lang-ru-hide-all">Режиссер</span>(*)</td>
+  <td>
+    <input name="directed" style="width: 530px;" type="text"><br>
+    (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: Emil Loteanu)
+</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Scenariu</span><span class="lang-ru-hide-all">Сценарий</span>(*)</td>
+  <td>
+    <input name="writing_by" style="width: 530px;" type="text"><br>
+    (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: Emil Loteanu)
+</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Actori</span> <span class="lang-ru-hide-all">В ролях</span>(*)</td>
+  <td><input name="actors" style="width: 530px;" type="text"><br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: Bruce Willis, Milla Jovovich)</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Durata</span><span class="lang-ru-hide-all">Продолжительность</span>(*)</td>
+  <td><input name="runtime" style="width: 530px;" type="text"><br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: 126 min or 2h 6m or 126 мин or 2ч 6м)</td>
+</tr>
+
+<tr id="tr_lang">
+  <td><span class="lang-ro-hide-all">Limba bandei sonore</span><span class="lang-ru-hide-all">Язык звуковой дорожки</span>(*)</td>
+  <td>
+<select name="language">
+    <option value="0">-</option>
+    <option value="1">Русский</option>
+    <option value="2">English</option>
+    <option value="3">Rom&acirc;n&#259;</option>
+    <option value="4">Deutsch</option>
+    <option value="5">Fran&ccedil;ais</option>
+    <option value="6">Espa&ntilde;ol</option>
+    <option value="7">Japanese</option>
+    <option value="8">Italiano</option>
+    <option value="9">Portuguese</option>
+    <option value="11">Fără cuvinte</option>
+    <option value="10">Other</option>
+  </select>
+
+  <span class="lang-ro-hide-all">Traducere</span><span class="lang-ru-hide-all">Перевод</span>:
+  <select name="language_type" id="language_type">
+    <option value="0">-</option>
+    <option value="1" class="lang-ro-hide-all">Original (fără traducere)</option>
+    <option value="1" class="lang-ru-hide-all">Оригинал (без перевода)</option>
+    <option disabled="disabled">---------</option>
+    <option value="5" class="lang-ro-hide-all">Amator (o voce)</option>
+    <option value="5" class="lang-ru-hide-all">Любительский (одноголосный)</option>
+    <option value="7" class="lang-ro-hide-all">Amator (două voci)</option>
+    <option value="7" class="lang-ru-hide-all">Любительский (двухголосый)</option>
+    <option value="4" class="lang-ro-hide-all">Amator (mai multe voci)</option>
+    <option value="4" class="lang-ru-hide-all">Любительский (многоголосый)</option>
+    <option disabled="disabled">---------</option>
+    <option value="8" class="lang-ro-hide-all">Profesionistă (o voce)</option>
+    <option value="8" class="lang-ru-hide-all">Профессиональный (одноголосный)</option>
+    <option value="9" class="lang-ro-hide-all">Profesionistă (două voci)</option>
+    <option value="9" class="lang-ru-hide-all">Профессиональный (двухголосый)</option>
+    <option value="3" class="lang-ro-hide-all">Profesionistă (mai multe voci, voice-over)</option>
+    <option value="3" class="lang-ru-hide-all">Профессиональный (многоголосый, закадровый)</option>
+    <option value="2" class="lang-ro-hide-all">Profesionistă (dublată)</option>
+    <option value="2" class="lang-ru-hide-all">Профессиональный (полное дублирование)</option>
+    <option disabled="disabled">---------</option>
+    <option value="6" class="lang-ro-hide-all">Traducere sincronizată</option>
+    <option value="6" class="lang-ru-hide-all">Синхронный перевод</option>
+  </select> (<a href="/forum.php?action=viewtopic&topicid=378913" target="_blank">?</a>)
+  </td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Descrierea</span> <span class="lang-ru-hide-all">Описание</span>(*)</td>
+  <td><textarea name="descr" rows="15" style="width: 530px;" id="descr"></textarea><br>
+  <span class="lang-ro-hide-all">Includeți detaliile despre toate premiile și nominațiile (la Oscar de ex.) dacă au fost.<br></span>
+  <span class="lang-ru-hide-all">Указывайте подробности о всех наградах и номинациях (на Оскар на пр.) если они были.<br></span>
+  <span class="lang-ro-hide-all"><b>Includerea screenshot-urilor este obligatorie. <a href="/forum.php?action=viewtopic&topicid=379081" target="_blank">VEDEȚI AICI</a>.</b></span>
+  <span class="lang-ru-hide-all"><b>Вставка Скриншотов обязательна. <a href="/forum.php?action=viewtopic&topicid=379081" target="_blank">СМОТРИТЕ ЗДЕСЬ</a>.</b></span><br>
+  <span class="lang-ro-hide-all">exemplu: descrierea filmului</span>
+  <span class="lang-ru-hide-all">пример: описание фильма</span><br>
+  [spoiler=Screenshot-uri]<br>
+  [img]http://funkyimg.com/u2/767/424/image3783953.jpg[/img]<br>
+  [img]http://funkyimg.com/u2/641/955/image3791437.jpg[/img]<br>
+  [img]http://funkyimg.com/u2/725/164/image3785859.jpg[/img]<br>
+  [img]http://funkyimg.com/u2/454/796/image3797859.jpg[/img]<br>
+  [img]http://funkyimg.com/u2/824/961/image3808265.jpg[/img]<br>
+  [/spoiler]<br>
+  <span class="lang-ro-hide-all">Imaginile trebuie să fie de mărime originală ! (excepție fac cazurile cind imaginile depășesc lățimea de 800px, atunci puteți pune thumbnail - imagine mică)</span>
+  <span class="lang-ru-hide-all">Изображения должны быть оригинального размера! (Исключение составляют лишь изображения превышающие размер в 800px, тогда вы можете вставить эскизы - маленькие изображения)</span><br>
+
+  <b><span class="lang-ro-hide-all">Dacă utilizați careva program care a pus adresa spre thumbnail-uri, </span><span class="lang-ru-hide-all">Если вы используете программу, которая загружает картинки с эскизами, </span><a class="lnk" onclick="dethumbnail_descr()"><span class="lang-ro-hide-all">apăsați aici</span><span class="lang-ru-hide-all">нажмите сюда</span></a> <span class="lang-ro-hide-all">pentru scoaterea automată din thumbnail-uri.</span><span class="lang-ru-hide-all">, чтобы автоматически убрать их.</span></b><br>
+  <b><a id="dethumbnail_undo" class="lnk hideit" onclick="dethumbnail_descr_undo()"><span class="lang-ro-hide-all">Revenire la varianta anterioara(memorie de un singur pas)</span><span class="lang-ru-hide-all">Возврат к предыдущему варианту (назад на один шаг)</span></a></b>
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" style="border:0px;background-color:#F5F4EA;"><span class="n" style="font-weight:bold;"> File Info</span>
+  <input name="separator[]" type="hidden" value="File_info">
+  </td>
+</tr>
+
+<tr>
+  <td><p><span class="lang-ro-hide-all">Calitatea</span><span class="lang-ru-hide-all">Качество</span> HDTV (*)</p></td>
+  <td><select name="hdtv_quality">
+    <option value="0">-</option>
+    <option value="1">BDRip 720p</option>
+	<option value="2">BDRip 1080p</option>
+	<option value="3">BDRemux</option>
+	<option value="4">Blu-Ray</option>
+	<option value="5">HDDVDRip 720p</option>
+	<option value="6">HDDVDRip 1080p</option>
+	<option value="7">HDDVDRemux</option>
+	<option value="8">HDDVD</option>
+	<option value="9">HDTVRip</option>
+  <option value="10">WEB-DL</option>
+  <option value="11">WEBRip</option>
+  </select>
+  </td>
+</tr>
+<tr>
+  <td><span class="lang-ro-hide-all">Video</span> <span class="lang-ru-hide-all">Видео</span> (*)</td>
+  <td><input name="video" style="width: 330px;" type="text"> (<a href="/forum.php?action=viewtopic&topicid=378918" tabindex="11" target="_blank">cum de aflat</a>)<br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: XviD, 640x256, 25 fps, ~1080 Kbit/s)</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Sunet</span> <span class="lang-ru-hide-all">Звук</span> (*)</td>
+  <td><input name="sound" style="width: 330px;" type="text"> (<a href="/forum.php?action=viewtopic&topicid=378918" tabindex="12" target="_blank">cum de aflat</a>)<br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: АС3, 48000 Hz, 6 каналов, 384 kbit/s)</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Altele</span> <span class="lang-ru-hide-all">Другое </span> (*)</td>
+  <td>
+      <span class="lang-ro-hide-all">Torrentul conține sample ?</span> <span class="lang-ru-hide-all">Сэмпл есть ?</span> <input type="checkbox" name="sample" value="1"> (<a href="/forum.php?action=viewtopic&topicid=175744" target="_blank"><span class="lang-ro-hide-all">Cum de creat un sample</span><span class="lang-ru-hide-all">Как сделать Сэмпл</span></a>)<br>
+      <span class="lang-ro-hide-all">Torrentul conține subtitre ?</span> <span class="lang-ru-hide-all">Субтитры есть ?</span> <input type="checkbox" name="subtitles" value="1">(<a href="/forum.php?action=viewtopic&topicid=175744" target="_blank"><span class="lang-ro-hide-all">În unele cazuri, includerea subtitrelor este obligatorie</span><span class="lang-ru-hide-all">В некоторых случаях, включение обязательно</span></a>)
+  </td>
+</tr>
+
+</tbody>
+</table>

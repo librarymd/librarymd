@@ -1,0 +1,29 @@
+<div class="plutitorul" id="movie_genres_all_list" style="width:240px;">
+<!-- First column -->
+<div style="width:80px;float:left;">
+<input id="genre1" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Action<br>
+<input id="genre2" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Adventure<br>
+<input id="genre3" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Biography<br>
+<input id="genre4" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Comedy<br>
+<input id="genre5" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Crime<br>
+<input id="genre6" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Drama<br>
+</div>
+<!-- Second column -->
+<div style="width:80px;float:left;">
+<input id="genre7" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Family<br>
+<input id="genre8" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Fantasy<br>
+<input id="genre9" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>History<br>
+<input id="genre10" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Horror<br>
+<input id="genre11" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Music<br>
+<input id="genre12" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Romance<br>
+</div>
+<!-- Third column -->
+<div style="width:80px;float:left;">
+<input id="genre13" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Sci-Fi<br>
+<input id="genre14" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Sport<br>
+<input id="genre15" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Thriller<br>
+<input id="genre16" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>War<br>
+<input id="genre17" type="checkbox" onclick="movie_genres_checkbox(this);" value=1>Western<br>
+&nbsp;
+</div>
+</div>

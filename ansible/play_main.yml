@@ -1,0 +1,479 @@
+- name: check if ubuntu user exists
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+    - name: Check if ubuntu home directory exists
+      stat: path=/home/ubuntu
+      register: home_ubuntu_directory
+
+    - name: check if ubuntu user is present
+      fail:
+        msg: "You need to create a user with username ubuntu, example: adduser --disabled-password ubuntu"
+      when: home_ubuntu_directory.stat.exists == False
+
+- name: dependency provisioning
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+    - name: install python
+      raw: sudo apt-get -y install python-simplejson
+
+- name: System configuration
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tags:
+     - sys-conf
+  tasks:
+    - name: set timezone to Europe/Bucharest
+      timezone:
+        name: Europe/Bucharest
+
+- name: dependency provisioning
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tags:
+     - install-pack
+  tasks:
+    - name: add ondrej/php repo
+      apt_repository:
+        repo: 'ppa:ondrej/php'
+    - name: update apt cache
+      apt:
+        update_cache: yes
+    - name: install php with all extensions and nginx
+      apt: name={{item}} state=installed
+      with_items:
+           - php5.6
+           - php5.6-gd
+           - php5.6-fpm
+           - php5.6-memcache
+           - php5.6-mysql
+           - php5.6-mbstring
+           - php5.6-mongo
+           - php5.6-curl
+           - nginx
+           - memcached
+    - name: install mysql-server
+      apt: name={{item}} state=installed
+      with_items:
+           - mysql-server
+    - name: install sphinxsearch
+      apt: name=sphinxsearch=2.* state=installed
+    - name: install mongodb-server
+      apt: name=mongodb-server state=installed
+
+- name: install dht-client-daemon
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tags:
+     - install-dht-daemon
+  tasks:
+    - name: Setup nodesource distribution repository
+      raw: curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+    - name: install nodejs (npm is provide inside nodejs)
+      apt: name={{item}} state=installed
+      with_items:
+           - nodejs
+    - name: install dht-client-daemon
+      raw: sudo npm install -g dht-client-daemon
+    - template: src=templates/node_dht_client_daemon.service.j2 dest=/lib/systemd/system/node_dht_client_daemon.service
+
+    - name: Check if file is already there to skip the config generation
+      stat: path=/usr/bin/dht-client-daemon
+      register: default_dht_client_executable
+    - name: Create sym link from the default location
+      raw: ln -s /usr/local/bin/dht-client-daemon /usr/bin/dht-client-daemon
+      when: default_dht_client_executable.stat.exists == False
+
+    - name: start dht_client_daemon
+      systemd:
+        state: started
+        daemon_reload: yes
+        enabled: yes
+        name: node_dht_client_daemon
+
+- name: configure mysql password
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tags:
+     - mysql-config
+  vars_files:
+    - play_vars.yml
+  tasks:
+    - name: install python mysql bindings needed for ansible mysql_user task
+      apt: name=python-mysqldb state=installed
+      become: yes
+      become_method: sudo
+
+    - name: set root password
+      mysql_user:
+        name: root
+        password: "{{ mysql_root_password }}"
+        host: "{{ item }}"
+        priv: "*.*:ALL,GRANT"
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+      with_items:
+        - 127.0.0.1
+        - ::1
+        - localhost
+
+    - name: Create a new database with name 'webapp'
+      mysql_db:
+        name: webapp
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - name: Setup user webapp and grant access to webapp database
+      mysql_user:
+        name: webapp
+        password: "{{ mysql_webapp_password }}"
+        host: "localhost"
+        priv: "webapp.*:ALL"
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - name: Setup user sphinx and grant read access to webapp database
+      mysql_user:
+        name: sphinx
+        password: "{{ mysql_sphinx_password }}"
+        host: "localhost"
+        priv: "webapp.*:SELECT"
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - template: src=templates/user-my.cnf.j2 dest=/home/ubuntu/.my.cnf
+    - template: src=templates/user-my.cnf.j2 dest=/root/.my.cnf
+
+- name: configure php
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tags:
+     - php-config
+  tasks:
+    - name: configure short_open_tag to on
+      ini_file:
+        path: /etc/php/5.6/fpm/php.ini
+        section: PHP
+        option: short_open_tag
+        value: On
+        backup: yes
+
+    - name: configure timezone
+      ini_file:
+        path: /etc/php/5.6/fpm/php.ini
+        section: Date
+        option: date.timezone
+        value: Europe/Bucharest
+        backup: yes
+
+    - name: restart php-fpm
+      service:
+        name: php5.6-fpm
+        state: restarted
+
+- name: configure nginx
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tags:
+     - nginx-config
+  tasks:
+    - template: src=templates/nginx_default_site.j2 dest=/etc/nginx/sites-available/default
+
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+
+- name: prepare webapp directory
+  hosts: all
+  become: yes
+  become_method: sudo
+  tags:
+     - copy-webapp-once
+  vars_files:
+    - play_vars.yml
+  tasks:
+    - name: Create directory
+      file:
+        path: /www/webapp
+        state: directory
+        owner: www-data
+        group: www-data
+
+- name: copy webapp from local directory and setup mysql credentials
+  hosts: all
+  become: yes
+  become_method: sudo
+  tags:
+     - copy-webapp
+  vars_files:
+    - play_vars.yml
+  tasks:
+    - name: Copy directory
+      unarchive:
+        # We asume that webapp.tgz has one directory called webapp
+        # So when unarchived in /www, there will be a directory in /www/webapp
+        src: webapp.tgz
+        dest: /www
+        owner: www-data
+        group: www-data
+    - name: Create torrents and img directory
+      file:
+        path: '{{item}}'
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: "g+w"
+      with_items:
+        - '/www/data/torrents'
+        - '/www/data/torrents_img'
+
+    - name: Create symlinks
+      file:
+        src: '{{item.src}}'
+        dest: '{{item.dest}}'
+        owner: www-data
+        group: www-data
+        state: link
+        force: yes
+      with_items:
+        - { src: '/www/data/torrents', dest: '/www/webapp/torrents'}
+        - { src: '/www/data/torrents_img', dest: '/www/webapp/torrents_img'}
+
+    - name: Allow members of the www-data group the write access
+      file:
+        path: "/www/webapp"
+        state: directory
+        recurse: yes
+        mode: "g+w"
+
+    - template: src=templates/secrets.php.j2 dest=/www/webapp/include/secrets.php
+
+- name: Import mysql schema
+  hosts: all
+  tags:
+     - import-db
+  vars_files:
+    - play_vars.yml
+  tasks:
+    - name: Copy database dump file
+      copy:
+        src: ../webapp_latest.sql
+        dest: /tmp
+    - name: Restore database
+      mysql_db:
+        name: "{{ mysql_webapp_db }}"
+        state: import
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        target: /tmp/webapp_latest.sql
+
+- name: configure sphinxsearch
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tags:
+     - sphinx-config
+  vars_files:
+    - play_vars.yml
+  tasks:
+    - template: src=templates/sphinx.conf.j2 dest=/etc/sphinxsearch/sphinx.conf
+    - template: src=templates/etc_default_sphinxsearch.j2 dest=/etc/default/sphinxsearch
+   #- name:
+   #   raw: indexer --config /etc/sphinxsearch/sphinx.conf torrents_search
+    - name: sphinx started
+      service:
+        name: sphinxsearch
+        state: started
+    - name: Refresh torrents_search sphinx index
+      cron:
+        user: root
+        name: "Every hour update torrents_search sphinx search index"
+        minute: "5"
+        hour: "*"
+        job: "indexer --config /etc/sphinxsearch/sphinx.conf torrents_search --rotate"
+    - name: Refresh torrents_search sphinx index
+      cron:
+        user: root
+        name: "Every hour update torrents_search sphinx search index"
+        minute: "5"
+        hour: "*"
+        job: "indexer --config /etc/sphinxsearch/sphinx.conf torrents_search --rotate"
+
+
+- name: Setup crontab tasks
+  hosts: all
+  tags:
+    - install-cron-tasks
+    - copy-webapp
+  tasks:
+    - name: Add user ubuntu to group www-data
+      user:
+        name: ubuntu
+        groups: www-data
+        append: yes
+
+- name: Setup crontab tasks
+  hosts: all
+  tags:
+    - install-cron-tasks
+  tasks:
+    - name: Create log folder
+      file:
+        path: "/www/logs"
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+    - name: Create log periodic file
+      file:
+        path: "/www/logs/periodic.log"
+        state: file
+        owner: ubuntu
+        group: ubuntu
+    - name: Ensure file exists
+      copy:
+        content: ""
+        dest: /www/logs/periodic.log
+        force: no
+        group: ubuntu
+        owner: ubuntu
+    - name: Rotate periodic log
+      cron:
+        user: ubuntu
+        name: "Rotate periodic log"
+        special_time: daily
+        job: "echo '' > /www/logs/periodic.log"
+
+    - name: Every minute dht fetcher
+      cron:
+        user: ubuntu
+        name: "Every minute dht fetcher"
+        minute: "*"
+        hour: "*"
+        job: "php /www/webapp/periodic/update_dht_peers_do.php >> /www/logs/periodic.log 2>&1"
+    - name: Every minute dht scheduler
+      cron:
+        user: ubuntu
+        name: "Every minute dht scheduler"
+        minute: "*"
+        hour: "*"
+        job: "php /www/webapp/periodic/update_dht_peers_schedule.php >> /www/logs/periodic.log 2>&1"
+    - name: Every minute import latest torrents
+      cron:
+        user: ubuntu
+        name: "Every minute import latest torrents"
+        minute: "*"
+        hour: "*"
+        job: "php /www/webapp/periodic/import/torrents_import_poll_last.php >> /www/logs/periodic.log 2>&1"
+    - name: Every minute download scheduled images
+      cron:
+        user: ubuntu
+        name: "Every minute download scheduled images"
+        minute: "*"
+        hour: "*"
+        job: "php /www/webapp/periodic/import/torrents_import_images.php >> /www/logs/periodic.log 2>&1"
+
+- name: Configure tor access and the tor load balancer
+  hosts: all
+  become: yes
+  become_method: sudo
+  tags:
+    - install-tor
+  tasks:
+    - name: install packages
+      apt: name={{item}} state=installed
+      with_items:
+           - tor
+           - onionbalance
+    - template: src=templates/tor_master.j2 dest=/etc/tor/torrc
+    - name: restart master tor daemon
+      service:
+        name: tor
+        state: restarted
+    - name: Create tor worker data sub directories
+      file:
+        path: "{{item}}"
+        state: directory
+        owner: debian-tor
+        group: debian-tor
+        #mode: 0400
+      with_items:
+        - /var/lib/tor_multi
+        - /var/lib/tor_multi/srv1
+        - /var/lib/tor_multi/srv2
+        - /var/lib/tor_multi/srv3
+        - /etc/tor_multi
+    - name: Check if file is already there to skip the config generation
+      stat: path=/etc/tor_multi/master/config.yaml
+      register: onionbalance_executed_files
+    - name: Create tor config
+      raw: sudo -u debian-tor onionbalance-config -n 3 --output /etc/tor_multi/
+      when: onionbalance_executed_files.stat.exists == False
+    - name: Copy onionbalance config
+      raw: sudo cp /etc/tor_multi/master/* /etc/onionbalance/ && sudo chown onionbalance:onionbalance /etc/onionbalance/*.key
+      when: onionbalance_executed_files.stat.exists == False
+    - replace:
+        path: "/etc/tor_multi/{{item}}/instance_torrc"
+        regexp: 'DataDirectory tor-data'
+        replace: 'DataDirectory /var/lib/tor_multi/{{item}}'
+      with_items:
+        - srv1
+        - srv2
+        - srv3
+    - replace:
+        path: "/etc/tor_multi/{{item}}/instance_torrc"
+        regexp: '^HiddenServiceDir (?:(?!\/etc))(.+)'
+        replace: 'HiddenServiceDir /etc/tor_multi/{{item}}/\1'
+      with_items:
+        - srv1
+        - srv2
+        - srv3
+    - template: src=templates/tor_worker_instance.service.j2 dest=/lib/systemd/system/tor_worker_srv1.service
+      vars:
+        tor_instance_name: srv1
+    - template: src=templates/tor_worker_instance.service.j2 dest=/lib/systemd/system/tor_worker_srv2.service
+      vars:
+        tor_instance_name: srv2
+    - template: src=templates/tor_worker_instance.service.j2 dest=/lib/systemd/system/tor_worker_srv3.service
+      vars:
+        tor_instance_name: srv3
+    - name: start tor_workers
+      systemd:
+        state: started
+        daemon_reload: yes
+        enabled: yes
+        name: "tor_worker_{{item}}"
+      with_items:
+        - srv1
+        - srv2
+        - srv3
+    - name: Create tor worker data sub directories
+      file:
+        path: /var/run/onionbalance
+        state: directory
+        owner: onionbalance
+        group: onionbalance
+    - name: restart onionbalance
+      systemd:
+        state: restarted
+        enabled: yes
+        name: "onionbalance"

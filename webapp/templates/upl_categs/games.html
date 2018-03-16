@@ -1,0 +1,97 @@
+<table id="table_upload" border="1" cellpadding="5" cellspacing="0" width="675">
+<col style="width: 75px;" align="left"><col>
+<tbody id="table_upload_tbody">
+
+<tr id="tr_name">
+  <td><span class="lang-ro-hide-all">Nume</span><span class="lang-ru-hide-all">Название</span>(*)</td>
+  <td><input name="name" size="70" maxlength="90" type="text"></td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Adresa spre trailerul de pe youtube</span><span class="lang-ru-hide-all">Адрес трэйлера</span>(*)</td>
+  <td><input name="youtube_link" style="width: 530px;" maxlength="90" type="text" value=""><br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: http://www.youtube.com/watch?v=13EUXqIwDkQ)
+  <br>
+  <span class="lang-ro-hide-all"><b>Verificați ca link-ul să corespundă cu filmul care îl încărcați.</b></span><span class="lang-ru-hide-all"><b>Проверьте чтобы ссылка соответствовала фильму который вы загружаете</b></span><br>
+  <span class="lang-ro-hide-all">Nu există trailer pe youtube</span><span class="lang-ru-hide-all">Нету трейлера на youtube</span> <input type="checkbox" name="trailer_doesnt_exist" id="trailer_doesnt_exist"><br>
+  <span class="lang-ro-hide-all">(dacă merge vorba de un film care nu are trailer, vă sugerăm să făceți trailer (<a href="/forum.php?action=viewtopic&topicid=175744" target="_blank">cum de făcut trailer?</a>) și să-l încărcați pe youtube, puteți întreba aici, poate ați căutat rău?)<br>
+  De la începutul trailerului este ceva inutil ? <a href="/forum.php?action=viewtopic&topicid=361692#9" target="_blank">Vezi cum de făcut ca clipul să se pornească de la o secundă anumită</a>.</span>
+  <span class="lang-ru-hide-all">(если речь идет о фильме без трейлера, мы вам советуем самим сделать трейлер (<a href="/forum.php?action=viewtopic&topicid=175744" target="_blank">как сделать трейлер?</a>) и загрузить его на youtube, можете спросить тут, возможно вы плохо искали?)<br>
+  В начале трейлера есть что-то бесполезное? <a href="/forum.php?action=viewtopic&topicid=361692#9" target="_blank">Смотри как сделать, чтоб фильм начинался с определенной секунды.</a></span>
+  </td>
+</tr>
+
+<tr id="tr_games_genres">
+  <td><span class="lang-ro-hide-all">Gen</span><span class="lang-ru-hide-all">Жанр</span> (*)</td>
+  <td>
+<select name="games_genre">
+    <option value="0" selected>-</option>
+    <option value="1">Action</option>
+    <option value="11">Adventure</option>
+    <option value="2">First-Person Shooters(FPS)</option>
+    <option value="3">Role-Playing(RPG)</option>
+    <option value="4">Racing</option>
+    <option value="5">Real-Time Strategy(RTS)</option>
+    <option value="13">Simulation</option>
+    <option value="6">Other Shooters</option>
+    <option value="7">Tactical Shooters</option>
+    <option value="12">Turn by Turn Strategy</option>
+    <option value="8">Platformers</option>
+    <option value="9">Fighting Games</option>
+    <option value="10">For Kids</option>
+    <option value="20">Other</option>
+</select>
+   </td>
+</tr>
+<tr>
+  <td><span class="lang-ro-hide-all">An</span><span class="lang-ru-hide-all">Год</span>(*)</td>
+  <td><input name="year" size="15" maxlength="30" type="text"> <font id="year_display" color="#CC3300"></font>
+  <br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: 1997, 1997-2005 or 1997,1998,2001,2002)</td>
+</tr>
+
+<tr id="tr_lang">
+  <td><span class="lang-ro-hide-all">Limba</span><span class="lang-ru-hide-all">Язык</span>(*)</td>
+  <td>
+<select name="language">
+    <option value="0">-</option>
+    <option value="1">Русский</option>
+    <option value="2">English</option>
+    <option value="3">Rom&acirc;n&#259;</option>
+    <option value="4">Deutsch</option>
+    <option value="5">Fran&ccedil;ais</option>
+    <option value="6">Espa&ntilde;ol</option>
+    <option value="7">Japanese</option>
+    <option value="8">Italiano</option>
+    <option value="9">Portuguese</option>
+    <option value="11">Fără cuvinte</option>
+    <option value="10">Other</option>
+  </select>
+
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" style="border:0px;background-color:#F5F4EA;"><span class="n" style="font-weight:bold;"><span class="n lang-ro-hide-all" style="font-weight:bold;"> Cerinţe tehnice</span><span class="n lang-ru-hide-all" style="font-weight:bold;"> Системные требования</span></span>
+  <input name="separator[]" type="hidden" value="Hardware">
+  </td>
+</tr>
+<tr id="tr_games_minimum">
+  <td>Minimum(*)</td>
+  <td>
+     <textarea name="games_minimum_hardware" rows="6" cols="67"></textarea>
+   </td>
+</tr>
+<tr id="tr_games_recomanded">
+  <td>Recommended</td>
+  <td>
+     <textarea name="games_recomanded_hardware" rows="6" cols="67"></textarea>
+   </td>
+</tr>
+
+<tr id="tr_description" class="oldBehaiveiors">
+  <td><span class="lang-ro-hide-all">Descrierea</span> <span class="lang-ru-hide-all">Описание</span>(*)</td>
+  <td><textarea name="descr" rows="15" style="width: 530px;"></textarea><br><span class="lang-ro-hide-all">(15 caractere minim, doar BB-code este admis, apasă <a href="./tags.php" tabindex="9" target="_blank">aici</a> pentru exemple de bb-coduri posibile.)</span><span class="lang-ru-hide-all">(Минимум 15 символов, допустимыми являются только ВВ коды, нажми <a href="./tags.php" tabindex="9" target="_blank">сюда</a> чтобы увидеть примеры возможных ВВ кодов.)</span></td>
+</tr>
+</tbody>
+</table>

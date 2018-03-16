@@ -1,0 +1,13 @@
+[Unit]
+Description=dht-client-daemon - daemon to query dht network
+Documentation=https://example.com
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/nodejs /usr/bin/dht-client-daemon
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,43 @@
+<table id="table_upload" border="1" cellpadding="5" cellspacing="0" width="675">
+<col style="width: 75px;" align="left"><col>
+<tbody id="table_upload_tbody">
+
+<tr id="tr_name">
+  <td><span class="lang-ro-hide-all">Nume</span><span class="lang-ru-hide-all">Название</span>(*)</td>
+  <td><input name="name" size="70" maxlength="90" type="text"></td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">An</span><span class="lang-ru-hide-all">Год</span>(*)</td>
+  <td><input name="year" size="15" maxlength="30" type="text"> <font id="year_display" color="#CC3300"></font>
+  <br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: 1997, 1997-2005 or 1997,1998,2001,2002)</td>
+</tr>
+
+<tr id="tr_lang">
+  <td><span class="lang-ro-hide-all">Limba</span><span class="lang-ru-hide-all">Язык</span>(*)</td>
+  <td>
+<select name="language">
+    <option value="0">-</option>
+    <option value="1">Русский</option>
+    <option value="2">English</option>
+    <option value="3">Rom&acirc;n&#259;</option>
+    <option value="4">Deutsch</option>
+    <option value="5">Fran&ccedil;ais</option>
+    <option value="6">Espa&ntilde;ol</option>
+    <option value="7">Japanese</option>
+    <option value="8">Italiano</option>
+    <option value="9">Portuguese</option>
+    <option value="11">Fără cuvinte</option>
+    <option value="10">Other</option>
+  </select>
+
+  </td>
+</tr>
+
+<tr id="tr_description" class="oldBehaiveiors">
+  <td><span class="lang-ro-hide-all">Descrierea</span> <span class="lang-ru-hide-all">Описание</span>(*)</td>
+  <td><textarea name="descr" rows="15" style="width: 530px;"></textarea><br><span class="lang-ro-hide-all">(15 caractere minim, doar BB-code este admis, apasă <a href="./tags.php" tabindex="9" target="_blank">aici</a> pentru exemple de bb-coduri posibile.)</span><span class="lang-ru-hide-all">(Минимум 15 символов, допустимыми являются только ВВ коды, нажми <a href="./tags.php" tabindex="9" target="_blank">сюда</a> чтобы увидеть примеры возможных ВВ кодов.)</span></td>
+</tr>
+</tbody>
+</table>

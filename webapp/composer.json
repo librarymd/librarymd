@@ -1,0 +1,5 @@
+{
+    "require": {
+        "simpletest/simpletest": "v1.1.5"
+    }
+}

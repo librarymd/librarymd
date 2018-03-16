@@ -1,0 +1,13 @@
+[Unit]
+Description=tor-worker-{{tor_instance_name}}
+Documentation=https://example.com
+After=network.target
+
+[Service]
+Type=simple
+User=debian-tor
+ExecStart=/usr/bin/tor -f /etc/tor_multi/{{tor_instance_name}}/instance_torrc --RunAsDaemon 0
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

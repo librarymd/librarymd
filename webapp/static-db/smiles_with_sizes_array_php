@@ -1,0 +1,6 @@
+<?php
+$GLOBALS['smilies_with_size'] = array (
+  ':+1:' => array('name'=>'thumbsup_blue.png', 'size' => array('width'=>20, 'height'=>20)),
+  '(y)' => array('name'=>'thumbsup_blue.png', 'size' => array('width'=>20, 'height'=>20))
+);
+?>

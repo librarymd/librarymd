@@ -1,0 +1,2225 @@
+<?php
+// The generator code is in smiles_popup.php
+$GLOBALS['smilies_sizes'] = array (
+  'excl.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'cry.gif' => 
+  array (
+    0 => 31,
+    1 => 22,
+  ),
+  'sad.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'smile.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'confused.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'question.gif' => 
+  array (
+    0 => 19,
+    1 => 19,
+  ),
+  'noexpression.gif' => 
+  array (
+    0 => 27,
+    1 => 24,
+  ),
+  'acute.gif' => 
+  array (
+    0 => 27,
+    1 => 24,
+  ),
+  'ae.gif' => 
+  array (
+    0 => 42,
+    1 => 27,
+  ),
+  'aggressive.gif' => 
+  array (
+    0 => 36,
+    1 => 27,
+  ),
+  'agree.gif' => 
+  array (
+    0 => 37,
+    1 => 23,
+  ),
+  'aikido.gif' => 
+  array (
+    0 => 50,
+    1 => 30,
+  ),
+  'airkiss.gif' => 
+  array (
+    0 => 23,
+    1 => 26,
+  ),
+  'alien.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'angel.gif' => 
+  array (
+    0 => 27,
+    1 => 23,
+  ),
+  'angelic.gif' => 
+  array (
+    0 => 27,
+    1 => 26,
+  ),
+  'angry.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'annoyed.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'assassin.gif' => 
+  array (
+    0 => 39,
+    1 => 36,
+  ),
+  'avtorjjot.gif' => 
+  array (
+    0 => 34,
+    1 => 30,
+  ),
+  'baby.gif' => 
+  array (
+    0 => 20,
+    1 => 22,
+  ),
+  'backeye.gif' => 
+  array (
+    0 => 23,
+    1 => 20,
+  ),
+  'bad.gif' => 
+  array (
+    0 => 21,
+    1 => 21,
+  ),
+  'badger.gif' => 
+  array (
+    0 => 25,
+    1 => 23,
+  ),
+  'bananadance.gif' => 
+  array (
+    0 => 33,
+    1 => 35,
+  ),
+  'banana2.gif' => 
+  array (
+    0 => 66,
+    1 => 36,
+  ),
+  'band.gif' => 
+  array (
+    0 => 125,
+    1 => 37,
+  ),
+  'band2.gif' => 
+  array (
+    0 => 133,
+    1 => 33,
+  ),
+  'beach.gif' => 
+  array (
+    0 => 34,
+    1 => 33,
+  ),
+  'beee.gif' => 
+  array (
+    0 => 28,
+    1 => 28,
+  ),
+  'beer.gif' => 
+  array (
+    0 => 59,
+    1 => 21,
+  ),
+  'beer2.gif' => 
+  array (
+    0 => 60,
+    1 => 40,
+  ),
+  'biceps.gif' => 
+  array (
+    0 => 37,
+    1 => 25,
+  ),
+  'bike.gif' => 
+  array (
+    0 => 31,
+    1 => 31,
+  ),
+  'bike2.gif' => 
+  array (
+    0 => 62,
+    1 => 31,
+  ),
+  'blink.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'blum3.gif' => 
+  array (
+    0 => 20,
+    1 => 24,
+  ),
+  'blush.gif' => 
+  array (
+    0 => 25,
+    1 => 25,
+  ),
+  'boast.gif' => 
+  array (
+    0 => 35,
+    1 => 25,
+  ),
+  'book.gif' => 
+  array (
+    0 => 35,
+    1 => 20,
+  ),
+  'boss.gif' => 
+  array (
+    0 => 38,
+    1 => 30,
+  ),
+  'bounce.gif' => 
+  array (
+    0 => 25,
+    1 => 36,
+  ),
+  'bow.gif' => 
+  array (
+    0 => 33,
+    1 => 25,
+  ),
+  'box.gif' => 
+  array (
+    0 => 65,
+    1 => 26,
+  ),
+  'boxing.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'bravo.gif' => 
+  array (
+    0 => 40,
+    1 => 27,
+  ),
+  'bunny.gif' => 
+  array (
+    0 => 20,
+    1 => 25,
+  ),
+  'buum.gif' => 
+  array (
+    0 => 37,
+    1 => 25,
+  ),
+  'bye.gif' => 
+  array (
+    0 => 29,
+    1 => 24,
+  ),
+  'cake.gif' => 
+  array (
+    0 => 28,
+    1 => 25,
+  ),
+  'call.gif' => 
+  array (
+    0 => 47,
+    1 => 32,
+  ),
+  'call1.gif' => 
+  array (
+    0 => 44,
+    1 => 26,
+  ),
+  'carrot.gif' => 
+  array (
+    0 => 33,
+    1 => 35,
+  ),
+  'casanova.gif' => 
+  array (
+    0 => 53,
+    1 => 27,
+  ),
+  'catfight.gif' => 
+  array (
+    0 => 46,
+    1 => 20,
+  ),
+  'censored.gif' => 
+  array (
+    0 => 40,
+    1 => 31,
+  ),
+  'chair.gif' => 
+  array (
+    0 => 45,
+    1 => 40,
+  ),
+  'cigar.gif' => 
+  array (
+    0 => 22,
+    1 => 25,
+  ),
+  'clap.gif' => 
+  array (
+    0 => 28,
+    1 => 30,
+  ),
+  'clap2.gif' => 
+  array (
+    0 => 31,
+    1 => 25,
+  ),
+  'closedeyes.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'coffee.gif' => 
+  array (
+    0 => 29,
+    1 => 21,
+  ),
+  'console.gif' => 
+  array (
+    0 => 46,
+    1 => 20,
+  ),
+  'crazy.gif' => 
+  array (
+    0 => 20,
+    1 => 27,
+  ),
+  'crybaby.gif' => 
+  array (
+    0 => 40,
+    1 => 18,
+  ),
+  'curtsey.gif' => 
+  array (
+    0 => 38,
+    1 => 24,
+  ),
+  'grin.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'dance2.gif' => 
+  array (
+    0 => 42,
+    1 => 25,
+  ),
+  'dance3.gif' => 
+  array (
+    0 => 42,
+    1 => 25,
+  ),
+  'danceboy.gif' => 
+  array (
+    0 => 32,
+    1 => 32,
+  ),
+  'deadhorse.gif' => 
+  array (
+    0 => 74,
+    1 => 37,
+  ),
+  'declare.gif' => 
+  array (
+    0 => 38,
+    1 => 26,
+  ),
+  'devil.gif' => 
+  array (
+    0 => 18,
+    1 => 23,
+  ),
+  'diablo.gif' => 
+  array (
+    0 => 39,
+    1 => 34,
+  ),
+  'diablo2.gif' => 
+  array (
+    0 => 40,
+    1 => 30,
+  ),
+  'dirol.gif' => 
+  array (
+    0 => 21,
+    1 => 21,
+  ),
+  'dntknw.gif' => 
+  array (
+    0 => 30,
+    1 => 20,
+  ),
+  'dontmention.gif' => 
+  array (
+    0 => 28,
+    1 => 25,
+  ),
+  'dots.gif' => 
+  array (
+    0 => 46,
+    1 => 51,
+  ),
+  'doubt.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'down.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'download.gif' => 
+  array (
+    0 => 28,
+    1 => 32,
+  ),
+  'drinks.gif' => 
+  array (
+    0 => 51,
+    1 => 28,
+  ),
+  'drool.gif' => 
+  array (
+    0 => 15,
+    1 => 18,
+  ),
+  'drunk.gif' => 
+  array (
+    0 => 58,
+    1 => 30,
+  ),
+  'dumbells.gif' => 
+  array (
+    0 => 32,
+    1 => 18,
+  ),
+  'elf.gif' => 
+  array (
+    0 => 42,
+    1 => 49,
+  ),
+  'engard.gif' => 
+  array (
+    0 => 100,
+    1 => 34,
+  ),
+  'evil.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'evilmad.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'evo.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'eyebrow.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'fans.gif' => 
+  array (
+    0 => 72,
+    1 => 35,
+  ),
+  'feminist.gif' => 
+  array (
+    0 => 54,
+    1 => 49,
+  ),
+  'fie.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'figa.gif' => 
+  array (
+    0 => 34,
+    1 => 27,
+  ),
+  'fingers.gif' => 
+  array (
+    0 => 35,
+    1 => 26,
+  ),
+  'firstmove.gif' => 
+  array (
+    0 => 55,
+    1 => 24,
+  ),
+  'fist.gif' => 
+  array (
+    0 => 30,
+    1 => 24,
+  ),
+  'flirt.gif' => 
+  array (
+    0 => 35,
+    1 => 24,
+  ),
+  'flood.gif' => 
+  array (
+    0 => 40,
+    1 => 48,
+  ),
+  'flowers.gif' => 
+  array (
+    0 => 28,
+    1 => 18,
+  ),
+  'flutterby.gif' => 
+  array (
+    0 => 35,
+    1 => 27,
+  ),
+  'fool.gif' => 
+  array (
+    0 => 29,
+    1 => 23,
+  ),
+  'football.gif' => 
+  array (
+    0 => 40,
+    1 => 35,
+  ),
+  'friends.gif' => 
+  array (
+    0 => 52,
+    1 => 28,
+  ),
+  'fun.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'gathering.gif' => 
+  array (
+    0 => 65,
+    1 => 33,
+  ),
+  'geek.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'girlblum.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'girlblum2.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'girlbobruisk.gif' => 
+  array (
+    0 => 52,
+    1 => 30,
+  ),
+  'girlcrazy.gif' => 
+  array (
+    0 => 37,
+    1 => 25,
+  ),
+  'girlcry.gif' => 
+  array (
+    0 => 34,
+    1 => 25,
+  ),
+  'girlcry2.gif' => 
+  array (
+    0 => 38,
+    1 => 24,
+  ),
+  'girlcry3.gif' => 
+  array (
+    0 => 34,
+    1 => 24,
+  ),
+  'girldevil.gif' => 
+  array (
+    0 => 46,
+    1 => 28,
+  ),
+  'girlglasses.gif' => 
+  array (
+    0 => 34,
+    1 => 37,
+  ),
+  'girlhaha.gif' => 
+  array (
+    0 => 35,
+    1 => 22,
+  ),
+  'girlhide.gif' => 
+  array (
+    0 => 35,
+    1 => 24,
+  ),
+  'girlimpossible.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'girlinlove.gif' => 
+  array (
+    0 => 37,
+    1 => 27,
+  ),
+  'girlmad.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'girlsad.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'girlsigh.gif' => 
+  array (
+    0 => 34,
+    1 => 24,
+  ),
+  'girlsmile.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'girlwacko.gif' => 
+  array (
+    0 => 36,
+    1 => 24,
+  ),
+  'girlwink.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'giveheart.gif' => 
+  array (
+    0 => 28,
+    1 => 25,
+  ),
+  'giveheart2.gif' => 
+  array (
+    0 => 28,
+    1 => 25,
+  ),
+  'giverose.gif' => 
+  array (
+    0 => 30,
+    1 => 26,
+  ),
+  'good.gif' => 
+  array (
+    0 => 26,
+    1 => 23,
+  ),
+  'greedy.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'greenstars.gif' => 
+  array (
+    0 => 35,
+    1 => 29,
+  ),
+  'group.gif' => 
+  array (
+    0 => 70,
+    1 => 18,
+  ),
+  'guns.gif' => 
+  array (
+    0 => 38,
+    1 => 18,
+  ),
+  'haha.gif' => 
+  array (
+    0 => 28,
+    1 => 20,
+  ),
+  'happy2.gif' => 
+  array (
+    0 => 40,
+    1 => 38,
+  ),
+  'harp.gif' => 
+  array (
+    0 => 63,
+    1 => 56,
+  ),
+  'hb2.gif' => 
+  array (
+    0 => 173,
+    1 => 85,
+  ),
+  'hb3.gif' => 
+  array (
+    0 => 228,
+    1 => 200,
+  ),
+  'hbd.gif' => 
+  array (
+    0 => 81,
+    1 => 26,
+  ),
+  'heartbeat.gif' => 
+  array (
+    0 => 16,
+    1 => 14,
+  ),
+  'heat.gif' => 
+  array (
+    0 => 33,
+    1 => 29,
+  ),
+  'help.gif' => 
+  array (
+    0 => 30,
+    1 => 33,
+  ),
+  'hi.gif' => 
+  array (
+    0 => 60,
+    1 => 45,
+  ),
+  'hmm.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'hmmm.gif' => 
+  array (
+    0 => 25,
+    1 => 23,
+  ),
+  'hooray.gif' => 
+  array (
+    0 => 31,
+    1 => 26,
+  ),
+  'horse.gif' => 
+  array (
+    0 => 56,
+    1 => 66,
+  ),
+  'hslocked.gif' => 
+  array (
+    0 => 55,
+    1 => 41,
+  ),
+  'hug.gif' => 
+  array (
+    0 => 34,
+    1 => 18,
+  ),
+  'huh.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'hump.gif' => 
+  array (
+    0 => 80,
+    1 => 24,
+  ),
+  'humping.gif' => 
+  array (
+    0 => 37,
+    1 => 28,
+  ),
+  'humping2.gif' => 
+  array (
+    0 => 51,
+    1 => 33,
+  ),
+  'hunter.gif' => 
+  array (
+    0 => 48,
+    1 => 38,
+  ),
+  'hysteric.gif' => 
+  array (
+    0 => 41,
+    1 => 25,
+  ),
+  'icecream.gif' => 
+  array (
+    0 => 22,
+    1 => 25,
+  ),
+  'icecream2.gif' => 
+  array (
+    0 => 31,
+    1 => 37,
+  ),
+  'ike.gif' => 
+  array (
+    0 => 22,
+    1 => 22,
+  ),
+  'innocent.gif' => 
+  array (
+    0 => 18,
+    1 => 22,
+  ),
+  'jester.gif' => 
+  array (
+    0 => 43,
+    1 => 30,
+  ),
+  'jockingly.gif' => 
+  array (
+    0 => 32,
+    1 => 24,
+  ),
+  'judge.gif' => 
+  array (
+    0 => 30,
+    1 => 26,
+  ),
+  'juggle.gif' => 
+  array (
+    0 => 31,
+    1 => 36,
+  ),
+  'jump.gif' => 
+  array (
+    0 => 20,
+    1 => 35,
+  ),
+  'kickme.gif' => 
+  array (
+    0 => 38,
+    1 => 26,
+  ),
+  'king.gif' => 
+  array (
+    0 => 28,
+    1 => 28,
+  ),
+  'king2.gif' => 
+  array (
+    0 => 38,
+    1 => 28,
+  ),
+  'kiss.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'kiss2.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'kiss3.gif' => 
+  array (
+    0 => 47,
+    1 => 24,
+  ),
+  'kissed.gif' => 
+  array (
+    0 => 20,
+    1 => 26,
+  ),
+  'kissing.gif' => 
+  array (
+    0 => 50,
+    1 => 30,
+  ),
+  'kissing2.gif' => 
+  array (
+    0 => 44,
+    1 => 18,
+  ),
+  'lazy.gif' => 
+  array (
+    0 => 29,
+    1 => 29,
+  ),
+  'lazy1.gif' => 
+  array (
+    0 => 21,
+    1 => 22,
+  ),
+  'locked.gif' => 
+  array (
+    0 => 55,
+    1 => 41,
+  ),
+  'locomotive.gif' => 
+  array (
+    0 => 38,
+    1 => 26,
+  ),
+  'lol.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'lol2.gif' => 
+  array (
+    0 => 51,
+    1 => 49,
+  ),
+  'look.gif' => 
+  array (
+    0 => 20,
+    1 => 18,
+  ),
+  'love.gif' => 
+  array (
+    0 => 19,
+    1 => 19,
+  ),
+  'love1.gif' => 
+  array (
+    0 => 43,
+    1 => 25,
+  ),
+  'lovers.gif' => 
+  array (
+    0 => 45,
+    1 => 30,
+  ),
+  'mamba.gif' => 
+  array (
+    0 => 28,
+    1 => 25,
+  ),
+  'master.gif' => 
+  array (
+    0 => 48,
+    1 => 29,
+  ),
+  'matrix.gif' => 
+  array (
+    0 => 83,
+    1 => 18,
+  ),
+  'mbounce.gif' => 
+  array (
+    0 => 133,
+    1 => 60,
+  ),
+  'mda.gif' => 
+  array (
+    0 => 36,
+    1 => 26,
+  ),
+  'medieval.gif' => 
+  array (
+    0 => 39,
+    1 => 27,
+  ),
+  'meeting.gif' => 
+  array (
+    0 => 41,
+    1 => 25,
+  ),
+  'megashok.gif' => 
+  array (
+    0 => 34,
+    1 => 28,
+  ),
+  'mml.gif' => 
+  array (
+    0 => 26,
+    1 => 20,
+  ),
+  'moldova.gif' => 
+  array (
+    0 => 42,
+    1 => 52,
+  ),
+  'morepics.gif' => 
+  array (
+    0 => 89,
+    1 => 48,
+  ),
+  'mosking.gif' => 
+  array (
+    0 => 25,
+    1 => 25,
+  ),
+  'music.gif' => 
+  array (
+    0 => 26,
+    1 => 24,
+  ),
+  'neo.gif' => 
+  array (
+    0 => 33,
+    1 => 24,
+  ),
+  'nervotic.gif' => 
+  array (
+    0 => 39,
+    1 => 25,
+  ),
+  'no.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'nope.gif' => 
+  array (
+    0 => 36,
+    1 => 26,
+  ),
+  'nyam.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'ohmy.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'offtopic.gif' => 
+  array (
+    0 => 50,
+    1 => 41,
+  ),
+  'ok.gif' => 
+  array (
+    0 => 40,
+    1 => 26,
+  ),
+  'oops.gif' => 
+  array (
+    0 => 48,
+    1 => 49,
+  ),
+  'tongue.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'pardon.gif' => 
+  array (
+    0 => 36,
+    1 => 26,
+  ),
+  'pepsi.gif' => 
+  array (
+    0 => 45,
+    1 => 25,
+  ),
+  'picknose.gif' => 
+  array (
+    0 => 33,
+    1 => 25,
+  ),
+  'picknose2.gif' => 
+  array (
+    0 => 23,
+    1 => 25,
+  ),
+  'picknoseeat.gif' => 
+  array (
+    0 => 33,
+    1 => 27,
+  ),
+  'pilot.gif' => 
+  array (
+    0 => 50,
+    1 => 31,
+  ),
+  'pilot2.gif' => 
+  array (
+    0 => 38,
+    1 => 26,
+  ),
+  'pioneer.gif' => 
+  array (
+    0 => 29,
+    1 => 33,
+  ),
+  'pleasantry.gif' => 
+  array (
+    0 => 36,
+    1 => 26,
+  ),
+  'please.gif' => 
+  array (
+    0 => 56,
+    1 => 44,
+  ),
+  'pohhbd.gif' => 
+  array (
+    0 => 34,
+    1 => 36,
+  ),
+  'police.gif' => 
+  array (
+    0 => 42,
+    1 => 30,
+  ),
+  'prank.gif' => 
+  array (
+    0 => 20,
+    1 => 24,
+  ),
+  'proof.gif' => 
+  array (
+    0 => 28,
+    1 => 24,
+  ),
+  'protest.gif' => 
+  array (
+    0 => 50,
+    1 => 32,
+  ),
+  'punish.gif' => 
+  array (
+    0 => 48,
+    1 => 30,
+  ),
+  'punk.gif' => 
+  array (
+    0 => 33,
+    1 => 30,
+  ),
+  'quiet.gif' => 
+  array (
+    0 => 24,
+    1 => 23,
+  ),
+  'quiet2.gif' => 
+  array (
+    0 => 27,
+    1 => 26,
+  ),
+  'rant.gif' => 
+  array (
+    0 => 33,
+    1 => 37,
+  ),
+  'rap.gif' => 
+  array (
+    0 => 30,
+    1 => 28,
+  ),
+  'ras.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'rb.gif' => 
+  array (
+    0 => 46,
+    1 => 51,
+  ),
+  'rblocked.gif' => 
+  array (
+    0 => 55,
+    1 => 41,
+  ),
+  'read.gif' => 
+  array (
+    0 => 27,
+    1 => 27,
+  ),
+  'redcard.gif' => 
+  array (
+    0 => 44,
+    1 => 32,
+  ),
+  'reindeer.gif' => 
+  array (
+    0 => 28,
+    1 => 30,
+  ),
+  'resent.gif' => 
+  array (
+    0 => 24,
+    1 => 24,
+  ),
+  'rip.gif' => 
+  array (
+    0 => 43,
+    1 => 34,
+  ),
+  'rofl.gif' => 
+  array (
+    0 => 100,
+    1 => 20,
+  ),
+  'rolleyes.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'romantic.gif' => 
+  array (
+    0 => 59,
+    1 => 31,
+  ),
+  'roulette.gif' => 
+  array (
+    0 => 44,
+    1 => 33,
+  ),
+  'rtf.gif' => 
+  array (
+    0 => 47,
+    1 => 49,
+  ),
+  'rtfm.gif' => 
+  array (
+    0 => 65,
+    1 => 31,
+  ),
+  'russo.gif' => 
+  array (
+    0 => 40,
+    1 => 40,
+  ),
+  'santa.gif' => 
+  array (
+    0 => 20,
+    1 => 22,
+  ),
+  'sarcastic.gif' => 
+  array (
+    0 => 21,
+    1 => 23,
+  ),
+  'sarcastichand.gif' => 
+  array (
+    0 => 32,
+    1 => 23,
+  ),
+  'scare.gif' => 
+  array (
+    0 => 42,
+    1 => 34,
+  ),
+  'sclerosis.gif' => 
+  array (
+    0 => 29,
+    1 => 23,
+  ),
+  'secret.gif' => 
+  array (
+    0 => 22,
+    1 => 26,
+  ),
+  'senile.gif' => 
+  array (
+    0 => 38,
+    1 => 24,
+  ),
+  'shifty.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'shok.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'shoot.gif' => 
+  array (
+    0 => 120,
+    1 => 20,
+  ),
+  'shoot2.gif' => 
+  array (
+    0 => 54,
+    1 => 19,
+  ),
+  'shout.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'shrug.gif' => 
+  array (
+    0 => 30,
+    1 => 20,
+  ),
+  'shutup.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'shutup2.gif' => 
+  array (
+    0 => 29,
+    1 => 18,
+  ),
+  'sick.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'slap.gif' => 
+  array (
+    0 => 24,
+    1 => 30,
+  ),
+  'sleeping.gif' => 
+  array (
+    0 => 20,
+    1 => 27,
+  ),
+  'sly.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'smart.gif' => 
+  array (
+    0 => 18,
+    1 => 20,
+  ),
+  'smartass.gif' => 
+  array (
+    0 => 25,
+    1 => 22,
+  ),
+  'smile2.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'smirk.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'smoke.gif' => 
+  array (
+    0 => 33,
+    1 => 28,
+  ),
+  'snap.gif' => 
+  array (
+    0 => 27,
+    1 => 21,
+  ),
+  'soldier.gif' => 
+  array (
+    0 => 20,
+    1 => 24,
+  ),
+  'soldiers.gif' => 
+  array (
+    0 => 100,
+    1 => 105,
+  ),
+  'sorry.gif' => 
+  array (
+    0 => 63,
+    1 => 49,
+  ),
+  'spam.gif' => 
+  array (
+    0 => 50,
+    1 => 52,
+  ),
+  'spank.gif' => 
+  array (
+    0 => 49,
+    1 => 37,
+  ),
+  'spartak.gif' => 
+  array (
+    0 => 59,
+    1 => 36,
+  ),
+  'spider.gif' => 
+  array (
+    0 => 51,
+    1 => 25,
+  ),
+  'spruceup.gif' => 
+  array (
+    0 => 37,
+    1 => 25,
+  ),
+  'starwars.gif' => 
+  array (
+    0 => 66,
+    1 => 32,
+  ),
+  'stop.gif' => 
+  array (
+    0 => 36,
+    1 => 23,
+  ),
+  'strongbench.gif' => 
+  array (
+    0 => 40,
+    1 => 21,
+  ),
+  'stupid.gif' => 
+  array (
+    0 => 53,
+    1 => 51,
+  ),
+  'suicide.gif' => 
+  array (
+    0 => 42,
+    1 => 33,
+  ),
+  'super.gif' => 
+  array (
+    0 => 49,
+    1 => 23,
+  ),
+  'superstition.gif' => 
+  array (
+    0 => 30,
+    1 => 25,
+  ),
+  'swoon.gif' => 
+  array (
+    0 => 21,
+    1 => 21,
+  ),
+  'taunt.gif' => 
+  array (
+    0 => 35,
+    1 => 21,
+  ),
+  'taxeexample.gif' => 
+  array (
+    0 => 86,
+    1 => 36,
+  ),
+  'tease.gif' => 
+  array (
+    0 => 41,
+    1 => 40,
+  ),
+  'tender.gif' => 
+  array (
+    0 => 36,
+    1 => 23,
+  ),
+  'thankyou.gif' => 
+  array (
+    0 => 140,
+    1 => 45,
+  ),
+  'thumbsdown.gif' => 
+  array (
+    0 => 27,
+    1 => 18,
+  ),
+  'thumbsup.gif' => 
+  array (
+    0 => 36,
+    1 => 18,
+  ),
+  'thx.gif' => 
+  array (
+    0 => 36,
+    1 => 29,
+  ),
+  'topicclosed.gif' => 
+  array (
+    0 => 48,
+    1 => 40,
+  ),
+  'trampoline.gif' => 
+  array (
+    0 => 24,
+    1 => 40,
+  ),
+  'triniti.gif' => 
+  array (
+    0 => 39,
+    1 => 26,
+  ),
+  'u.gif' => 
+  array (
+    0 => 33,
+    1 => 23,
+  ),
+  'unknw.gif' => 
+  array (
+    0 => 32,
+    1 => 20,
+  ),
+  'unsure.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'upyours.gif' => 
+  array (
+    0 => 36,
+    1 => 20,
+  ),
+  'victory.gif' => 
+  array (
+    0 => 30,
+    1 => 23,
+  ),
+  'vinsent.gif' => 
+  array (
+    0 => 37,
+    1 => 33,
+  ),
+  'w00t.gif' => 
+  array (
+    0 => 18,
+    1 => 20,
+  ),
+  'wacko.gif' => 
+  array (
+    0 => 20,
+    1 => 24,
+  ),
+  'wag.gif' => 
+  array (
+    0 => 28,
+    1 => 24,
+  ),
+  'wall.gif' => 
+  array (
+    0 => 30,
+    1 => 23,
+  ),
+  'wank.gif' => 
+  array (
+    0 => 24,
+    1 => 21,
+  ),
+  'wanking.gif' => 
+  array (
+    0 => 26,
+    1 => 27,
+  ),
+  'wave.gif' => 
+  array (
+    0 => 26,
+    1 => 18,
+  ),
+  'wavecry.gif' => 
+  array (
+    0 => 26,
+    1 => 18,
+  ),
+  'weakbench.gif' => 
+  array (
+    0 => 35,
+    1 => 21,
+  ),
+  'weep.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'weirdo.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'whatever.gif' => 
+  array (
+    0 => 19,
+    1 => 19,
+  ),
+  'whip.gif' => 
+  array (
+    0 => 54,
+    1 => 20,
+  ),
+  'whistle.gif' => 
+  array (
+    0 => 28,
+    1 => 18,
+  ),
+  'whistle2.gif' => 
+  array (
+    0 => 26,
+    1 => 25,
+  ),
+  'whistle3.gif' => 
+  array (
+    0 => 26,
+    1 => 25,
+  ),
+  'wink3.gif' => 
+  array (
+    0 => 20,
+    1 => 24,
+  ),
+  'wink2.gif' => 
+  array (
+    0 => 20,
+    1 => 24,
+  ),
+  'wizard.gif' => 
+  array (
+    0 => 24,
+    1 => 30,
+  ),
+  'wolverine.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'wub.gif' => 
+  array (
+    0 => 22,
+    1 => 29,
+  ),
+  'yawn.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'yay.gif' => 
+  array (
+    0 => 40,
+    1 => 60,
+  ),
+  'yellowcard.gif' => 
+  array (
+    0 => 41,
+    1 => 31,
+  ),
+  'yes.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'yes3.gif' => 
+  array (
+    0 => 20,
+    1 => 24,
+  ),
+  'yess.gif' => 
+  array (
+    0 => 42,
+    1 => 30,
+  ),
+  'yikes.gif' => 
+  array (
+    0 => 19,
+    1 => 25,
+  ),
+  'yoji.gif' => 
+  array (
+    0 => 100,
+    1 => 100,
+  ),
+  'youu.gif' => 
+  array (
+    0 => 33,
+    1 => 27,
+  ),
+  'yucky.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'zzz.gif' => 
+  array (
+    0 => 38,
+    1 => 23,
+  ),
+  'cool1.gif' => 
+  array (
+    0 => 18,
+    1 => 18,
+  ),
+  'md.gif' => 
+  array (
+    0 => 79,
+    1 => 37,
+  ),
+  'subscaun.gif' => 
+  array (
+    0 => 50,
+    1 => 70,
+  ),
+  'subscaun2.gif' => 
+  array (
+    0 => 50,
+    1 => 70,
+  ),
+  'subtaburetca.gif' => 
+  array (
+    0 => 50,
+    1 => 55,
+  ),
+  'submasa.gif' => 
+  array (
+    0 => 65,
+    1 => 50,
+  ),
+  'jin.gif' => 
+  array (
+    0 => 51,
+    1 => 28,
+  ),
+  'snowball.gif' => 
+  array (
+    0 => 48,
+    1 => 29,
+  ),
+  'girlboast.gif' => 
+  array (
+    0 => 35,
+    1 => 25,
+  ),
+  'melting.gif' => 
+  array (
+    0 => 34,
+    1 => 25,
+  ),
+  'blond.gif' => 
+  array (
+    0 => 32,
+    1 => 22,
+  ),
+  'girlblush.gif' => 
+  array (
+    0 => 39,
+    1 => 28,
+  ),
+  'girlblush1.gif' => 
+  array (
+    0 => 36,
+    1 => 28,
+  ),
+  'girlblush2.gif' => 
+  array (
+    0 => 35,
+    1 => 25,
+  ),
+  'girlcool.gif' => 
+  array (
+    0 => 37,
+    1 => 24,
+  ),
+  'girlflag.gif' => 
+  array (
+    0 => 55,
+    1 => 43,
+  ),
+  'girlheart.gif' => 
+  array (
+    0 => 37,
+    1 => 28,
+  ),
+  'girlhospital.gif' => 
+  array (
+    0 => 42,
+    1 => 25,
+  ),
+  'girllove.gif' => 
+  array (
+    0 => 60,
+    1 => 24,
+  ),
+  'girlnervous.gif' => 
+  array (
+    0 => 34,
+    1 => 24,
+  ),
+  'girlsmell.gif' => 
+  array (
+    0 => 34,
+    1 => 22,
+  ),
+  'girlyes.gif' => 
+  array (
+    0 => 35,
+    1 => 27,
+  ),
+  'goody.gif' => 
+  array (
+    0 => 39,
+    1 => 46,
+  ),
+  'hiya.gif' => 
+  array (
+    0 => 33,
+    1 => 30,
+  ),
+  'kitty.gif' => 
+  array (
+    0 => 42,
+    1 => 32,
+  ),
+  'scream.gif' => 
+  array (
+    0 => 46,
+    1 => 29,
+  ),
+  'dancep.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'blinkp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'bouncep.gif' => 
+  array (
+    0 => 133,
+    1 => 60,
+  ),
+  'downp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'doubtp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'hmmp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'huhp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'judgep.gif' => 
+  array (
+    0 => 30,
+    1 => 26,
+  ),
+  'lockedp.gif' => 
+  array (
+    0 => 60,
+    1 => 50,
+  ),
+  'mmlp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'nopork.gif' => 
+  array (
+    0 => 60,
+    1 => 50,
+  ),
+  'rolleyesp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'rtfp.gif' => 
+  array (
+    0 => 51,
+    1 => 52,
+  ),
+  'shiftyp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'slapp.gif' => 
+  array (
+    0 => 24,
+    1 => 30,
+  ),
+  'smirkp.gif' => 
+  array (
+    0 => 30,
+    1 => 30,
+  ),
+  'bar.gif' => 
+  array (
+    0 => 56,
+    1 => 34,
+  ),
+  'bball.gif' => 
+  array (
+    0 => 50,
+    1 => 50,
+  ),
+  'blabla.gif' => 
+  array (
+    0 => 38,
+    1 => 25,
+  ),
+  'boian.gif' => 
+  array (
+    0 => 50,
+    1 => 45,
+  ),
+  'bow2.gif' => 
+  array (
+    0 => 35,
+    1 => 30,
+  ),
+  'boyflag.gif' => 
+  array (
+    0 => 48,
+    1 => 43,
+  ),
+  'byebye.gif' => 
+  array (
+    0 => 72,
+    1 => 70,
+  ),
+  'comehere.gif' => 
+  array (
+    0 => 33,
+    1 => 28,
+  ),
+  'daisy.gif' => 
+  array (
+    0 => 43,
+    1 => 44,
+  ),
+  'dead.gif' => 
+  array (
+    0 => 26,
+    1 => 28,
+  ),
+  'fever.gif' => 
+  array (
+    0 => 22,
+    1 => 22,
+  ),
+  'gamer.gif' => 
+  array (
+    0 => 36,
+    1 => 33,
+  ),
+  'getout.gif' => 
+  array (
+    0 => 38,
+    1 => 27,
+  ),
+  'good1.gif' => 
+  array (
+    0 => 34,
+    1 => 24,
+  ),
+  'goodpost.gif' => 
+  array (
+    0 => 56,
+    1 => 60,
+  ),
+  'google.gif' => 
+  array (
+    0 => 52,
+    1 => 54,
+  ),
+  'grabli.gif' => 
+  array (
+    0 => 40,
+    1 => 30,
+  ),
+  'halo1.gif' => 
+  array (
+    0 => 18,
+    1 => 24,
+  ),
+  'hb.gif' => 
+  array (
+    0 => 37,
+    1 => 51,
+  ),
+  'hello.gif' => 
+  array (
+    0 => 43,
+    1 => 27,
+  ),
+  'hi5.gif' => 
+  array (
+    0 => 53,
+    1 => 30,
+  ),
+  'hi5girls.gif' => 
+  array (
+    0 => 62,
+    1 => 30,
+  ),
+  'ideea.gif' => 
+  array (
+    0 => 32,
+    1 => 36,
+  ),
+  'kids.gif' => 
+  array (
+    0 => 64,
+    1 => 26,
+  ),
+  'kittyblack.gif' => 
+  array (
+    0 => 22,
+    1 => 23,
+  ),
+  'kitty1.gif' => 
+  array (
+    0 => 22,
+    1 => 23,
+  ),
+  'kittyinlove.gif' => 
+  array (
+    0 => 24,
+    1 => 31,
+  ),
+  'kookoo.gif' => 
+  array (
+    0 => 18,
+    1 => 27,
+  ),
+  'lam0.gif' => 
+  array (
+    0 => 40,
+    1 => 25,
+  ),
+  'look2.gif' => 
+  array (
+    0 => 34,
+    1 => 26,
+  ),
+  'mad.gif' => 
+  array (
+    0 => 19,
+    1 => 25,
+  ),
+  'mail.gif' => 
+  array (
+    0 => 36,
+    1 => 27,
+  ),
+  'medal.gif' => 
+  array (
+    0 => 22,
+    1 => 26,
+  ),
+  'morning.gif' => 
+  array (
+    0 => 35,
+    1 => 31,
+  ),
+  'moto.gif' => 
+  array (
+    0 => 39,
+    1 => 22,
+  ),
+  'nasharussia.gif' => 
+  array (
+    0 => 52,
+    1 => 28,
+  ),
+  'nogirls.gif' => 
+  array (
+    0 => 68,
+    1 => 55,
+  ),
+  'nutzo.gif' => 
+  array (
+    0 => 28,
+    1 => 23,
+  ),
+  'nyam2.gif' => 
+  array (
+    0 => 25,
+    1 => 29,
+  ),
+  'pb.gif' => 
+  array (
+    0 => 22,
+    1 => 30,
+  ),
+  'playboy.gif' => 
+  array (
+    0 => 34,
+    1 => 23,
+  ),
+  'plz.gif' => 
+  array (
+    0 => 18,
+    1 => 27,
+  ),
+  'popcorn.gif' => 
+  array (
+    0 => 45,
+    1 => 46,
+  ),
+  'praising.gif' => 
+  array (
+    0 => 41,
+    1 => 25,
+  ),
+  'rain.gif' => 
+  array (
+    0 => 50,
+    1 => 31,
+  ),
+  'rlaxed.gif' => 
+  array (
+    0 => 50,
+    1 => 32,
+  ),
+  'rock.gif' => 
+  array (
+    0 => 20,
+    1 => 20,
+  ),
+  'shout1.gif' => 
+  array (
+    0 => 21,
+    1 => 25,
+  ),
+  'teeth.gif' => 
+  array (
+    0 => 20,
+    1 => 28,
+  ),
+  'thinking.gif' => 
+  array (
+    0 => 20,
+    1 => 29,
+  ),
+  'tmdlover.gif' => 
+  array (
+    0 => 80,
+    1 => 80,
+  ),
+  'translit.gif' => 
+  array (
+    0 => 48,
+    1 => 30,
+  ),
+  'waiting.gif' => 
+  array (
+    0 => 28,
+    1 => 21,
+  ),
+  'welcome.gif' => 
+  array (
+    0 => 100,
+    1 => 65,
+  ),
+  'whome.gif' => 
+  array (
+    0 => 42,
+    1 => 30,
+  ),
+  'whome2.gif' => 
+  array (
+    0 => 43,
+    1 => 29,
+  ),
+  'yessir.gif' => 
+  array (
+    0 => 32,
+    1 => 27,
+  ),
+  'zagruz.gif' => 
+  array (
+    0 => 70,
+    1 => 24,
+  ),
+  'consolehug.gif' => 
+  array (
+    0 => 48,
+    1 => 26,
+  ),
+  'harbuz.gif' => 
+  array (
+    0 => 50,
+    1 => 35,
+  ),
+  'cards.gif' => 
+  array (
+    0 => 76,
+    1 => 30,
+  ),
+  'chicken.gif' => 
+  array (
+    0 => 41,
+    1 => 24,
+  ),
+  'girleatcake.gif' => 
+  array (
+    0 => 39,
+    1 => 33,
+  ),
+  'clown1.gif' => 
+  array (
+    0 => 50,
+    1 => 25,
+  ),
+  'teddy.gif' => 
+  array (
+    0 => 42,
+    1 => 27,
+  ),
+  'happybday.gif' => 
+  array (
+    0 => 275,
+    1 => 42,
+  ),
+  'scare2.gif' => 
+  array (
+    0 => 40,
+    1 => 28,
+  ),
+);
+?>

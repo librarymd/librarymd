@@ -1,0 +1,95 @@
+<table id="table_upload" border="1" cellpadding="5" cellspacing="0" width="675">
+<col style="width: 75px;" align="left"><col>
+<tbody id="table_upload_tbody">
+
+<tr id="tr_music_artist">
+  <td><span class="lang-ro-hide-all">Artist</span><span class="lang-ru-hide-all">Исполнитель</span>(*)</td>
+  <td>
+    <input name="artist" size="66" maxlength="70" type="text" id="music_artist">
+   </td>
+</tr>
+
+<tr id="tr_music_title">
+  <td><span class="lang-ro-hide-all">Denumire</span><span class="lang-ru-hide-all">Название</span>(*)</td>
+  <td>
+    <input name="title" size="66" maxlength="70" type="text" id="music_title">
+   </td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">An</span><span class="lang-ru-hide-all">Год</span>(*)</td>
+  <td><input name="year" size="15" maxlength="30" type="text"> <font id="year_display" color="#CC3300"></font>
+  <br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: 1997, 1997-2005 or 1997,1998,2001,2002)</td>
+</tr>
+
+<tr id="tr_lang">
+  <td><span class="lang-ro-hide-all">Limba</span><span class="lang-ru-hide-all">Язык</span>(*)</td>
+  <td>
+<select name="language">
+    <option value="0">-</option>
+    <option value="1">Русский</option>
+    <option value="2">English</option>
+    <option value="3">Rom&acirc;n&#259;</option>
+    <option value="4">Deutsch</option>
+    <option value="5">Fran&ccedil;ais</option>
+    <option value="6">Espa&ntilde;ol</option>
+    <option value="7">Japanese</option>
+    <option value="8">Italiano</option>
+    <option value="9">Portuguese</option>
+    <option value="11">Fără cuvinte</option>
+    <option value="10">Other</option>
+  </select>
+
+  </td>
+</tr>
+
+
+<tr>
+  <td><span class="lang-ro-hide-all">Descrierea</span> <span class="lang-ru-hide-all">Описание</span>(*)</td>
+  <td><textarea name="descr" rows="15" style="width: 530px;" id="descr"></textarea><br>
+  <span class="lang-ro-hide-all">Includeți detaliile despre toate premiile și nominațiile (la Oscar de ex.) dacă au fost.<br></span>
+  <span class="lang-ru-hide-all">Указывайте подробности о всех наградах и номинациях (на Оскар на пр.) если они были.<br></span>
+  <span class="lang-ro-hide-all"><b>Includerea screenshot-urilor este obligatorie. <a href="/forum.php?action=viewtopic&topicid=379081" target="_blank">VEDEȚI AICI</a>.</b></span>
+  <span class="lang-ru-hide-all"><b>Вставка Скриншотов обязательна. <a href="/forum.php?action=viewtopic&topicid=379081" target="_blank">СМОТРИТЕ ЗДЕСЬ</a>.</b></span><br>
+  <span class="lang-ro-hide-all">exemplu: descrierea filmului</span>
+  <span class="lang-ru-hide-all">пример: описание фильма</span><br>
+  [spoiler=Screenshot-uri]<br>
+  [img]http://funkyimg.com/u2/767/424/image3783953.jpg[/img]<br>
+  [img]http://funkyimg.com/u2/641/955/image3791437.jpg[/img]<br>
+  [img]http://funkyimg.com/u2/725/164/image3785859.jpg[/img]<br>
+  [img]http://funkyimg.com/u2/454/796/image3797859.jpg[/img]<br>
+  [img]http://funkyimg.com/u2/824/961/image3808265.jpg[/img]<br>
+  [/spoiler]<br>
+  <span class="lang-ro-hide-all">Imaginile trebuie să fie de mărime originală ! (excepție fac cazurile cind imaginile depășesc lățimea de 800px, atunci puteți pune thumbnail - imagine mică)</span>
+  <span class="lang-ru-hide-all">Изображения должны быть оригинального размера! (Исключение составляют лишь изображения превышающие размер в 800px, тогда вы можете вставить эскизы - маленькие изображения)</span><br>
+
+  <b><span class="lang-ro-hide-all">Dacă utilizați careva program care a pus adresa spre thumbnail-uri, </span><span class="lang-ru-hide-all">Если вы используете программу, которая загружает картинки с эскизами, </span><a class="lnk" onclick="dethumbnail_descr()"><span class="lang-ro-hide-all">apăsați aici</span><span class="lang-ru-hide-all">нажмите сюда</span></a> <span class="lang-ro-hide-all">pentru scoaterea automată din thumbnail-uri.</span><span class="lang-ru-hide-all">, чтобы автоматически убрать их.</span></b><br>
+  <b><a id="dethumbnail_undo" class="lnk hideit" onclick="dethumbnail_descr_undo()"><span class="lang-ro-hide-all">Revenire la varianta anterioara(memorie de un singur pas)</span><span class="lang-ru-hide-all">Возврат к предыдущему варианту (назад на один шаг)</span></a></b>
+  </td>
+</tr>
+
+
+<tr>
+  <td><span class="lang-ro-hide-all">Video</span> <span class="lang-ru-hide-all">Видео</span> (*)</td>
+  <td><input name="video" style="width: 330px;" type="text"> (<a href="/forum.php?action=viewtopic&topicid=378918" tabindex="11" target="_blank">cum de aflat</a>)<br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: XviD, 640x256, 25 fps, ~1080 Kbit/s)</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Sunet</span> <span class="lang-ru-hide-all">Звук</span> (*)</td>
+  <td><input name="sound" style="width: 330px;" type="text"> (<a href="/forum.php?action=viewtopic&topicid=378918" tabindex="12" target="_blank">cum de aflat</a>)<br>
+  (<span class="lang-ro-hide-all">exemplu</span><span class="lang-ru-hide-all">пример</span>: АС3, 48000 Hz, 6 каналов, 384 kbit/s)</td>
+</tr>
+
+<tr>
+  <td><span class="lang-ro-hide-all">Altele</span> <span class="lang-ru-hide-all">Другое </span> (*)</td>
+  <td>
+      <span class="lang-ro-hide-all">Torrentul conține sample ?</span> <span class="lang-ru-hide-all">Сэмпл есть ?</span> <input type="checkbox" name="sample" value="1"> (<a href="/forum.php?action=viewtopic&topicid=175744" target="_blank"><span class="lang-ro-hide-all">Cum de creat un sample</span><span class="lang-ru-hide-all">Как сделать Сэмпл</span></a>)<br>
+      <span class="lang-ro-hide-all">Torrentul conține subtitre ?</span> <span class="lang-ru-hide-all">Субтитры есть ?</span> <input type="checkbox" name="subtitles" value="1">(<a href="/forum.php?action=viewtopic&topicid=175744" target="_blank"><span class="lang-ro-hide-all">În unele cazuri, includerea subtitrelor este obligatorie</span><span class="lang-ru-hide-all">В некоторых случаях, включение обязательно</span></a>)
+  </td>
+</tr>
+
+
+</tbody>
+</table>

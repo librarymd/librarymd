@@ -1,0 +1,49 @@
+source searchindex
+{
+  type        = mysql
+  sql_host      = localhost
+  sql_user      = root
+  sql_pass      =
+  sql_db        = t
+  sql_query_pre = SET NAMES utf8
+  sql_query     = SELECT id, name FROM searchindex
+  sql_query_post    =
+}
+
+index torrents_search
+{
+  source      = searchindex
+  path      = /usr/local/var/data/torsearch
+  docinfo     = extern
+  morphology      = none
+  stopwords     =
+  min_word_len    = 1
+  charset_type    = utf-8
+  charset_table = \
+U+0102->a, U+0103->a, U+00C2->a, U+00E2->a, U+00CE->i, U+00EE->i, U+0218->s, U+0219->s, U+015E->s, U+015F->s, U+0162->t, U+0163->t, U+021A->t, U+021B->t, \
+U+00C0->a, U+00E0->a, U+00C7->c, U+00E7->c, U+00C8->e, U+00E8->e, U+00C9->e, U+00E9->e, U+00CA->e, U+00EA->e, U+00CB->e, U+00EB->e, U+00CE->i, U+00EE->i, U+00CF->i, U+00EF->i, U+00D4->o, U+00F4->o, U+0152->o, U+0153->o, U+00D9->u, U+00F9->u, U+00DB->u, U+00FB->u, U+00DC->u, U+00FC->u, U+0178->y, U+00FF->y, U+00C6->e, U+00E6->e, \
+0..9, A..Z->a..z, _, a..z, \
+U+410..U+42F->U+430..U+44F, U+430..U+44F
+  min_prefix_len    = 1
+  enable_star   = 1
+  ignore_chars = -
+}
+indexer
+{
+  mem_limit     = 128M
+}
+
+searchd
+{
+  listen      = 3312
+  log         = /usr/local/var/log/searchd.log
+  query_log   = /usr/local/var/log/query.log
+  read_timeout    = 5
+  max_children    = 30
+  pid_file    = /usr/local/var/log/searchd.pid
+  seamless_rotate   = 1
+  preopen_indexes   = 1
+  unlink_old    = 1
+  workers     = threads # for RT to work
+  binlog_path   = /usr/local/var/data
+}
