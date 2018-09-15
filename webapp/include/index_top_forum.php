@@ -36,7 +36,6 @@
 ?>
 
 <?php
-    $bad_topics = "12231"; // TOP ACTHUNG!
     // Check the topics cache
     $topics = mem2_get('topics_active_last10.'.$userlang.$cache_key_suffix);
     if ($topics === FALSE) {

@@ -1,7 +1,8 @@
 <?php
 require "include/bittorrent.php";
 
-$dt = time() - 180;
+$nowActiveLastMinutes = 15;
+$dt = time() - ($nowActiveLastMinutes * 60);
 $dt = sqlesc(get_date_time($dt));
 
 $onTrackerUsers = mem2_get('ontracker_users_40');
@@ -13,21 +14,12 @@ if (!$onTrackerUsers) {
             RIGHT JOIN users ON users_down_up.id = users.id
             WHERE users_down_up.last_access >= $dt
             ORDER BY users.username");
-    $curSec = date('s');
 
-    $delay_fin = 0;
-    list($delay_var1,$delay_var2,$delay_var3) = array( 23 - $curSec, 43 - $curSec, 64 - $curSec );
-    foreach( array($delay_var1,$delay_var2,$delay_var3) AS $delay_cur ) {
-        if ($delay_cur>0) {
-            $delay_fin = $delay_cur;
-            break;
-        }
-    }
     $onTrackerUsers40 = array_slice($onTrackerUsers,0,40);
     $activeusers_total = count($onTrackerUsers);
-    mem2_set('ontracker_users',$onTrackerUsers, $delay_fin );
-    mem2_set('ontracker_users_40',$onTrackerUsers40, $delay_fin );
-    mem2_set('ontracker_users_count',$activeusers_total, $delay_fin );
+    mem2_set('ontracker_users',$onTrackerUsers, 60);
+    mem2_set('ontracker_users_40',$onTrackerUsers40, 60);
+    mem2_set('ontracker_users_count',$activeusers_total, 60);
     $onTrackerUsers = $onTrackerUsers40;
 }
 
@@ -256,6 +248,8 @@ if ($anunt || get_user_class() >= UC_MODERATOR) {
     <a href="?show_all_online_users=1" style="color:#0A50A1;"><?=__("arată toată lista de"),' ',$activeusers_total,' ',__("utilizatori")?>...</a>
 <?php endif; ?>
 </td></tr></table>
+
+<?php include('include/index_stats.php'); ?>
 
 <?php include('include/index_top_forum.php'); ?>
 
