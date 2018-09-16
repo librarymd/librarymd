@@ -49,7 +49,7 @@ If you want to use the latest webapp version after a previous version was instal
 NOTE: The evolution of schema is currently not supported.
 
 ## Replication between trackers
-Information about the torrents can be replicated across the trackers using scripts inside periodic/import/ folder. 
+Information about the torrents can be replicated across the trackers using scripts inside periodic/import/ folder.
 
 - torrents_export.php will export torrents information in JSON format.
 - torrents_import.php and torrents_import_poll_last.php importing the latest torrents.
@@ -59,3 +59,20 @@ Information about the torrents can be replicated across the trackers using scrip
 Simply register an account and ssh to machine and execute the following query:
 
 - mysql "UPDATE webapp.users SET class=10 WHERE id=$your_user_id"
+
+## If there is any problems accesing through tor
+
+This setup is using onionbalance with 3 tor workers, the default tor
+process is used by onionbalance itself.
+
+### Check the status
+systemctl status onionbalance
+systemctl status tor_worker_srv1
+systemctl status tor_worker_srv2
+systemctl status tor_worker_srv3
+
+### Restarting may help
+systemctl restart tor_worker_srv1
+systemctl restart tor_worker_srv2
+systemctl restart tor_worker_srv3
+systemctl restart onionbalance
