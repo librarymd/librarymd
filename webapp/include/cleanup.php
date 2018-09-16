@@ -146,65 +146,6 @@ function update_forum_stats() {
 
 }
 
-// After new peers have arived, this function should be called
-function update_torrents_peers() {
-	q('SET SQL_LOG_BIN=0');
-
-	if (date('H') > 05 && date('H') < 07) {
-		/*q('
-			UPDATE LOW_PRIORITY torrents
-			SET torrents.seeders = 0, torrents.leechers = 0
-       ');*/
-	}
-
-	q('DROP TABLE IF EXISTS temp_torrents_sl');
-	q("CREATE TEMPORARY TABLE temp_torrents_sl (
-		`torrent` int(11) unsigned NOT NULL AUTO_INCREMENT,
-		`seeders` smallint(6) NOT NULL DEFAULT '0',
-		`leechers` smallint(6) NOT NULL DEFAULT '0',
-		PRIMARY KEY (`torrent`)
-	) ENGINE=MYISAM");
-	q('ALTER TABLE temp_torrents_sl DISABLE KEYS');
-
-	q('INSERT INTO temp_torrents_sl
-	SELECT torrent, SUM(if(seeder="yes",1,0)) AS seeders, SUM(if(seeder="no",1,0)) AS leechers
-	FROM peers
-	GROUP BY torrent');
-	q('ALTER TABLE temp_torrents_sl ENABLE KEYS');
-
-	$upper_limit = fetchOne('SELECT MAX(torrent) FROM temp_torrents_sl');
-
-	for ($i=1; $i<=$upper_limit; $i=$i+25000) {
-		$pass_jos = $i;
-		$pass_sus = $i+25000;
-		q("UPDATE torrents, temp_torrents_sl
-			SET torrents.seeders = temp_torrents_sl.seeders,
-			    torrents.leechers = temp_torrents_sl.leechers
-		  WHERE torrents.id = temp_torrents_sl.torrent AND temp_torrents_sl.torrent >= $pass_jos AND temp_torrents_sl.torrent < $pass_sus");
-		usleep(100000);// 0.1
-	}
-	q('SET SQL_LOG_BIN=1');
-}
-
-
-// After new peers have arived, this function should be called
-function update_torrents_peers_old() {
-	if (date('H') > 05 && date('H') < 07) {
-		q('
-			UPDATE LOW_PRIORITY torrents
-			SET torrents.seeders = 0, torrents.leechers = 0
-       ');
-	}
-	//
-	q('
-		UPDATE LOW_PRIORITY torrents
-			RIGHT JOIN
-		    	(SELECT peers.torrent, SUM(if(seeder="yes",1,0)) AS seeders, SUM(if(seeder="no",1,0)) AS leechers FROM peers peers GROUP BY peers.torrent) AS peersLeechers ON torrents.id = peersLeechers.torrent
-		SET torrents.seeders = peersLeechers.seeders, torrents.leechers = peersLeechers.leechers
-		WHERE torrents.id = peersLeechers.torrent AND (torrents.leechers != peersLeechers.leechers OR torrents.seeders != peersLeechers.seeders)
-	');
-}
-
 function docleanup120() {
 	global $torrent_dir, $signup_timeout, $max_dead_torrent_time, $autoclean_interval;
 

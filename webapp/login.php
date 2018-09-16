@@ -40,7 +40,7 @@ $ask_captcha = isset($_GET['c']);
 <tr><td colspan="2" align="left"><input type="checkbox" name="autologin" id="autologing" value="1" checked/> <label for="autologing"><?php echo $lang['login_autologin'];?></label> </td></tr>
 <tr><td colspan="2" align="center"><input type="submit" value="<?=__('Intră!')?>" class=btn></td></tr>
 </table>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
 <?php
 
 if (isset($returnto))

@@ -6,7 +6,7 @@ $numberOfTorrents = fetchOne_memcache('SELECT COUNT(*) FROM torrents', $statsCac
 $numberOfDhtPeers = fetchOne_memcache('SELECT SUM(dht_peers) FROM torrents', $statsCacheTtlSeconds);
 $numberOfComments = fetchOne_memcache('SELECT COUNT(*) FROM comments', $statsCacheTtlSeconds);
 $numberOfTopics   = fetchOne_memcache('SELECT COUNT(*) FROM topics'  , $statsCacheTtlSeconds);
-$numberOfMessages = fetchOne_memcache('SELECT COUNT(*) FROM messages', $statsCacheTtlSeconds);
+$numberOfPosts    = fetchOne_memcache('SELECT COUNT(*) FROM posts', $statsCacheTtlSeconds);
 ?>
 
 <h2>Statistica (date reînnoite în fiecare oră)</h2>
@@ -39,7 +39,7 @@ $numberOfMessages = fetchOne_memcache('SELECT COUNT(*) FROM messages', $statsCac
         </tr>
         <tr>
           <td class="rowhead">Mesaje pe forum</td>
-          <td align="right"><?=$numberOfMessages?></td>
+          <td align="right"><?=$numberOfPosts?></td>
         </tr>
 
     </table></td>
