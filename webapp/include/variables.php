@@ -21,8 +21,8 @@ ini_set('smtp_port','25');
 $mongo_host = "127.0.0.1:27017";
 $mongo_db = "torrent";
 
-$devenv = true;
-$devenenv_sphinx_enabled = true;
+$devenv = false;
+$devenenv_sphinx_enabled = false;
 if ($devenv)
   ini_set('display_errors', 'On');
 else
