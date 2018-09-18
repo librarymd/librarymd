@@ -3,7 +3,7 @@
 class Security {
     public static function hash($message_str) {
         global $application_secret;
-        if (strlen($application_secret) == 0) die("SKey is missing");
+        if (strlen($application_secret) == 0) die('Set $application_secret in include/secrets.php');
 
         return hash_hmac('sha256', $message_str, $application_secret);
     }

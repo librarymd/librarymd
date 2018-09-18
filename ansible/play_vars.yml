@@ -6,4 +6,5 @@ mysql_sphinx_password: "PLEASE_EDIT_THE_PASSWORD_4572363549"
 
 mysql_webapp_db: "webapp"
 
-webapp_app_key: "THIS_SHOULD_BE_EDITED"
+# Generate a 32 length random string
+webapp_app_key: ""

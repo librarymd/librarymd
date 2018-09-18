@@ -246,7 +246,8 @@ function loggedinorreturn($idzero=false) {
 
 function loggedinorreturnNotMd() {
     global $CURUSER;
-    if (!$CURUSER && !isMDUser() && !isTORUser())  {
+    $allow_anonymous = get_config_variable('general', 'allow_anonymous_browse');
+    if (!$CURUSER && !$allow_anonymous)  {
         header("Location: login.php?returnto=" . urlencode($_SERVER["REQUEST_URI"]));
         exit();
     }

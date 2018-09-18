@@ -21,7 +21,7 @@ ini_set('smtp_port','25');
 $mongo_host = "127.0.0.1:27017";
 $mongo_db = "torrent";
 
-$devenv = false;
+$devenv = true;
 $devenenv_sphinx_enabled = true;
 if ($devenv)
   ini_set('display_errors', 'On');
@@ -126,3 +126,4 @@ $siteVariables['forum']['moderators_activated'] = false;
 $siteVariables['torrents']['releasers_moderators'] = false;
 
 $siteVariables['general']['allow_fresh_new_users_write_messages'] = true;
+$siteVariables['general']['allow_anonymous_browse'] = true;
