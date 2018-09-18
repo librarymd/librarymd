@@ -14,7 +14,7 @@
 <script type="text/javascript" src="/js/all.ourJS.js"></script>
 <script type="text/javascript" src="/js/tmd_bbcode.js"></script>
 
-<!--<link rel="icon"  href="/pic/favicon.png" type="image/png" />-->
+<link rel="icon"  href="/pic/favicon.png" type="image/png" />
 </head>
 <body>
 <script>

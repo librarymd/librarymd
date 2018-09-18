@@ -72,8 +72,8 @@ $emaildomainbase = 'domain.com';
 $SITEEMAIL = 'support@' + $emaildomainbase;
 $SITEEMAILNOREPLY = 'noreply@' + $emaildomainbase;
 $SITEEMAILNOREPLYRETURN = 'noreplyreturn@' + $emaildomainbase;
-$SITENAME_SHORT = 'OpenLibrary';
-$SITENAME = "$SITENAME_SHORT - Information for everyone";
+$SITENAME_SHORT = 'LibraryMd';
+$SITENAME = "$SITENAME_SHORT - Torrente din Moldova in reteaua TOR";
 
 //Temporary fulgi variables
 $SNOW_no_UP = 15;
