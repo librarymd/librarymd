@@ -28,7 +28,9 @@ stdhead($GLOBALS['lang']['singup_header']);
 </tr>
 <tr><td align="right" class="heading"><?=$GLOBALS['lang']['singup_pass_again']?>:</td><td align=left><input type="password" size="40" name="passagain" /></td></tr>
 <tr valign=top><td align="right" class="heading"><?=$GLOBALS['lang']['singup_email']?>:</td><td align=left><input type="text" size="40" name="email" />
-<table width=250 border=0 cellspacing=0 cellpadding=0><tr><td class=embedded><font class=small><?=$GLOBALS['lang']['singup_email_correct']?></td></tr>
+<table width=250 border=0 cellspacing=0 cellpadding=0><tr><td class=embedded>
+  <b>La moment confirmarea pe email nu este necesara. Recuperarea pe email nu functioneaza.</b>
+  </td></tr>
 </font></td></tr></table>
 </td></tr>
 </td></tr>
