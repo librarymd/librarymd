@@ -46,19 +46,25 @@ AND NOW() - INTERVAL 10 HOUR > job_started
 AND retries < 100");
 
 $images = fetchAll(
-  'SELECT torrent_id, url, retries
+  "SELECT torrent_id, url, retries
    FROM torrents_importer_images_scheduled
-   WHERE scheduled = scheduled
+   WHERE scheduled = 'scheduled'
    ORDER BY torrent_id DESC
-   LIMIT 100');
+   LIMIT 100");
 
 foreach ($images as $image) {
   $torrent_id = $image['torrent_id'];
 
   q("UPDATE torrents_importer_images_scheduled
   SET scheduled = 'in_progress', job_started = NOW()
-  WHERE torrent_id = :torrent_id",
+  WHERE torrent_id = :torrent_id AND scheduled = 'scheduled'",
   array('torrent_id' => $torrent_id));
+
+  $isImageAlreadyInProgress = mysql_affected_rows() != 1;
+
+  if ($isImageAlreadyInProgress) {
+    continue;
+  }
 
   if ($debug)
     var_dump($image);
