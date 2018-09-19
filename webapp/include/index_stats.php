@@ -1,6 +1,6 @@
 <?php
 
-$statsCacheTtlSeconds = 60 * 60;
+$statsCacheTtlSeconds = 60 * 5;
 $numberOfUsers    = fetchOne_memcache('SELECT COUNT(*) FROM users'   , $statsCacheTtlSeconds);
 $numberOfTorrents = fetchOne_memcache('SELECT COUNT(*) FROM torrents', $statsCacheTtlSeconds);
 $numberOfDhtPeers = fetchOne_memcache('SELECT SUM(dht_peers) FROM torrents', $statsCacheTtlSeconds);
