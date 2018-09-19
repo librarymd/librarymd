@@ -1,6 +1,6 @@
 <?php
 chdir(dirname(__FILE__));
-if (php_sapi_name() != "cli") die();
+// if (php_sapi_name() != "cli") die();
 
 require_once("../../include/bittorrent.php");
 
@@ -11,11 +11,6 @@ function updateLastId($domain, $lastId) {
   q('UPDATE torrents_importer_status SET last_id = :lastId WHERE domain = :host',
     array('lastId' => $lastId, 'host' => $domain)
   );
-  if (q_mysql_affected_rows() == 0) {
-    q('insert into torrents_importer_status (domain, last_id) VALUES (:domain, :last_id)',
-        array('lastId' => $lastId, 'host' => $domain)
-    );
-  }
 }
 
 function getLastId($domain) {
@@ -37,9 +32,9 @@ function nextIteration($processed_counter) {
   $globalImportTorrentsFromUrl  = 'https://torrentsmd.com'; // Update with the domain that has /tools/torrents_export.php script
   $fullImageBase                = $globalImportTorrentsFromUrl . '/torrents_img/';
   $parsedUrl                    = parse_url($globalImportTorrentsFromUrl);
-  $globalImportTorrentsFromHost = $parsedUrl['host'];
+  $importFromDomain = $parsedUrl['host'];
 
-  $lastId                       = getLastId($globalImportTorrentsFromHost);
+  $lastId                       = getLastId($importFromDomain);
 
   if ($lastId > 0) {
     $url = $globalImportTorrentsFromUrl . '/tools/torrents_export.php?start_id=' . $lastId;
@@ -64,7 +59,7 @@ function nextIteration($processed_counter) {
   if ($lastId == null) {
     $latestId = $torrents[0]['id'];
     q('insert into torrents_importer_status (domain, last_id) VALUES (:domain, :last_id)',
-      array('domain'  => $domain,'last_id' => 0)
+      array('domain'  => $importFromDomain,'last_id' => $latestId)
     );
   }
 
@@ -74,7 +69,7 @@ function nextIteration($processed_counter) {
     $result   = import_torrent($torrent, $fullImageBase);
     $inserted = $result['inserted'];
 
-    updateLastId($globalImportTorrentsFromHost, $remoteTorrentId);
+    updateLastId($importFromDomain, $remoteTorrentId);
 
     if ($inserted == false) {
       $reason = $result['reason'];
