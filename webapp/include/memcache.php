@@ -38,9 +38,16 @@ function mem_set_user($name,$data,$ttl=0,$flag=0) {
   return mem_set($name."_".$GLOBALS['CURUSER']['id'],$data,$ttl,$flag);
 }
 
+function mem_renew_request_admin() {
+    return isset($_GET['renew_memcache']) && isset($GLOBALS['CURUSER']['id']) && isSysop();
+}
+
 // Returns FALSE if the value was not found
 function mem_get($name) {
     global $memcache, $memcache_debug;
+    if (mem_renew_request_admin()) {
+        return false;
+    }
     if ($memcache_debug) {
         echo "mem_get: $name value: " . $memcache->get($name) . "<br/>";
     }

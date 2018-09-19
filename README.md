@@ -55,6 +55,10 @@ Information about the torrents can be replicated across the trackers using scrip
 - torrents_import.php and torrents_import_poll_last.php importing the latest torrents.
 - torrents_import_images.php import the images.
 
+By default, torrents_import_poll_last.php and torrents_import_images.php run every minute.
+
+As one off operation, you'll have to run torrents_export.php that will synchronize all the torrents.
+
 ## Create an admin account on the website
 Simply register an account and ssh to machine and execute the following query:
 
