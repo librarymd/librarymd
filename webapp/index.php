@@ -1,8 +1,8 @@
 <?php
 require "include/bittorrent.php";
 
-$nowActiveLastMinutes = 15;
-$dt = time() - ($nowActiveLastMinutes * 60);
+$nowActiveLastHours = 24;
+$dt = time() - (60 * 60 * $nowActiveLastHours);
 $dt = sqlesc(get_date_time($dt));
 
 $onTrackerUsers = mem2_get('ontracker_users_40');
@@ -240,7 +240,7 @@ if ($anunt || get_user_class() >= UC_MODERATOR) {
 }
 
 ?>
-<h2 align="left"><span class="style1"><span class="style7"> <?php echo $GLOBALS['lang']['index_active_users'], ' (',$activeusers_total,') '; ?> </span></span><span style="color:#F5F4EA;"><?=$mostEverStr?></span></h2>
+<h2 align="left"><span class="style1"><span class="style7"> Utilizatorii activi din ultimele 24 ore <?php echo ' (',$activeusers_total,') '; ?> </span></span><span style="color:#F5F4EA;"><?=$mostEverStr?></span></h2>
 <table width=100% border=1 cellspacing=0 cellpadding=10><tr><td id="users_online">
 <?php echo $activeusers ?>, ...
 <?php if (!isset($_GET['show_all_online_users'])): ?>
