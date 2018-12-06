@@ -67,51 +67,53 @@
   // Check the topics cache
   $forum_top_10_key = 'topics_top10_3d.'.$userlang.$cache_key_suffix;
   $topics = mem2_get($forum_top_10_key);
-  if ($topics === FALSE && !mem_is_locked($forum_top_10_key) && false ) {
+  if ($topics === FALSE && !mem_is_locked($forum_top_10_key)) {
     mem_lock($forum_top_10_key);
 
     // Get id of a post posted exact 3 days ago
-    $topic_3d = fetchOne('SELECT id,forumid
+    $topic_3d = fetchRow('SELECT id,forumid
        FROM topics
        WHERE created > UNIX_TIMESTAMP(NOW() - INTERVAL 3 day) AND posts > 0
        ORDER BY id
-       LIMIT 1' );
+       LIMIT 1');
 
-
-    if ($topic_3d['id'])
-      // Post created 3 days ago
+    if ($topic_3d && isset($topic_3d['id'])) {
       $post_3d = fetchOne("SELECT id FROM posts WHERE topicid=$topic_3d[id] AND forumid=$topic_3d[forumid] ORDER BY id LIMIT 1");
+    }
 
+    // Post created 3 days ago
     if (!is_numeric($post_3d)) {
       $post_3d = fetchOne('SELECT id FROM posts WHERE added > NOW() - INTERVAL 3 day ORDER BY id ASC limit 1');
     }
 
-    q("CREATE temporary TABLE most_activ_topics SELECT count(id) AS totalPosts, topicid
-      FROM posts
-      WHERE id > $post_3d
-      GROUP BY topicid
-      ORDER BY totalPosts DESC
-      LIMIT 20");
+    if ($post_3d > 0) {
+      q("CREATE temporary TABLE most_activ_topics SELECT count(id) AS totalPosts, topicid
+        FROM posts
+        WHERE id > $post_3d
+        GROUP BY topicid
+        ORDER BY totalPosts DESC
+        LIMIT 20");
 
-    $topics = fetchAll("
-       SELECT topics.*, users.username AS topicAuthor, users.gender AS authorGender,
-            posts.id AS postId, posts.userid AS lpuserId, posts.added AS lpAdded, lastUsers.username AS lpusername, lastUsers.gender AS lpuserGender,
-            forums.minclassread, forums.id AS forum_id, forums.name_$userlang AS forum_name, forums_tags.id AS subcat_id, forums_tags.name_$userlang AS subcat_name
-         FROM most_activ_topics
+      $topics = fetchAll("
+         SELECT topics.*, users.username AS topicAuthor, users.gender AS authorGender,
+              posts.id AS postId, posts.userid AS lpuserId, posts.added AS lpAdded, lastUsers.username AS lpusername, lastUsers.gender AS lpuserGender,
+              forums.minclassread, forums.id AS forum_id, forums.name_$userlang AS forum_name, forums_tags.id AS subcat_id, forums_tags.name_$userlang AS subcat_name
+           FROM most_activ_topics
 
-         LEFT JOIN topics ON topics.id = most_activ_topics.topicid
+           LEFT JOIN topics ON topics.id = most_activ_topics.topicid
 
-         LEFT JOIN users ON users.id = topics.userid
-         LEFT JOIN posts ON topics.lastpost = posts.id AND topics.forumid = posts.forumid
-         LEFT JOIN users lastUsers ON posts.userid = lastUsers.id
+           LEFT JOIN users ON users.id = topics.userid
+           LEFT JOIN posts ON topics.lastpost = posts.id AND topics.forumid = posts.forumid
+           LEFT JOIN users lastUsers ON posts.userid = lastUsers.id
 
-         LEFT JOIN forums ON topics.forumid = forums.id
-         LEFT JOIN forums_tags ON topics.subcat = forums_tags.id
+           LEFT JOIN forums ON topics.forumid = forums.id
+           LEFT JOIN forums_tags ON topics.subcat = forums_tags.id
 
-         WHERE topics.locked = 'no'
-         ORDER BY most_activ_topics.totalPosts DESC LIMIT 15");
+           WHERE topics.locked = 'no' AND topics.forumid != '$trash_forum_id'
+           ORDER BY most_activ_topics.totalPosts DESC LIMIT 15");
 
-      mem2_set($forum_top_10_key, serialize($topics), 3600);
+        mem2_set($forum_top_10_key, serialize($topics), 3600);
+    }
   } else {
     $topics = unserialize($topics);
   }

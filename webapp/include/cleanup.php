@@ -105,16 +105,6 @@ function docleanupRare() {
 		Delete download status for torrents older than 32 days
 	*/
 
-	$torrent_32 = fetchOne('select min(id) from torrents where added > now() - interval 32 day');
-	if ($torrent_32) {
-		$torrent_32_100 = $torrent_32 + 150;
-		$snatched_32 = fetchOne("select min(id) from snatched where torrentid >= $torrent_32 AND torrentid <= $torrent_32_100");
-		if ($snatched_32) {
-			q("DELETE FROM snatched WHERE id <= $snatched_32");
-		}
-	}
-
-
 	write_sysop_log('cleanup.php docleanupRare checkpoint 4');
 
 	update_forum_stats();
