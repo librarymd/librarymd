@@ -173,8 +173,7 @@ class Torrents {
                 FROM torrents
                 " . self::$sql_joins . "
                 WHERE torrents.added >= NOW() - INTERVAL 1 day AND category != 6 AND category != 5 AND torrents.size > 73400320
-                      AND (torrents.moder_status='verificat' OR torrents.moder_status='neverificat')
-                      AND NOT (torrents.moder_status='dubios')
+                      AND (torrents.moder_status='verificat' OR torrents.moder_status='neverificat' OR torrents.moder_status IS NULL)
                 " . self::$sql_group_by . "
                 ORDER BY rating DESC LIMIT 20
                 ");

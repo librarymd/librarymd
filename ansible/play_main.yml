@@ -258,6 +258,13 @@
         - { src: '/www/data/torrents', dest: '/www/webapp/torrents'}
         - { src: '/www/data/torrents_img', dest: '/www/webapp/torrents_img'}
 
+    - name: Create cache tops directory for the tops files
+      file:
+        path: "/www/webapp/cache/tops"
+        state: directory
+        recurse: yes
+        mode: "g+w"
+
     - name: Allow members of the www-data group the write access
       file:
         path: "/www/webapp"
