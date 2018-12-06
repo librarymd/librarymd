@@ -506,10 +506,3 @@
         state: restarted
         enabled: yes
         name: "onionbalance"
-    - name: Every minute download scheduled images
-      cron:
-        user: root
-        name: "Every minute download scheduled images"
-        minute: "10"
-        hour: "*/12"
-        job: "systemctl restart onionbalance"
