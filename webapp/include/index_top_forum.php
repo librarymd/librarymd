@@ -53,7 +53,6 @@
            LEFT JOIN forums_tags ON topics.subcat = forums_tags.id
 
            WHERE topics.locked = "no"
-           AND topics.forumid != 2
            ORDER BY topics.lastpost DESC LIMIT 35');
 
         mem2_set('topics_active_last10.'.$userlang.$cache_key_suffix, serialize($topics), 10);
