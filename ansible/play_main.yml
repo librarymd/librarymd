@@ -391,6 +391,21 @@
         minute: "*"
         hour: "*"
         job: "php /www/webapp/periodic/import/torrents_import_images.php >> /www/logs/periodic.log 2>&1"
+    - name: Every two hours check for the expiration of any user modes
+      cron:
+        user: ubuntu
+        name: "Every two hour"
+        minute: "5"
+        hour: "*/2"
+        job: "php /www/webapp/periodic/every_2h.php >> /www/logs/periodic.log 2>&1"
+    - name: Every day, expensive update
+      cron:
+        user: ubuntu
+        name: "Every day expensive update"
+        minute: "10"
+        hour: "3"
+        job: "php /www/webapp/periodic/expensive_update.php >> /www/logs/periodic.log 2>&1"
+
 
 - name: Configure tor access and the tor load balancer
   hosts: all
@@ -431,6 +446,20 @@
     - name: Copy onionbalance config
       raw: sudo cp /etc/tor_multi/master/* /etc/onionbalance/ && sudo chown onionbalance:onionbalance /etc/onionbalance/*.key
       when: onionbalance_executed_files.stat.exists == False
+
+    - name: Tune onionbalance
+      lineinfile:
+        dest: /etc/tor_multi/master/config.yaml
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+      with_items:
+        - { regexp: '^INITIAL_DELAY', line: 'INITIAL_DELAY: 60' }
+        - { regexp: '^REFRESH_INTERVAL', line: 'REFRESH_INTERVAL: 600' }
+        - { regexp: '^DESCRIPTOR_UPLOAD_PERIOD', line: 'DESCRIPTOR_UPLOAD_PERIOD: 600' }
+        - { regexp: '^DESCRIPTOR_VALIDITY_PERIOD', line: 'DESCRIPTOR_VALIDITY_PERIOD: 1800' }
+        - { regexp: '^PUBLISH_CHECK_INTERVAL', line: 'PUBLISH_CHECK_INTERVAL: 900' }
+        - { regexp: '^LOG_LEVEL', line: 'LOG_LEVEL: debug' }
+
     - replace:
         path: "/etc/tor_multi/{{item}}/instance_torrc"
         regexp: 'DataDirectory tor-data'
@@ -477,3 +506,10 @@
         state: restarted
         enabled: yes
         name: "onionbalance"
+    - name: Every minute download scheduled images
+      cron:
+        user: root
+        name: "Every minute download scheduled images"
+        minute: "10"
+        hour: "*/12"
+        job: "systemctl restart onionbalance"

@@ -123,7 +123,6 @@ function docleanupRare() {
 }
 
 function update_forum_stats() {
-
 	// Update forums tags
 	$subcats_count = q('SELECT count(id) AS total, subcat
 	FROM topics
@@ -299,22 +298,6 @@ function update_stats_get_current() {
 	}
 	return $stats;
 }
-
-function update_stats_expensive() {
-	$stats = update_stats_get_current();
-
-	// Total downloaded & uploaded
-	$result = q("SELECT SUM(downloaded) AS totaldl, SUM(uploaded) AS totalul FROM users_down_up");
-	$row = mysql_fetch_assoc($result);
-	$stats['totaldl'] = $row["totaldl"];
-	$stats['totalul'] = $row["totalul"];
-	$stats['users'] = q_singleval('SELECT COUNT(id) FROM users WHERE enabled="yes"');
-	$stats['torrents'] = number_format(q_singleval("SELECT count(id) FROM torrents"));
-
-	mem_set('stats',serialize($stats));
-	q("UPDATE avps SET value='" . addslashes(serialize($stats)) . "' WHERE arg='stats'");
-}
-
 
 function update_stats() {
 	set_time_limit(0);

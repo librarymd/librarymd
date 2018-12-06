@@ -81,6 +81,9 @@ process is used by onionbalance itself.
 - systemctl status tor_worker_srv2
 - systemctl status tor_worker_srv3
 
+- journalctl -u onionbalance.service -n 100
+- journalctl -u tor_worker_srv1 -n 100
+
 ### Restarting may help
 - systemctl restart tor_worker_srv1
 - systemctl restart tor_worker_srv2
