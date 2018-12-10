@@ -30,7 +30,7 @@ var conf_template_ver = 7;
 </script>
 <script type="text/javascript" src="js/upload/upload.js?v=6"></script>
 <script type="text/javascript" src="js/upload/upload_edit.js?v=6"></script>
-<div align="center">
+<div>
 <form enctype="multipart/form-data" action="takeupload.php" method="post" id="noenter">
 <input type="hidden" name="MAX_FILE_SIZE" value="<?=$max_torrent_size?>" />
 <!--Err Torrent File-->
@@ -47,6 +47,17 @@ var conf_template_ver = 7;
 <p>Trackerul nu are anunt dedicat.
 Reteaua DHT va fi utilizata pentru afisarea nrul peerurilor.
 Torrentul nu trebuie recopiat dupa reincarcare.</p>
+<br/><br/>
+<p>
+Ideal torrentul care il incarcati trebuie copiat de pe alt site de torrent, fara a fi modificat.
+<br/><br/>
+1. Copiat fisierul torrent de pe alt site de torrente.<br/>
+2. Incarcati fisierul torrent la noi.<br/>
+3. Ideal in descriere trebuie sa indicati adresa siteului de torrente de unde ati copiat fisierul torrentul.<br/>
+<br/>
+Seedarea de catre uploader nu este necesara pentru ca el este deja seedat de catre peeurile existenti din reteaua DHT.<br/>
+Deasemenea uploaderul are o anonimitate sporita.<br/>
+</p>
 <br><br>
 <br>
 <table id="main_upload_table" border="1" cellpadding="5" cellspacing="0" width="675">

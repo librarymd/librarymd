@@ -420,6 +420,7 @@ endif;
                             esc_html($torrent["filename"])
                         );
                     }
+                    echo ' <b>(<a href="/forum.php?action=viewtopic&topicid=11&page=last">'. __('cum se copie ?') .'</a>)</b>'
                 ?>
                   <? endif; ?>
       </div>
