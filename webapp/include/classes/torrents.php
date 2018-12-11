@@ -175,7 +175,6 @@ class Torrents {
                 WHERE torrents.added >= NOW() - INTERVAL 2 day AND category NOT IN  (6, 5, 3, 4)
                       AND torrents.size > 73400320
                       AND (torrents.moder_status='verificat' OR torrents.moder_status='neverificat' OR torrents.moder_status IS NULL)
-                      AND NOT (torrents.moder_status='dubios')
                 " . self::$sql_group_by . "
                 ORDER BY rating DESC LIMIT 20
                 ");
