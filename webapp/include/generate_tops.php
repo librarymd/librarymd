@@ -45,7 +45,6 @@ foreach($tops as $top) {
 		LEFT JOIN users ON torrents.owner = users.id
         LEFT JOIN teams ON (torrents.team > 0 AND torrents.team = teams.id)
 		WHERE torrents.added >= NOW() - INTERVAL $interval AND category != 6 AND category != 5 AND category != 3
-		      AND torrents.visible='yes'
 		ORDER BY rating
 		DESC LIMIT 50
 		");
