@@ -96,12 +96,10 @@ stdhead($lang['watcher_title']);
 
 <?php
 
-$GLOBALS['query_with_union'] = true;
 $thread_res = q('SELECT *, if( (CAST(lastThreadMsg AS SIGNED) - CAST(lastSeenMsg AS SIGNED) )>0,1,0) AS unseen FROM watches WHERE user = '.$CURUSER['id'].'
 					ORDER BY unseen DESC, lastThreadMsg DESC
           LIMIT 2000
 				');
-$GLOBALS['query_with_union'] = false;
 
 // Collect all ids, to make one shot selects
 

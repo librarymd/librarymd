@@ -27,7 +27,7 @@ $userIsMe = ($userid == $CURUSER["id"]);
 if ($action == "viewposts")
 {
 	$select_is = "COUNT(p.id)";
-	
+
 	$from_is = "posts AS p JOIN topics as t ON p.topicid = t.id JOIN forums AS f ON t.forumid = f.id";
 
 	$where_is = "p.userid = $userid AND f.minclassread <= " . $CURUSER['class'];
@@ -69,7 +69,7 @@ if ($action == "viewposts")
  		$from_is = "posts AS p JOIN topics as t ON p.topicid = t.id JOIN forums AS f ON t.forumid = f.id";
  		$select_is = "f.id AS f_id, f.name_$userlang as name, t.id AS t_id, t.subject, t.lastpost, p.*";
  	}
-	
+
 
 	$query = "SELECT $select_is FROM $from_is WHERE $where_is ORDER BY $order_is $limit";
 
@@ -134,7 +134,7 @@ if ($action == "viewposts")
 	            $body .= "<p><font size=1 class=small>Last edited by <a href=userdetails.php?id=$arr[editedby]><b>$subrow[username]</b></a> at $arr[editedat] GMT</font></p>\n";
 	        }
 	    }
-	    
+
 	    print("<tr valign=top><td class=comment>$body</td></tr>\n");
 
 	    end_table();
@@ -195,9 +195,7 @@ if ($action == "viewcomments")
 
 	$query = "SELECT $select_is FROM $from_is WHERE $where_is ORDER BY $order_is $limit";
 
-$GLOBALS['query_with_union'] = true;
 	$res = q($query);
-unset($GLOBALS['query_with_union']);
 
 	if (mysql_num_rows($res) == 0) stderr(__('Eroare'), "No comments found");
 
