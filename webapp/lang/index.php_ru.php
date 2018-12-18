@@ -80,4 +80,7 @@ $lang['Replici'] = 'Ответов';
 $lang['Autor'] = 'Автор';
 $lang['Ultimul mesaj'] = 'Последний ответ';
 $lang['Torrente <a href="/forum.php?action=viewtopic&topicid=88126546">promovate</a>'] = '<a href="/forum.php?action=viewtopic&topicid=88126546">Продвижение</a> торрентов';
+
+$lang['Top utilizatori care au incarcat cele mai multe torrente, <b><a href="/upload.php">incarcă un torrent</a></b>'] = 'Top пользователей которые загрузили больше всего торрентов, <b><a href="/upload.php">загрузи торрент</a></b>';
+
 ?>

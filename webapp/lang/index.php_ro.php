@@ -1,7 +1,7 @@
 <?php
 $lang['index_recent_news'] = 'Ultimele ştiri';
 $lang['index_news_show_all'] = 'Arată toate ştirile';
-$lang['index_active_users'] = 'Utilizatorii activi din ultimele trei minute';
+$lang['index_active_users'] = 'Utilizatorii activi din ultimele 24 ore';
 $lang['index_active_users_invisible'] = 'invizibili';
 $lang['index_useful_links'] = 'Adrese utile';
 $lang['index_stats_updated_each_15'] = 'Statistica (date reînnoite în fiecare 15 minute)';

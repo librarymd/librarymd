@@ -1185,3 +1185,40 @@ function timeLeft($theTime) {
     if ($timeLeft < -86400) $theText = '';
     return $theText;
 }
+
+
+function getUserColourCssClass($class) {
+    switch ($arr["class"]) {
+        case UC_SYSOP:
+            return 'sysop';
+        case UC_ADMINISTRATOR:
+            return 'admin';
+        case UC_MODERATOR:
+            return 'moder';
+        case UC_SANITAR:
+            return 'sanitar';
+        case UC_VIP:
+            return 'vip';
+        case UC_RELEASER:
+            return 'releaser';
+        case UC_KNIGHT:
+            return 'faithful';
+        case UC_UPLOADER:
+            return 'uploader';
+        case UC_POWER_USER:
+            return 'p_user';
+        case UC_USER:
+    }
+    return '';
+}
+
+
+function linkForUser($user, $withLink, $appendTextIntoLink = '') {
+    $userCssColourClass = getUserColourCssClass($user["class"]);
+    $coloured = "<span class='$userCssColourClass'>" . $user["username"] . "</span>";
+    if ($withLink) {
+        return "<a href=userdetails.php?id=" . $user["id"] . ">" . $coloured . $appendTextIntoLink . "</a>";
+    } else {
+        return $coloured;
+    }
+}

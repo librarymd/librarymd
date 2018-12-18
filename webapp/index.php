@@ -1,145 +1,6 @@
 <?php
 require "include/bittorrent.php";
-
-$nowActiveLastHours = 24;
-$dt = time() - (60 * 60 * $nowActiveLastHours);
-$dt = sqlesc(get_date_time($dt));
-
-$onTrackerUsers = mem2_get('ontracker_users_40');
-$activeusers_total = mem2_get('ontracker_users_count');
-
-if (!$onTrackerUsers) {
-    $onTrackerUsers = fetchAll("SELECT users.id, users.username, users.class, users.ip
-            FROM users_down_up
-            RIGHT JOIN users ON users_down_up.id = users.id
-            WHERE users_down_up.last_access >= $dt
-            ORDER BY users.username");
-
-    $onTrackerUsers40 = array_slice($onTrackerUsers,0,40);
-    $activeusers_total = count($onTrackerUsers);
-    mem2_set('ontracker_users',$onTrackerUsers, 60);
-    mem2_set('ontracker_users_40',$onTrackerUsers40, 60);
-    mem2_set('ontracker_users_count',$activeusers_total, 60);
-    $onTrackerUsers = $onTrackerUsers40;
-}
-
-if (isset($_GET['show_all_online_users'])) {
-    $onTrackerUsers = mem2_get('ontracker_users');
-}
-
-$activeusers = '';
-$activeusers_i = 0;
-$me_in_list = false;
-
-foreach($onTrackerUsers AS $arr) {
-    if ($activeusers) $activeusers .= ",\n";
-
-    switch ($arr["class"]) {
-        case UC_SYSOP:
-            $arr["username"] = "<span class='sysop'>" . $arr["username"] . "</span>";
-            break;
-        case UC_ADMINISTRATOR:
-            $arr["username"] = "<span class='admin'>" . $arr["username"] . "</span>";
-            break;
-        case UC_MODERATOR:
-            $arr["username"] = "<span class='moder'>" . $arr["username"] . "</span>";
-            break;
-        case UC_SANITAR:
-            $arr["username"] = "<span class='sanitar'>" . $arr["username"] . "</span>";
-            break;
-        case UC_VIP:
-            $arr["username"] = "<span class='vip'>" . $arr["username"] . "</span>";
-            break;
-        case UC_RELEASER:
-            $arr["username"] = "<span class='releaser'>" . $arr["username"] . "</span>";
-            break;
-        case UC_KNIGHT:
-            $arr["username"] = "<span class='faithful'>" . $arr["username"] . "</span>";
-            break;
-        case UC_UPLOADER:
-            $arr["username"] = "<span class='uploader'>" . $arr["username"] . "</span>";
-            break;
-        case UC_POWER_USER:
-                $arr["username"] = "<span class='p_user'>" . $arr["username"] . "</span>";
-            break;
-        case UC_USER:
-    }
-    $donator = false;
-
-    //When logged, show links to online user details
-    if (isset($CURUSER)) $activeusers .= "<a href=userdetails.php?id=" . $arr["id"] . ">" . $arr["username"] . "</a>";
-    else $activeusers .= "$arr[username]";
-    $activeusers_i++;
-    if (isset($CURUSER) && $CURUSER['id'] == $arr["id"]) $me_in_list = true;
-}
-// Add myself to the end if not present
-if (isset($CURUSER) && !$me_in_list) {
-    if ($activeusers) $activeusers .= ",\n";
-    $arr["username"] = $CURUSER['username'];
-    switch ($CURUSER["class"]) {
-        case UC_SYSOP:
-            $arr["username"] = "<span class='sysop'>" . $arr["username"] . "</span>";
-            break;
-        case UC_ADMINISTRATOR:
-            $arr["username"] = "<span class='admin'>" . $arr["username"] . "</span>";
-            break;
-        case UC_MODERATOR:
-            $arr["username"] = "<span class='moder'>" . $arr["username"] . "</span>";
-            break;
-        case UC_SANITAR:
-            $arr["username"] = "<span class='sanitar'>" . $arr["username"] . "</span>";
-            break;
-        case UC_VIP:
-            $arr["username"] = "<span class='vip'>" . $arr["username"] . "</span>";
-            break;
-        case UC_RELEASER:
-            $arr["username"] = "<span class='releaser'>" . $arr["username"] . "</span>";
-            break;
-        case UC_KNIGHT:
-            $arr["username"] = "<span class='faithful'>" . $arr["username"] . "</span>";
-            break;
-        case UC_UPLOADER:
-            $arr["username"] = "<span class='uploader'>" . $arr["username"] . "</span>";
-            break;
-        case UC_POWER_USER:
-            $arr["username"] = "<span class='p_user'>" . $arr["username"] . "</span>";
-            break;
-        case UC_USER:
-    }
-    $activeusers .= "<a href=userdetails.php?id=" . $CURUSER["id"] . ">" . $arr["username"] . "</a>";
-    $activeusers_i++;
-}
-
-/**
-    Most users ever code
-*/
-$mostEver = mem_get('stat_most_online');
-if (!$mostEver) {
-    $mostEver = fetchOne('SELECT value FROM avps WHERE arg="most_online"');
-    $mostEver_date = fetchOne('SELECT value FROM avps WHERE arg="most_online_date"');
-    // That mean no rows found
-    if ($mostEver === NULL) {
-        Q('INSERT INTO avps VALUES ("most_online",0)');
-        Q('INSERT INTO avps VALUES ("most_online_date",:time)',array('time'=>time() ) );
-    }
-    $mostEver = serialize(array($mostEver,$mostEver_date));
-    mem_set('stat_most_online', $mostEver );
-}
-list($mostEver,$mostEver_date) = unserialize($mostEver);
-
-if ($activeusers_total > $mostEver && date('H') > 10 ) {
-    Q('UPDATE avps SET value=:now WHERE arg="most_online"', array('now'=>$activeusers_total) );
-    Q('UPDATE avps SET value=:time WHERE arg="most_online_date"', array('time'=>time() ) );
-    // purge
-    mem_delete('stat_most_online');
-    // update vars for current user
-    $mostEver = $activeusers_total;
-    $mostEver_date = time();
-}
-
-$mostEverStr = " (" . __('cel mai mulţi').": $mostEver" . __(' la ') . date('d-F-Y G:i',$mostEver_date) . ")";
-
-if (!isset($activeusers)) $activeusers = "There have been no active users in the last 15 minutes.";
+require "include/index_inc.php";
 
 stdhead();
 
@@ -240,18 +101,15 @@ if ($anunt || get_user_class() >= UC_MODERATOR) {
 }
 
 ?>
-<h2 align="left"><span class="style1"><span class="style7"> Utilizatorii activi din ultimele 24 ore <?php echo ' (',$activeusers_total,') '; ?> </span></span><span style="color:#F5F4EA;"><?=$mostEverStr?></span></h2>
-<table width=100% border=1 cellspacing=0 cellpadding=10><tr><td id="users_online">
-<?php echo $activeusers ?>, ...
-<?php if (!isset($_GET['show_all_online_users'])): ?>
-    <br><br>
-    <a href="?show_all_online_users=1" style="color:#0A50A1;"><?=__("arată toată lista de"),' ',$activeusers_total,' ',__("utilizatori")?>...</a>
-<?php endif; ?>
-</td></tr></table>
 
-<?php include('include/index_stats.php'); ?>
 
-<?php include('include/index_top_forum.php'); ?>
+
+<?php
+    showMostActiveUploaders();
+    showActiveUsersOnWebsite();
+    include('include/index_stats.php');
+    include('include/index_top_forum.php');
+?>
 
 <br />
 <div align="center">
