@@ -156,6 +156,25 @@ function get_slr_color($ratio) {
   return "#000000";
 }
 
+function get_dht_peers_color($ratio) {
+  if ($ratio < 1) return "#ff0000";
+  if ($ratio < 2) return "#ee0000";
+  if ($ratio < 3) return "#dd0000";
+  if ($ratio < 4) return "#cc0000";
+  if ($ratio < 5) return "#bb0000";
+  if ($ratio < 6) return "#aa0000";
+  if ($ratio < 7) return "#990000";
+  if ($ratio < 8) return "#880000";
+  if ($ratio < 9) return "#770000";
+  if ($ratio < 10) return "#660000";
+  if ($ratio < 11) return "#550000";
+  if ($ratio < 12) return "#440000";
+  if ($ratio < 13) return "#330000";
+  if ($ratio < 14) return "#220000";
+  if ($ratio < 15) return "#110000";
+  return "#000000";
+}
+
 function get_elapsed_time($ts) {
   global $lang;
   $mins = floor((time() - $ts) / 60);

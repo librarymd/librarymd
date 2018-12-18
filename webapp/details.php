@@ -581,9 +581,14 @@ $flag_dllist = (isset($_GET["dllist"]))?'&dllist=1':false;
       }
     }
 
-  $dhtNeverUpdated = in_array($torrent['dht_peers_updated'], array('1970-01-01 00:00:00', '0000-00-00 00:00:00'));
-  $dhtUpdateDateHuman =  $dhtNeverUpdated ? 'niciodată, programat pentru update.' : get_elapsed_time(strtotime($torrent['dht_peers_updated']));
-  tr(__('DHT peer-uri'), $torrent["dht_peers"] . ' peer(s), ultimul update: ' . $dhtUpdateDateHuman, 1);
+    $dhtUpdateDateHuman = get_elapsed_time(strtotime($torrent['dht_peers_updated']));
+    $wasDhtEverUpdated = $torrent['dht_peers_updated'] != '1970-01-01 00:00:00';
+    $dhtPeersText = (
+       $wasDhtEverUpdated ?
+       $torrent["dht_peers"] . ' peer(s), ' . __('ultimul update') . ': ' . $dhtUpdateDateHuman :
+       __('Programat pentru update')
+    );
+    tr(__('DHT peer-uri') . '<a name="dht_peers"></a>', $dhtPeersText, 1);
 
     //*************
     // Thanks

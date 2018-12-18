@@ -200,7 +200,12 @@ function torrenttable($res,$data='',$type='',$addParam='') {
         $_s = "";
         if ($row["times_completed"] != 1) $_s = "s";
 
-        print("<td align=center>" . ($row["dht_peers"] == -1 ? '<span title="Refresh in progress">...</span>' : $row["dht_peers"]) . "</td>\n");
+        $dhtPeersUrl = $url . '#dht_peers';
+
+        $dht_peers_formatted = sprintf('<a href="%s"><font color="%s">%s</font></a>',
+                                        $dhtPeersUrl, get_dht_peers_color($row["dht_peers"]), $row["dht_peers"]);
+
+        print("<td align=center>" . ($row["dht_peers"] == -1 ? '<span title="Refresh in progress">...</span>' : $dht_peers_formatted) . "</td>\n");
 
         printf('<td align="right">%s</td>', $row['thanks']);
 

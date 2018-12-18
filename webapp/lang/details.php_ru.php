@@ -261,4 +261,10 @@ $lang['comment_rules'] = <<<EOT
 
 </div>
 EOT;
+
+$lang['Programat pentru update'] = 'Запланировано обновление';
+$lang['ultimul update'] = 'последнее обновление';
+$lang['DHT peer-uri'] = 'DHT пиры';
+$lang['Acțiuni'] = 'Действия';
+$lang['Semnalează torrentul'] = 'Сообщить админам';
 ?>
