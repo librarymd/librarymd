@@ -153,32 +153,6 @@ $totalcensored = $user['total_censored'];
 $authorOfReportedPosts = $user['author_of_reported_posts_total'];
 $authorOfReportedPostsCensored = $user['author_of_reported_posts_total_censored'];
 
-$query = "SELECT SQL_CALC_FOUND_ROWS
-	torrent, added, uploaded, downloaded, torrents.name as torrentname, categories.name as catname, size,categories.image,category,seeders,leechers
-	FROM peers
-	RIGHT JOIN torrents ON peers.torrent = torrents.id
-	LEFT JOIN categories ON torrents.category = categories.id
-	WHERE userid='".$id."' AND seeder='no' ORDER BY peers.torrent DESC
-    $torrents_limit";
-$res = q($query);
-$count = q_singleval('SELECT FOUND_ROWS()');
-if (mysql_num_rows($res) > 0)
-  $leeching = maketable($res,$count);
-
-$res = q("SELECT
-    SQL_CALC_FOUND_ROWS torrent,added,uploaded,downloaded,torrents.name as torrentname,
-    categories.name as catname,size,categories.image,category,seeders,leechers
-    FROM peers
-    RIGHT JOIN torrents ON peers.torrent = torrents.id
-    LEFT JOIN categories ON torrents.category = categories.id
-    WHERE userid=:userId AND seeder='yes'
-    ORDER BY peers.torrent DESC
-    $torrents_limit", array('userId' => $id));
-
-$count = q_singleval('SELECT FOUND_ROWS()');
-
-if (mysql_num_rows($res) > 0) $seeding = maketable($res,$count);
-
 mainWithId("Details for " . $user["username"], "userdetails");
 $enabled = $user["enabled"] == 'yes';
 
@@ -400,17 +374,9 @@ if ( $user['id'] != $CURUSER["id"] ) {
        WHERE owner=:id",array('id'=>$CURUSER["id"]));
 }
 
-if ( ($user['id'] == $CURUSER["id"]) || $total >= 10 || get_user_class() >= UC_MODERATOR ) {
 if ($torrents)
   print("<tr valign=top id=userdetails_up_t><td class=rowhead width=15%>". __('Torrente încărcate') ."</td><td align=left>$torrents</td></tr>\n");
-}
 
-if ( $user['id'] == $CURUSER["id"]) {
-  if (isset($seeding) && $seeding)
-    print("<tr valign=top><td class=rowhead width=15%><a name='seelee'></a>". __('Acum încarcă') ."</td><td align=left>$seeding</td></tr>\n");
-  if (isset($leeching) && $leeching)
-    print("<tr valign=top><td class=rowhead width=15%>". __('Acum descarcă') ."</td><td align=left>$leeching</td></tr>\n");
-}
 if ($user["info"]) {
  print('<tr valign=top><td align=left colspan=2 class=text bgcolor=#F4F4F0><div>' . format_comment($user["info"]) . "</td></tr>\n");
 }
