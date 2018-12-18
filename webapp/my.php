@@ -141,8 +141,6 @@ tr($lang['profile_accept_pms'],
 
 tr($lang['profile_email_notify'], "<input type=checkbox name=pmnotif" . (strpos($CURUSER['notifs'], "[pm]") !== false ? " checked" : "") . " value=yes> {$lang['profile_email_notify_txt']}<br>\n", 1);
 
-tr("Copiaza torrente fara a include passkey", "<input type=checkbox id=download_no_passkey name=download_no_passkey" . ($CURUSER['download_no_passkey'] == 1 ? " checked" : "") . " value=1> <label for=download_no_passkey>Nu include passkeyul in adresele de anunt in torrentele care le descarc, astfel trackerul nu va sti utilizatorul care descarca</label><br/>(activeaza pentru o anonimitate sporita)<br>\n", 1, "my_no_passkey");
-
 // Invisibility are accesible only to >=VIP
 if (get_user_class() == UC_SYSOP) {
 	tr($lang['profile_invisible'], "<input type=checkbox name=invisible" . ($CURUSER['invisible'] === 'yes' ? " checked" : "") . " value=yes> {$lang['profile_invisible_txt']}<br>\n", 1);
