@@ -95,7 +95,7 @@ if (mysql_num_rows($r) > 0) {
   {
 		$cat = "<img src=\"pic/categs/$a[catImg]\" alt=\"$a[catName]\">";
       $torrents .= "<tr><td style='padding: 0px' align=center>$cat</td><td><a href=details.php?id=" . $a["id"] . "><b>" . $a["name"] . "</b></a></td>" .
-        "<td align=right>$a[dht_peers]</td></tr>\n";
+        "<td>$a[dht_peers]</td></tr>\n";
 
   }
   if ($count > 3 && !$torrents_all) {
