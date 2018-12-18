@@ -76,7 +76,9 @@ if ($user["id"] != $CURUSER["id"] && !isSysop()) {
   $torrents_uploaded_where = "AND NOT(torrent_opt & ".$conf_torrent_opt['anonim']." OR torrent_opt & ".$conf_torrent_opt['anonim_unverified'].') ';
 }
 
-$r = q("SELECT SQL_CALC_FOUND_ROWS torrents.id, torrents.name, seeders, leechers, category, categories.name AS catName, categories.image AS catImg
+$r = q("SELECT SQL_CALC_FOUND_ROWS
+      torrents.id, torrents.name, seeders, leechers, category, categories.name AS catName, categories.image AS catImg,
+      torrents.dht_peers
 	   FROM torrents
 	   LEFT JOIN categories ON torrents.category = categories.id
        WHERE owner=:id $torrents_uploaded_where
@@ -84,12 +86,17 @@ $r = q("SELECT SQL_CALC_FOUND_ROWS torrents.id, torrents.name, seeders, leechers
 $count = q_singleval('SELECT FOUND_ROWS()');
 if (mysql_num_rows($r) > 0) {
   $torrents = "<table class=main border=1 cellspacing=0 cellpadding=5>\n" .
-    "<tr><td class=colhead>". __('Tip') ."</td><td class=colhead>". __('Nume') ."</td><td class=colhead align=center><img src=pic/arrowup.gif></td><td class=colhead align=center><img src=pic/arrowdown.gif></td></tr>\n";
+    "<tr>
+      <td class=colhead>". __('Tip') ."</td>
+      <td class=colhead>". __('Nume') ."</td>".
+     '<td class="colhead" align="right" title="DHT Peers" style="white-space: nowrap;">DHT <img src="/pic/arrowdownup2.gif"/></td>'.
+    "</tr>\n";
   while ($a = mysql_fetch_assoc($r))
   {
 		$cat = "<img src=\"pic/categs/$a[catImg]\" alt=\"$a[catName]\">";
       $torrents .= "<tr><td style='padding: 0px' align=center>$cat</td><td><a href=details.php?id=" . $a["id"] . "><b>" . $a["name"] . "</b></a></td>" .
-        "<td align=right>$a[seeders]</td><td align=right>$a[leechers]</td></tr>\n";
+        "<td align=right>$a[dht_peers]</td></tr>\n";
+
   }
   if ($count > 3 && !$torrents_all) {
     $torrents .= '<tr><td colspan="4"><a href="?id='.$id.'&torrents_all=1">'.sprintf(__('Arată toate %s torrente'),$count).'</a></td></tr>';
