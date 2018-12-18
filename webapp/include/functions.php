@@ -1188,7 +1188,7 @@ function timeLeft($theTime) {
 
 
 function getUserColourCssClass($class) {
-    switch ($arr["class"]) {
+    switch ($class) {
         case UC_SYSOP:
             return 'sysop';
         case UC_ADMINISTRATOR:
