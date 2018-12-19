@@ -250,7 +250,7 @@ if (isset($numberOfInvited) && $numberOfInvited > 0) {
 <tr><td class=rowhead><?=$lang['ud_gender']?></td><td align=left><?=$gender?></td></tr>
 <?php
 if (get_user_class() >= UC_MODERATOR) {
-   print("<tr><td class=rowhead>Email</td><td align=left>".email_cruncher($user['email'])."</td></tr>\n");
+   //print("<tr><td class=rowhead>Email</td><td align=left>".email_cruncher($user['email'])."</td></tr>\n");
 }
 if ($addr) print("<tr><td class=rowhead>$lang[ud_address]</td><td align=left>$addr</td></tr>\n");
 

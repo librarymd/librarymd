@@ -136,7 +136,7 @@ function torrenttable($res, $variant = "index") {
         $dispname = $row["name"];
         $moder_status = getTorrentStatusHtml($row,true) . ' ';
         if (strstr($moder_status,'Neverifica') !== false) $moder_status = '';
-        echo '<td align=left>'.$moder_status.'<a href="details.php?id=',$id,'"', ((is_freeleeche($row))?' style="color:#707607"':''),"><b>$dispname</b></a>\n";
+        echo '<td align=left>'.$moder_status.'<a href="details.php?id=',$id,'"', "><b>$dispname</b></a>\n";
 
          //For Wait&Added colone
         $elapsed = floor((time() - strtotime($row["added"])) / 3600);
