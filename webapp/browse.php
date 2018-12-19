@@ -118,14 +118,16 @@ if ($aUser && isset($_GET['unseen']) && $_GET['unseen']) {
     $torrentsperpage = 150;
 }
 
+$regenerateTop = isModerator() && isset($_GET["regenerate_top"]);
+
 //Torrents of day
-if (count($_GET) == 0 || $_GET["regenerate_top"]) {
+if (count($_GET) == 0 || $regenerateTop) {
     global $top_3;
     $GLOBALS['browse_show_lastest'] = 1;
 
     $top_3_in_last_24 = mem2_get('top_3_in_last_24');
 
-    if ($top_3_in_last_24 == null || $_GET["regenerate_top"]) {
+    if ($top_3_in_last_24 == null || $regenerateTop) {
         //Regenerate
         $top_3 = Torrents::getTopTorrents();
         mem2_set('top_3_in_last_24',serialize($top_3),1200);

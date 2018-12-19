@@ -24,21 +24,6 @@ function PopSmilies(name,lang) {
 
 	show_it('iframe_smilies');
 }
-function PopRageSmilies(name,lang) {
-	if ($('iframe_rage_smilies') == null) {
-		var _iframe = document.createElement('iframe');
-
-		_iframe.src = './smilies_rage_popup.php?&text='+name+'&container=iframe_rage_smilies&lang='+lang;
-		_iframe.width=790;
-		_iframe.height=350;
-		_iframe.id='iframe_rage_smilies';
-
-
-		$('after_comment_box').appendChild(_iframe);
-	}
-
-	show_it('iframe_rage_smilies');
-}
 
 var autoCheckTimer = false;
 var autoCheckText = '', newMsgTimer;

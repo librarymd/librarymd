@@ -378,7 +378,7 @@ function topic_post($topic, $body = "Error - No Body", $forumid)  {
 
     begin_frame(__('Сompune răspuns'), true);
 
-	echo '<script type="text/javascript" src="js/forum_v1.js"></script>';
+	echo '<script type="text/javascript" src="js/forum.js"></script>';
     echo '<form method=post enctype="multipart/form-data" action=?action=post>',"\n";
 
     if ($newtopic)
