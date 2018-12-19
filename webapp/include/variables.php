@@ -76,7 +76,7 @@ $SITENAME_SHORT = 'LibraryMd';
 $SITENAME = "$SITENAME_SHORT - Torrente din Moldova in reteaua TOR";
 
 //Temporary fulgi variables
-$SNOW_no_UP = 20;
+$SNOW_no_UP = 10;
 $SNOW_Picture_UP = "/pic/fulgi/sne.gif";
 $SNOW_Enabled_UP = 1;
 
