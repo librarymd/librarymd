@@ -24,7 +24,7 @@ for (i = 0; i < SNOW_no; ++ i) {
 	SNOW_am[i] = Math.random()*20;
 	SNOW_stx[i] = 0.02 + Math.random()/10;
 	SNOW_sty[i] = 0.7 + Math.random();
-	document.write("<\div id=\"SNOW_flake"+ i +"\" style=\"position: absolute; z-index: "+ i +"; visibility: visible; top: 15px; left: 15px;\"><\img src=\""+SNOW_Picture+"\" border=\"0\"><\/div>");
+	document.write("<\div id=\"SNOW_flake"+ i +"\" class=\"snow_flake\" style=\"position: absolute; z-index: "+ i +"; visibility: visible; top: 15px; left: 15px;\"><\img src=\""+SNOW_Picture+"\" border=\"0\"><\/div>");
 }
 
 function SNOW_Weather() {
@@ -48,4 +48,21 @@ function SNOW_Weather() {
 	SNOW_Time = setTimeout("SNOW_Weather()", 10);
 }
 
+function Stop_SNOW_Weather() {
+	clearTimeout(SNOW_Time);
+}
+
+function Stop_Snow_After_A_While() {
+	var hideAfterSeconds = 5;
+	setTimeout("Stop_SNOW_Weather()", 1000 * hideAfterSeconds);
+	setTimeout("Remove_All_Snow_Flakes()", 1000 * (hideAfterSeconds - 1));
+}
+
+function Remove_All_Snow_Flakes() {
+	for (i = 0; i < SNOW_no; ++ i) {
+		document.getElementById("SNOW_flake"+i).style.opacity = 0;
+	}
+}
+
 SNOW_Weather();
+Stop_Snow_After_A_While();
