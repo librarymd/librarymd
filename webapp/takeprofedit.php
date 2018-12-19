@@ -74,11 +74,6 @@ $pmnotif = $_POST["pmnotif"];
 $download_no_passkey = $_POST["download_no_passkey"];
 
 $updateset[] = "download_no_passkey = " . ($download_no_passkey == 1 ? 1 : 0);
-
-// Invisibility are accesible only to >=VIP
-if (get_user_class() == UC_SYSOP) {
-  $invisible = ($_POST["invisible"] == 'yes'?'yes':'no');
-}
 $emailnotif = $_POST["emailnotif"];
 $notifs = ($pmnotif == 'yes' ? "[pm]" : "");
 $notifs .= ($emailnotif == 'yes' ? "[email]" : "");
@@ -174,10 +169,6 @@ $updateset[] = "gender = '$gender'";
 Q("UPDATE users_username SET gender = '$gender' WHERE id=".$CURUSER["id"]);
 
 $updateset[] = "notifs = '$notifs'";
-
-if (isset($invisible)) {
-  $updateset[] = "invisible = '$invisible'";
-}
 
 $updateset[] = "info = " . sqlesc($info);
 

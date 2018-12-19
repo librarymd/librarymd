@@ -68,16 +68,18 @@ function show_jucarii() {
 function show_fulgi() {
     global $SNOW_no_UP, $SNOW_Picture_UP, $SNOW_Enabled_UP;
 
-    $fulgi = mem_get('fulgi_'.get_current_id());
-    if ($fulgi === FALSE) {
-         $fulgi = fetchRow('SELECT * FROM an_nou_fulgi WHERE user_id=:user_id LIMIT 1', array('user_id'=>get_current_id()) );
-         if (!$fulgi) $fulgi = 0;
-        mem_set('fulgi_'.get_current_id(), $fulgi, 43200);
-    }
-    if(is_array($fulgi) && count($fulgi) > 0){
-        $SNOW_no_UP =       $fulgi['fulgi_no'];
-        $SNOW_Picture_UP =  $fulgi['fulgi_url'];
-        $SNOW_Enabled_UP =  $fulgi['fulgi_enable'];
+    if (get_current_id() > 0) {
+        $fulgi = mem_get('fulgi_'.get_current_id());
+        if ($fulgi === FALSE) {
+             $fulgi = fetchRow('SELECT * FROM an_nou_fulgi WHERE user_id=:user_id LIMIT 1', array('user_id'=>get_current_id()) );
+             if (!$fulgi) $fulgi = 0;
+            mem_set('fulgi_'.get_current_id(), $fulgi, 43200);
+        }
+        if(is_array($fulgi) && count($fulgi) > 0){
+            $SNOW_no_UP =       $fulgi['fulgi_no'];
+            $SNOW_Picture_UP =  $fulgi['fulgi_url'];
+            $SNOW_Enabled_UP =  $fulgi['fulgi_enable'];
+        }
     }
     ?>
     <?php

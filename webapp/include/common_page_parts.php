@@ -85,7 +85,8 @@ function stdhead($title = "", $noescape = false, $page_id = null, $canonical_url
 
     //HttpsSupportDetection::https_detector_iframe();
 
-    if (is_logged()) {show_jucarii(); show_fulgi(); }
+    show_fulgi();
+    if (is_logged()) {show_jucarii(); }
 
     global $lang;
 

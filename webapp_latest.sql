@@ -780,7 +780,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `postingbanuntil` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `gender` enum('masc','fem','none') CHARACTER SET latin1 DEFAULT 'none',
   `clone_hash` varchar(32) CHARACTER SET latin1 DEFAULT '',
-  `invisible` enum('yes','no') CHARACTER SET latin1 DEFAULT NULL,
   `team` smallint(6) unsigned DEFAULT NULL,
   `thanks` int(11) DEFAULT '0',
   `browserSession` varchar(32) CHARACTER SET latin1 DEFAULT NULL,

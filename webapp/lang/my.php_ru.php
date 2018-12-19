@@ -73,5 +73,7 @@ $lang['Din motive de securitate, ultimile litere din emailul vostru(inainte de @
 $lang['caractere'] = 'символов';
 $lang['changeCT'] = 'Сменить CT';
 
+$lang['Fulgi'] = 'Снежки';
+$lang['Seteaza generatorul de fulgi'] = 'Настроить генератор снежков';
 ?>
 

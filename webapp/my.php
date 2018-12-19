@@ -33,6 +33,14 @@ else
 	print("<h1>{$lang['profile_head']}</h1>\n");
 
 ?>
+
+<div style="width: 880px; margin: auto;">
+	<b><a href="/fulgi.php"><?=__('Seteaza generatorul de fulgi')?></a></b>
+</div>
+</br>
+</br>
+
+
 <form enctype="multipart/form-data" method="post" action="takeprofedit.php">
 <table class="mCenter" border="1" cellspacing=0 cellpadding="5" width="880">
 <colgroup><col width="150"><col></colgroup>
@@ -140,11 +148,6 @@ tr($lang['profile_accept_pms'],
 <input type=radio name=acceptpms" .  ($CURUSER["acceptpms"] == "no" ? " checked" : "") . " value=no>{$lang['profile_accept_pms_staff']}",1);
 
 tr($lang['profile_email_notify'], "<input type=checkbox name=pmnotif" . (strpos($CURUSER['notifs'], "[pm]") !== false ? " checked" : "") . " value=yes> {$lang['profile_email_notify_txt']}<br>\n", 1);
-
-// Invisibility are accesible only to >=VIP
-if (get_user_class() == UC_SYSOP) {
-	tr($lang['profile_invisible'], "<input type=checkbox name=invisible" . ($CURUSER['invisible'] === 'yes' ? " checked" : "") . " value=yes> {$lang['profile_invisible_txt']}<br>\n", 1);
-}
 
 //$categories = "{$lang['profile_category_show_none']}<br>\n";
 if (strpos($CURUSER['notifs'],'[cat') === FALSE) $show_all = 1;
