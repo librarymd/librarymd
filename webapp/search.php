@@ -18,6 +18,7 @@ $sql = array();
 $addparam= '';
 $sortparam = (isset($_GET['sort']))? $_GET['sort'] :'';
 $orderparam = (isset($_GET['order']) && ($_GET['order'] == 'asc') )? 'ASC' :'DESC';
+$showNoPeers = isset($_GET['show_no_peers']) && $_GET['show_no_peers'] == 1;
 
 switch ($sortparam)
 {
@@ -26,17 +27,19 @@ switch ($sortparam)
         break;
 
     case "peers":
-        $querySort = 'peers';
-        $queryColumn = 'torrents.seeders AS peers';
+        $querySort = 'torrents.dht_peers';
         break;
 
     case "date":
     default:
         $sortparam = '';
-        $querySort = 'torrents.id';
+        $querySort = 'torrents.added';
         $queryColumn = '';
 }
 $querySort .= ' '.$orderparam;
+
+$peersFiltering = $showNoPeers ? '' : ' AND (torrents.dht_peers > 0 OR torrents.added > now() - interval 6 month)';
+
 
 if (isset($_GET['search_str']) && !isset($_GET['adv'])) {
 
@@ -115,7 +118,7 @@ if (isset($_GET['search_str']) && !isset($_GET['adv'])) {
 
     time_between('sql_torrents_search');
 
-    $query = Torrents::list_query($queryColumn, "torrents.id IN ($matched_torrents_ids)", $querySort, $limit);
+    $query = Torrents::list_query($queryColumn, "torrents.id IN ($matched_torrents_ids) $peersFiltering", $querySort, $limit);
 
     $res = q($query);
 
@@ -132,7 +135,8 @@ if (isset($_GET['search_str']) && !isset($_GET['adv'])) {
 <?php
 
             $addparam = 'search_str=' . urlencode($search_str) . "&".$addparam;
-            $addparamSort = $addparam . (strlen($sortparam)?"sort={$sortparam}&":'');
+            $showNoPeersQueryParam = $showNoPeers ? 'show_no_peers=1&' : '';
+            $addparamSort = $addparam . (strlen($sortparam)?"sort={$sortparam}&":'') . $showNoPeersQueryParam;
             $addparamOrder = ($orderparam == 'ASC')? "order=asc&":'';
             list($pagertop, $pagerbottom, $limit) = pager($torrentsperpage, $count, "search.php?" . $addparamSort . $addparamOrder);
         } else {
@@ -148,9 +152,21 @@ if (isset($_GET['search_str']) && !isset($_GET['adv'])) {
     //Fill search input
     echo '<div id=searc_str_container style="display:none;">'.esc_html($_GET['search_str']).'</div>';
     echo "<script type=\"text/javascript\">_ge_by_name('search_str').value=$('searc_str_container').firstChild.data;</script>";
-    echo "<span style='color:#F5F4EA;'>$spinx_time -> $sql_time</span>";
+
+
+    $showNoPeersToggleValue = $showNoPeers ? '0' : '1';
+?>
+
+
+
+<a href="?<?=$addparam?>show_no_peers=<?=$showNoPeersToggleValue?>"><?=__('Afisează torrentele fără peeruri')?></a><br/><br/>
+
+<?
+
+
 }
 ?>
+
 <noscript>
     <form method="get" action="search.php" style="display:inline;"><input name="search_str" type="text" size="20"> <input type="submit" value="Caută Torrenturi"></form>
     <style>
