@@ -21,7 +21,7 @@ $lang['details_rate_vote'] = 'голос';
 $lang['details_rate_onlyAfterSnatch'] = 'Сможете оценить только после того как скачаете, на странице <a href="./to_appreciate.php">Оценить</a>';
 $lang['details_comments_hidden'] = 'По решению администрации, все комментарии были спрятаны';
 $lang['details_comments_locked'] = 'Пост новых комментариев к этому торренту был запрещен администрацией';
-$lang['cum se copie ?'] = 'как скачать ?';
+$lang['cum se copiază ?'] = 'как скачать ?';
 /*
 $lang_input['yes'] = 'Да';
 $lang_input['descr'] = 'О %category%';
