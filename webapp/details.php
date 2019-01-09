@@ -411,16 +411,22 @@ endif;
 
                     if ( $showDownloadTorrentLink ) {
                       if (is_file("$torrent_dir/".$torrent['id'].".torrent"))
+                        echo __('Fișierul torrent este disponibil, dați click pentru a-l downloada. Nu trebuie să copieți linkul.') . '<br/><br/>';
+
                         echo torrent_download_link_html($torrent);
 
                         printf('&nbsp;&nbsp;&nbsp;&nbsp;(<a href="%s" class="magnetlnk">magnet</a>)',$magnetLink);
                     } else {
-                        printf('<a href="%s" class="magnetlnk">%s</a>',
-                            $magnetLink,
-                            esc_html($torrent["filename"])
-                        );
+                        echo __('Fișierul torrent nu este disponibil. Dar este linkul magnet care tot permite să copiați. Din TorBrowser, linkul trebuie copiat manual (este o limitare asupra careia noi nu avem control).') . '<br/><br/>';
+
+                        printf('<a href="%s">%s</a><br/><br/>', $magnetLink, $magnetLink);
+
+                        echo __('1. Copiați linkul magnet de mai sus (click dreapta pe adresă, Copy Link). Sau selectati textul si apasati tastele ctrl+c.') . '<br/>';
+                        echo __('2. Deschideti uTorrent sau alt client.') . '<br/>';
+                        echo __('3. Din menu. File -> "Add from url" Sau "Add from magnet". Si faceti paste, sau tastele ctrl+v.') . '<br/><br/>';
+
+                        echo ' <b><a href="/forum.php?action=viewtopic&topicid=11&page=last">'. __('Vedeți video') .'</a></b>';
                     }
-                    echo ' <b>(<a href="/forum.php?action=viewtopic&topicid=11&page=last">'. __('cum se copie ?') .'</a>)</b>'
                 ?>
                   <? endif; ?>
       </div>

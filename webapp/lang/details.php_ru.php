@@ -267,4 +267,11 @@ $lang['ultimul update'] = 'последнее обновление';
 $lang['DHT peer-uri'] = 'DHT пиры';
 $lang['Acțiuni'] = 'Действия';
 $lang['Semnalează torrentul'] = 'Сообщить админам';
+
+$lang['Fișierul torrent nu este disponibil. Dar este linkul magnet care tot permite să copiați. Din TorBrowser, linkul trebuie copiat manual (este o limitare asupra careia noi nu avem control).'] = 'Файл торрента недоступен. Но есть magnet ссылка, которая все еще позволяет вам копировать. Из TorBrowser ссылка должна быть скопирована вручную.';
+$lang['1. Copiați linkul magnet de mai sus (click dreapta pe adresă, Copy Link). Sau selectati textul si apasati tastele ctrl+c.'] = '1. Скопируйте magnet ссылку выше (щелкните правой кнопкой мыши по адресу, Скопировать ссылку). Или выделите текст и нажмите клавиши Ctrl + C.';
+$lang['2. Deschideti uTorrent sau alt client.'] = '2. Откройте uTorrent или другой клиент.';
+$lang['3. Din menu. File -> "Add from url" Sau "Add from magnet". Si faceti paste, sau tastele ctrl+v.'] = '3. Из меню. Файл -> «Добавить из URL» или «Добавить из magnet. И вставьте, Ctrl + V.';
+$lang['Vedeți video'] = 'Смотреть видео';
+$lang['Fișierul torrent este disponibil, dați click pentru a-l downloada. Nu trebuie să copieți linkul.'] = 'Торрент-файл доступен, нажмите, чтобы скачать его. Вам не нужно копировать ссылку.';
 ?>

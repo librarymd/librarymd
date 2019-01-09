@@ -11,7 +11,7 @@ function on_category_load() {
 	});*/
     if (user_lang == 'ro') $j('option.lang-ru-hide,option.lang-ru-hide-all').remove();
 	else $j('option.lang-ro-hide,option.lang-ro-hide-all').remove();
-	
+
 	// Checkboxes
 	$j('#imdb_doesnt_exist').unbind('mousedown').mousedown(function() {
 		if (this.checked == false) {
@@ -35,22 +35,22 @@ function on_category_load() {
 		}
 		check_mandatory();
 	});
-	
+
 	// The buttons
 	$j('#search_youtube').unbind().click(function() {
 		var n = '"' + $j('#movie_original_name').val() + '" trailer';
 		window.open('http://www.youtube.com/results?search_type=videos&search_query=' + encodeURIComponent(n));
 	});
-	
+
 	$j('#search_imdb').unbind().click(function() {
 		var n = '"' + $j('#movie_original_name').val() + '"';
 		window.open('http://www.imdb.com/find?s=tt&q=' + encodeURIComponent(n) + '&x=0&y=0');
 	});
-	
+
 	$j('#search_ambele').unbind().click(function() {
 		$j('#search_imdb,#search_youtube').click();
 	});
-	
+
 	upload_check_imdb_link_enable = true;
 	upload_check_youtube_link_enable = true;
 }
@@ -60,15 +60,16 @@ var upload_check_youtube_link_enable;
 
 function upload_check_imdb_link(value) {
 	if (upload_check_imdb_link_enable == false) return true;
-	var reg = new RegExp('^http://www.imdb.com/title/tt(\\d{7})(\/)?$');
+	var reg = new RegExp('^http(?:s|)://www.imdb.com/title/tt(\\d{7}).*');
 	if (value.match(reg) != null) return true;
 	return false;
 }
 
 function upload_check_youtube_link(value) {
 	if (upload_check_youtube_link_enable == false) return true;
-	var reg = new RegExp('^http://www.youtube.com/watch\\?v=([\\w\\d\-]){11}$');
-	var reg2 = new RegExp('^http://www.youtube.com/watch\\?v=([\\w\\d\-]){11}#t=(\\d)+$');
+	var reg = new RegExp('^http(?:s|)://www.youtube.com/watch\\?v=([\\w\\d\-]){11}.*?$');
+	var reg2 = new RegExp('^http(?:s|)://www.youtube.com/watch\\?v=([\\w\\d\-]){11}#t=(\\d)+.*?$');
+
 	if (value.match(reg) != null || value.match(reg2) != null) return true;
 	return false;
 }
@@ -97,13 +98,13 @@ function upload_check_descr(value) {
 		}
 		return false;
 	}
-	
+
 	if (desc_one_time_screenshot_thumb == false && dethumbnail_descr(true) == true) {
 		desc_one_time_screenshot_thumb = true;
 		var dethumb = confirm("Ca screenshot-uri au fost depistate imagini mici(thumbnail-uri), va reamintim ca daca latimea screenshot-ului nu depaseste 800px, in adresa imaginii trebuie indicata adresa direct spre imagine in marimea originala si nu a imaginii mici !\n Dacă marimea screenshot-urilor nu depaseste 800px, apasă Ok pentru transformare automata a adreselor (fără reîncarcare a paginii).");
 		if (dethumb) dethumbnail_descr();
 	}
-	
+
 	return true;
 }
 
@@ -127,12 +128,12 @@ function dethumbnail_descr(check_only) {
 		if (check_only) return true;
 		dethumbnail_undo_mem = descr.val();
 		$j('#dethumbnail_undo').removeClass('hideit');
-		
+
 		descr.val( descr.val().replace(re,'[img]$1$2[/img]') );
 	} else {
 		if (check_only) return false;
 		alert('Thumbnail-uri nu au fost depistate, doar formatul de genul [url=http://..jpg][img]http://..jpg[/img][/url] la moment este mentinut');
-		
+
 	}
 }
 
