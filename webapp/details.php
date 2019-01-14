@@ -134,18 +134,16 @@ if ($torrent == false) {
 }
 require_once($WWW_ROOT . 'scripts_sections/details_include.php');
 
-if (torrent_have_flag('have_imdb',$torrent['torrent_opt'])) {
-  $imdb_id = mem_get('t_imdb_id_'.$id);
+$imdb_id = mem_get('t_imdb_id_'.$id);
 
-  if ($imdb_id === false) {
-    $imdb_id = fetchOne('SELECT imdb_tt FROM torrents_imdb WHERE torrent = :id', array('id'=>$id) );
-    if ($imdb_id == false) $imdb_id = 0;
-    mem_set('t_imdb_id_'.$id,$imdb_id,86400);
-  }
-  $torrent['imdb_tt_id'] = $imdb_id;
+if ($imdb_id === false) {
+  $imdb_id = fetchOne('SELECT imdb_tt FROM torrents_imdb WHERE torrent = :id', array('id'=>$id) );
+  if ($imdb_id == false) $imdb_id = 0;
+  mem_set('t_imdb_id_'.$id,$imdb_id,86400);
 }
+$torrent['imdb_tt_id'] = $imdb_id;
 
-if (torrent_have_flag('have_imdb',$torrent['torrent_opt']) && $imdb_id) {
+if ($imdb_id) {
   $imdb = mem_get('imdb_'.$imdb_id);
   if ($imdb == false) {
     $imdb = fetchRow(
@@ -153,7 +151,7 @@ if (torrent_have_flag('have_imdb',$torrent['torrent_opt']) && $imdb_id) {
       FROM imdb_tt
       WHERE imdb_tt.id = :id',array('id'=>$imdb_id));
     if ($imdb == false) $imdb = array('imdb_votes'=>0,'imdb_rating'=>0,'imdb_tt_id'=>0,'imdb_total_torrents'=>0);
-    mem_set('imdb_'.$imdb_id,$imdb,86400);
+    mem_set('imdb_'.$imdb_id, $imdb,86400);
   }
   if (!empty($imdb)) {
     $torrent = array_merge($imdb,$torrent);
@@ -495,7 +493,7 @@ endif;
       IMDB
     */
 
-    if (torrent_have_flag('have_imdb',$torrent['torrent_opt'])) {
+    if ($imdb_id) {
       $imdb_same_torrents_html = '';
       if ( isset($torrent['imdb_total_torrents']) && $torrent['imdb_total_torrents'] > 1 ) {
         $imdb_same_torrents_html = '<br>'.$torrent['imdb_total_torrents'] . ' <a href="./browse.php?imdb='.$torrent['imdb_tt_id'].'">'.__('torrente cu același număr IMDB').'</a>';
@@ -524,7 +522,7 @@ endif;
 
 
     // Daca e film in engleza
-    if (categtagsIsIn($categtags_arr,89) && categtagsIsIn($categtags_arr,180) && torrent_have_flag('have_imdb',$torrent['torrent_opt']) ) {
+    if (categtagsIsIn($categtags_arr,89) && categtagsIsIn($categtags_arr,180) && $imdb_id ) {
       $subtitle_english = sprintf('<a href="%s" target="_blank">'.__('engleză').'</a>',"http://www.opensubtitles.org/en/search/sublanguageid-eng/imdbid-".$torrent['imdb_tt_id']);
       $subtitle_romanian = sprintf('<a href="%s" target="_blank">'.__('română').'</a>',"http://www.opensubtitles.org/en/search/sublanguageid-rum/imdbid-".$torrent['imdb_tt_id']);
       $subtitle_russian = sprintf('<a href="%s" target="_blank">'.__('rusă').'</a> [<a href="%s" target="_blank">1</a>]',"http://www.opensubtitles.org/en/search/sublanguageid-rus/imdbid-".$torrent['imdb_tt_id'],"http://subtitry.ru/subtitles/?film=".$torrent['imdb_tt_id']);

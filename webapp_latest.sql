@@ -203,6 +203,7 @@ CREATE TABLE IF NOT EXISTS `forums` (
 INSERT INTO `forums` VALUES
 (0,1,'Categoria administratiei','Categoria administratiei','Categorie privatta unde discuta >=moderatorii','Categorie privatta unde discuta >=moderatorii',8,8,4,1,4,0),
 (1,2,'Library.MD','Library.MD','Evenimente, sugestii, buguri','Evenimente, sugestii, buguri',0,0,0,0,0,0);
+(2,2,'Mesaje catre staff','Mesaje catre staff','Mesaje catre staff','Mesaje catre staff',0,0,0,0,0,0);
 
 
 CREATE TABLE IF NOT EXISTS `forums_tags` (
