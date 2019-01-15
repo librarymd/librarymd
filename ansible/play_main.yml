@@ -388,20 +388,6 @@
         minute: "*"
         hour: "*"
         job: "php /www/webapp/periodic/update_dht_peers_schedule.php >> /www/logs/periodic.log 2>&1"
-    - name: Every minute import latest torrents
-      cron:
-        user: ubuntu
-        name: "Every minute import latest torrents"
-        minute: "*"
-        hour: "*"
-        job: "php /www/webapp/periodic/import/torrents_import_poll_last.php >> /www/logs/periodic.log 2>&1"
-    - name: Every minute download scheduled images
-      cron:
-        user: ubuntu
-        name: "Every minute download scheduled images"
-        minute: "*"
-        hour: "*"
-        job: "php /www/webapp/periodic/import/torrents_import_images.php >> /www/logs/periodic.log 2>&1"
     - name: Every two hours check for the expiration of any user modes
       cron:
         user: ubuntu
@@ -424,6 +410,23 @@
         minute: "*/15"
         hour: "*"
         job: "php /www/webapp/periodic/imdb_update_do.php >> /www/logs/periodic.log 2>&1"
+
+    - name: Every minute import latest torrents
+      cron:
+        user: ubuntu
+        name: "Every minute import latest torrents"
+        minute: "*"
+        hour: "*"
+        job: "php /www/webapp/periodic/import/torrents_import_poll_last.php >> /www/logs/periodic.log 2>&1"
+        disabled: yes
+    - name: Every minute download scheduled images
+      cron:
+        user: ubuntu
+        name: "Every minute download scheduled images"
+        minute: "*"
+        hour: "*"
+        job: "php /www/webapp/periodic/import/torrents_import_images.php >> /www/logs/periodic.log 2>&1"
+        disabled: yes
 
 - name: Configure tor access and the tor load balancer
   hosts: all
