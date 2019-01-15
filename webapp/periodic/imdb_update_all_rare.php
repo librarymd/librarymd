@@ -1,9 +1,9 @@
 <?php
-include dirname(__FILE__).'/../../include/bittorrent.php';
-include dirname(__FILE__).'/../../include/imdb.php';
+chdir(dirname(__FILE__));
+if (php_sapi_name() != "cli") die();
 
-assert_options(ASSERT_BAIL, true);
-assert(php_sapi_name() == "cli", "Should be cli");
+require dirname(__FILE__) . "/../include/bittorrent.php";
+require dirname(__FILE__) . "/../include/imdb.php";
 
 q('SET @@wait_timeout=98800');
 set_time_limit(0);

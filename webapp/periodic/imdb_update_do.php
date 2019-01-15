@@ -1,6 +1,9 @@
 <?php
-include dirname(__FILE__).'/../../include/bittorrent.php';
-include dirname(__FILE__).'/../../include/imdb.php';
+chdir(dirname(__FILE__));
+if (php_sapi_name() != "cli") die();
+
+require dirname(__FILE__) . "/../include/bittorrent.php";
+require dirname(__FILE__) . "/../include/imdb.php";
 
 $to_process = fetchAll('SELECT id FROM imdb_tt_to_process WHERE verified="no" LIMIT 100');
 

@@ -1,6 +1,6 @@
 <?php
 chdir(dirname(__FILE__));
-// if (php_sapi_name() != "cli") die();
+if (php_sapi_name() != "cli") die();
 
 require_once("../../include/bittorrent.php");
 

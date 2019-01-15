@@ -108,7 +108,6 @@ function messages_die_if_spam($text,$text_parsed='') {
 
 	  $userIsLessThan1DaysOld = (time() - strtotime($CURUSER['added'])) < 60*60*24*1;
 	  $userIsLessThan30DaysOld = (time() - strtotime($CURUSER['added'])) < 60*60*24*30;
-	  $userDidntUploadOrDownloadAnything = $CURUSER['uploaded'] == 0 || $CURUSER['downloaded'] == 0;
 
 	  if ($userIsLessThan1DaysOld) {
 	  	  barkk(__('Utilizatorul dvs este prea nou pentru a scrie comentarii.').'<br><br>'.

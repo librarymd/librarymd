@@ -6,7 +6,7 @@ $startId       = (int)@$_GET['start_id'];
 $lastPage      = (bool)@$_GET['last_page'];
 
 /**
-  last_page=true parameter is supposed to be used alone, without last_page, 
+  last_page=true parameter is supposed to be used alone, without last_page,
   to pool for the latest torrents.
 */
 
@@ -51,3 +51,4 @@ foreach ($torrents as $torrent) {
 $response = array('torrents' => $torrentsDecoded);
 
 echoJson($response);
+

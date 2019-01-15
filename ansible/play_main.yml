@@ -417,6 +417,13 @@
         hour: "3"
         job: "php /www/webapp/periodic/expensive_update.php >> /www/logs/periodic.log 2>&1"
 
+    - name: Every 15 minutes, update scheduled imdb updates
+      cron:
+        user: ubuntu
+        name: "Every day expensive update"
+        minute: "*/15"
+        hour: "*"
+        job: "php /www/webapp/periodic/imdb_update_do.php >> /www/logs/periodic.log 2>&1"
 
 - name: Configure tor access and the tor load balancer
   hosts: all
