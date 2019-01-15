@@ -246,6 +246,7 @@
         - '/www/data/torrents'
         - '/www/data/torrents_img'
         - '/www/data/avatars'
+        - '/www/data/errors'
 
     - name: Create symlinks
       file:
@@ -259,6 +260,7 @@
         - { src: '/www/data/torrents', dest: '/www/webapp/torrents'}
         - { src: '/www/data/torrents_img', dest: '/www/webapp/torrents_img'}
         - { src: '/www/data/avatars', dest: '/www/webapp/avatars'}
+        - { src: '/www/data/errors', dest: '/www/webapp/errors'}
 
     - name: Create cache tops directory for the tops files
       file:
