@@ -59,10 +59,15 @@ function imdb_get_rating($tt_id) {
 
   $reg = '#<h4 class="inline">Release Date:</h4>(.+?)\(#is';
   if (preg_match($reg, $html, $matches)) {
+    $matches[1] = trim($matches[1]);
     $parsed_date = date_parse($matches[1]);
 
-    if ($parsed_date !== false) {
+    if ($parsed_date !== false && isset($parsed_date["year"])) {
       $date_published = $parsed_date["year"] . "-" . $parsed_date["month"] . "-" . $parsed_date["day"];
+    } else {
+      if (is_numeric($matches[1]) && strlen($matches[1]) == 4) {
+        $date_published = $matches[1] . '-01-01';
+      }
     }
   }
 
@@ -70,8 +75,12 @@ function imdb_get_rating($tt_id) {
   if (preg_match($reg, $html, $matches)) {
     $parsed_date = date_parse($matches[1]);
 
-    if ($parsed_date !== false) {
+    if ($parsed_date !== false && isset($parsed_date["year"])) {
       $date_published = $parsed_date["year"] . "-" . $parsed_date["month"] . "-" . $parsed_date["day"];
+    } else {
+      if (is_numeric($matches[1]) && strlen($matches[1]) == 4) {
+        $date_published = $matches[1] . '-01-01';
+      }
     }
   }
 

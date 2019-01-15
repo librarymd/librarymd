@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `imdb_tt` (
   `votes` mediumint(9) unsigned NOT NULL DEFAULT '0',
   `rating` tinyint(3) NOT NULL DEFAULT '0',
   `year` smallint(6) NOT NULL DEFAULT '0',
-  `date_published` date NOT NULL DEFAULT '0000-00-00',
+  `date_published` varchar(10) NOT NULL DEFAULT '',
   `bayesian_rating` tinyint(3) NOT NULL DEFAULT '0',
   `last_update` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `torrents` tinyint(3) NOT NULL DEFAULT '0',
