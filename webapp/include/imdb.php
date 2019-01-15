@@ -62,7 +62,7 @@ function imdb_get_rating($tt_id) {
     $parsed_date = date_parse($matches[1]);
 
     if ($parsed_date !== false) {
-      $date_published = $parsed_date["year"] . "-" . $parsed_date["day"] . "-" . $parsed_date["month"];
+      $date_published = $parsed_date["year"] . "-" . $parsed_date["month"] . "-" . $parsed_date["day"];
     }
   }
 
