@@ -19,26 +19,8 @@ q('UPDATE torrents
          dht_peers_updated          < NOW() - INTERVAL 1 HOUR');
 
 q('UPDATE torrents
-   SET dht_peers_update_scheduled    = "yes"
-   WHERE dht_peers_update_scheduled != "yes"                    AND
-         added                      > NOW() - INTERVAL 1 HOUR   AND
-         dht_peers_updated          < NOW() - INTERVAL 10 MINUTE');
-
-q('UPDATE torrents
-   SET dht_peers_update_scheduled    = "yes"
-   WHERE dht_peers_update_scheduled != "yes"                      AND
-         added                      > NOW() - INTERVAL 30 MINUTE  AND
-         dht_peers_updated          < NOW() - INTERVAL 5 MINUTE');
-
-q('UPDATE torrents
-   SET dht_peers_update_scheduled    = "yes"
-   WHERE dht_peers_update_scheduled != "yes"                      AND
-         added                      > NOW() - INTERVAL 10 MINUTE  AND
-         dht_peers_updated          < NOW() - INTERVAL 1 MINUTE');
-
-
-q('UPDATE torrents
-   SET dht_peers_update_scheduled    = "yes"
-   WHERE dht_peers_updated < NOW() - INTERVAL 12 HOUR
-   ORDER BY torrents.id DESC
-   LIMIT 200');
+   INNER JOIN (
+      SELECT id FROM torrents ORDER BY torrents.id DESC LIMIT 1000
+   ) as most_recent_torrents ON most_recent_torrents.id = torrents.id
+   SET torrents.dht_peers_update_scheduled = "yes"
+   WHERE dht_peers_updated < NOW() - INTERVAL 24 HOUR');
