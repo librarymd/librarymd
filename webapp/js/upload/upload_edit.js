@@ -39,12 +39,12 @@ function on_category_load() {
 	// The buttons
 	$j('#search_youtube').unbind().click(function() {
 		var n = '"' + $j('#movie_original_name').val() + '" trailer';
-		window.open('http://www.youtube.com/results?search_type=videos&search_query=' + encodeURIComponent(n));
+		window.open('https://www.youtube.com/results?search_type=videos&search_query=' + encodeURIComponent(n));
 	});
 
 	$j('#search_imdb').unbind().click(function() {
 		var n = '"' + $j('#movie_original_name').val() + '"';
-		window.open('http://www.imdb.com/find?s=tt&q=' + encodeURIComponent(n) + '&x=0&y=0');
+		window.open('https://www.imdb.com/find?s=tt&q=' + encodeURIComponent(n) + '&x=0&y=0');
 	});
 
 	$j('#search_ambele').unbind().click(function() {
@@ -83,27 +83,7 @@ function upload_check_descr(value) {
 		if(value.length>=15){return true;}
 		return false;
 	}
-	if (value.length < 100) { return false; }
-	if (substr_count(value.toLowerCase(),'[img') < 4) {
-		if (desc_one_time_screenshot_img == false) {
-			desc_one_time_screenshot_img = true;
-			alert('In descriere sunt mai putin de 4 imagini (mesajul apare 1 singura data). Vezi exemplul de sub cîmpul descriere.');
-		}
-		return false;
-	}
-	if (substr_count(value.toLowerCase(),'[spoiler') < 1 || substr_count(value.toLowerCase(),'[/spoiler') < 1) {
-		if (desc_one_time_screenshot_spoiler == false) {
-			desc_one_time_screenshot_spoiler = true;
-			alert('In descriere nu este spoiler (mesajul apare 1 singura data). Vezi exemplul de sub cîmpul descriere.');
-		}
-		return false;
-	}
-
-	if (desc_one_time_screenshot_thumb == false && dethumbnail_descr(true) == true) {
-		desc_one_time_screenshot_thumb = true;
-		var dethumb = confirm("Ca screenshot-uri au fost depistate imagini mici(thumbnail-uri), va reamintim ca daca latimea screenshot-ului nu depaseste 800px, in adresa imaginii trebuie indicata adresa direct spre imagine in marimea originala si nu a imaginii mici !\n Dacă marimea screenshot-urilor nu depaseste 800px, apasă Ok pentru transformare automata a adreselor (fără reîncarcare a paginii).");
-		if (dethumb) dethumbnail_descr();
-	}
+	if (value.length < 50) { return false; }
 
 	return true;
 }
