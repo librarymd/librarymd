@@ -532,16 +532,16 @@ function torrent_get_draft() {
 	if ($mand_n == 'music_genre' && !in_range($_POST['music_genre'],1,150) ) die('Invalid genre value');
   }
 
-  $yt_reg_1 = '#^http://www.youtube.com/watch\?v=([\w\d\-]){11}\#t=(\d)+$#i';
-  $yt_reg_2 = '#^http://www.youtube.com/watch\?v=([\w\d\-]){11}$#i';
-  if (isset($_POST['youtube_link']) && strlen($_POST['youtube_link']) ) {
+  $yt_reg_1 = '#^http(?:s|)://www.youtube.com/watch\?v=([\w\d\-]){11}\#t=(\d)+.*?$#i';
+  $yt_reg_2 = '#^http(?:s|)://www.youtube.com/watch\?v=([\w\d\-]){11}.*?$#i';
+  if (isset($_POST['youtube_link']) && strlen($_POST['youtube_link'])) {
     if (!preg_match($yt_reg_1,$_POST['youtube_link']) && !preg_match($yt_reg_2,$_POST['youtube_link'])) {
     	$_POST['youtube_link'] = '';
     }
   }
 
   unset($_POST['imdb_tt_id']);
-  $imdb_reg = '#^http://www.imdb.com/title/tt(\d{7})(\/)?$#';
+  $imdb_reg = '#^http(?:s|)://www.imdb.com/title/tt(\d{7}).*?$#';
   if (isset($_POST['imdb_link']) && strlen($_POST['imdb_link']) ) {
   	if (!preg_match($imdb_reg,$_POST['imdb_link'],$matches)) {
   		$_POST['imdb_link'] = '';
