@@ -82,25 +82,24 @@ if ($handle) {
         $torrent['descr_ar'] = serialize($torrent['descr_ar']);
 
         $source_image_full_path = $importImageDirectory . '/' . $torrent['image'];
-        if (strlen($torrent['image']) > 2) {
-          if (!is_file($source_image_full_path)) {
-            die('Cannot find the image to import on the FS ' . $source_image_full_path);
-          }
-        }
+        // if (strlen($torrent['image']) > 2) {
+        //   if (!is_file($source_image_full_path)) {
+        //     die('Cannot find the image to import on the FS ' . $source_image_full_path);
+        //   }
+        // }
 
         $result   = import_torrent_without_image($torrent);
         $inserted = $result['inserted'];
         $newId    = $result['newId'];
 
-        if (strlen($torrent['image']) > 2) {
-          import_image($newId, $source_image_full_path);
-
-        }
-
         if ($inserted == false) {
           $reason = $result['reason'];
           echo "$torrent[id] not inserted, reason: $reason\n<br/>";
         } else {
+          if (strlen($torrent['image']) > 2 && is_file($source_image_full_path)) {
+            import_image($newId, $source_image_full_path);
+          }
+
           echo "Imported ! $newId";
         }
 
