@@ -1,16 +1,20 @@
 <?php
 
-function import_torrent($torrent, $fullImageBase) {
-  $remoteTorrentId = $torrent['id'];
-  $torrentDescrArSer = serialize($torrent['descr_ar']);
-
+function is_torrent_already_inserted($info_hash_sha1) {
   $foundLocalId = fetchOne('
     SELECT id
     FROM torrents
-    WHERE info_hash_sha1 = :info_hash_sha1', array('info_hash_sha1' => $torrent['info_hash_sha1'])
+    WHERE info_hash_sha1 = :info_hash_sha1', array('info_hash_sha1' => $info_hash_sha1)
   );
 
-  if ($foundLocalId != null) {
+  return $foundLocalId != null;
+}
+
+function import_torrent_without_image($torrent) {
+  $remoteTorrentId = $torrent['id'];
+  $torrentDescrArSer = serialize($torrent['descr_ar']);
+
+  if (is_torrent_already_inserted($torrent['info_hash_sha1'])) {
     return array(
       "inserted" => false,
       "reason" => "Already there"
@@ -53,6 +57,26 @@ function import_torrent($torrent, $fullImageBase) {
     array('id' => $newId, 'name' => $torrent['name'])
   );
 
+  if (isset($torrent['imdb_tt'])) {
+    add_imdb_for_the_torrent($newId, $torrent['imdb_tt']);
+  }
+
+  torrentCategsAutodetect($newId);
+
+  return array(
+    "inserted" => true,
+    "newId" => $newId
+  );
+}
+
+function import_torrent($torrent, $fullImageBase) {
+  $result = import_torrent_without_image($torrent);
+
+  if ($result['inserted'] !== true)
+    return $result;
+
+  $newId = $result['newId'];
+
   $torrent_image_name = $torrent['image'];
 
   if (strlen($torrent_image_name) >= 2) {
@@ -64,8 +88,6 @@ function import_torrent($torrent, $fullImageBase) {
       array('torrent_id' => $newId, 'url' => $fullImageUrl)
     );
   }
-
-  torrentCategsAutodetect($newId);
 
   return array(
     "inserted" => true,

@@ -166,21 +166,7 @@ deletetorrent_imdb($id);
 // IMDB
 if (isset($t_details['imdb_tt_id'])) {
 	$imdb_tt = $t_details['imdb_tt_id'];
-	q('INSERT INTO torrents_imdb (torrent,imdb_tt) VALUES(:torrent,:imdb)', array('torrent'=>$id,'imdb'=>$imdb_tt));
-	// If doesnt exist
-	if ( fetchOne('SELECT id FROM imdb_tt WHERE id=:imdb_id', array('imdb_id'=>$imdb_tt) ) == null ) {
-		q('INSERT INTO imdb_tt (id) VALUES(:imdb)', array('imdb'=>$imdb_tt));
-	}
-  event_new_imdb_entry_added($imdb_tt);
-	$torrent_opt = q_singleval('SELECT torrent_opt FROM torrents WHERE id=:id',array('id'=>$id));
-	$torrent_opt = setflag($torrent_opt, $conf_torrent_opt['have_imdb'], true);
-	q('UPDATE torrents SET torrent_opt=:opt WHERE id=:id',array('id'=>$id,'opt'=>$torrent_opt));
-
-	$total = fetchFirst('SELECT COUNT(*) FROM torrents_imdb WHERE imdb_tt=:id', array('id'=>$imdb_tt) );
-	q('UPDATE imdb_tt SET torrents = :total WHERE id=:id', array('total'=>$total, 'id'=>$imdb_tt) );
-
-	on_expire_torrent_imdb_id($id);
-	on_expire_imdb_id($imdb_tt);
+	add_imdb_for_the_torrent($id,  $t_details['imdb_tt_id']);
 } else {
 	$torrent_opt = q_singleval('SELECT torrent_opt FROM torrents WHERE id='.$id);
 	$torrent_opt = setflag($torrent_opt, $conf_torrent_opt['have_imdb'], false);
