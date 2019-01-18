@@ -1,5 +1,7 @@
 <?php
 
+require_once($INCLUDE . 'imdb.php');
+
 function is_torrent_already_inserted($info_hash_sha1) {
   $foundLocalId = fetchOne('
     SELECT id
