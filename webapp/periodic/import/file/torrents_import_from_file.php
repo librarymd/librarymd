@@ -87,7 +87,6 @@ if ($handle) {
 
         $result   = import_torrent_without_image($torrent);
         $inserted = $result['inserted'];
-        $newId    = $result['newId'];
 
         if ($inserted == false) {
           $reason = $result['reason'];
@@ -96,6 +95,8 @@ if ($handle) {
           fix_image_if_needed($torrent['info_hash_sha1'], $source_image_full_path, $torrent['image']);
 
         } else {
+          $newId    = $result['newId'];
+
           if (strlen($torrent['image']) > 2 && is_file($source_image_full_path)) {
             import_image($newId, $source_image_full_path);
           }
