@@ -73,6 +73,8 @@ function assertTsvFormatWillConsumeFirstLine($handle, $expectedHeaderArray) {
 
 assertTsvFormatWillConsumeFirstLine($handle, $csvColumns);
 
+$position = 0;
+
 if ($handle) {
     while (($buffer = fgets($handle, 409600)) !== false) {
         $lineArray = decodeTsvLine($buffer);
@@ -101,6 +103,12 @@ if ($handle) {
           }
 
           echo "Imported ! $newId";
+        }
+
+        $position++;
+
+        if ($position % 1000 == 0) {
+          echo "Position: $position, imported torrent_id $torrent[id]";
         }
 
     }
