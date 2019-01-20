@@ -59,7 +59,7 @@ function import_torrent_without_image($torrent) {
     array('id' => $newId, 'name' => $torrent['name'])
   );
 
-  if (isset($torrent['imdb_tt'])) {
+  if (isset($torrent['imdb_tt']) && $torrent['imdb_tt'] > 0) {
     add_imdb_for_the_torrent($newId, $torrent['imdb_tt']);
   }
 
