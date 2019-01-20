@@ -84,11 +84,6 @@ if ($handle) {
         $torrent['descr_ar'] = serialize($torrent['descr_ar']);
 
         $source_image_full_path = $importImageDirectory . '/' . $torrent['image'];
-        // if (strlen($torrent['image']) > 2) {
-        //   if (!is_file($source_image_full_path)) {
-        //     die('Cannot find the image to import on the FS ' . $source_image_full_path);
-        //   }
-        // }
 
         $result   = import_torrent_without_image($torrent);
         $inserted = $result['inserted'];
@@ -97,6 +92,9 @@ if ($handle) {
         if ($inserted == false) {
           $reason = $result['reason'];
           echo "$torrent[id] not inserted, reason: $reason\n<br/>";
+
+          fix_image_if_needed($torrent['info_hash_sha1'], $source_image_full_path, $torrent['image']);
+
         } else {
           if (strlen($torrent['image']) > 2 && is_file($source_image_full_path)) {
             import_image($newId, $source_image_full_path);
@@ -115,6 +113,24 @@ if ($handle) {
     fclose($handle);
 }
 
+function findTorrentByHashSha1($info_hash_sha1) {
+  return fetchRow('
+    SELECT *
+    FROM torrents
+    WHERE info_hash_sha1 = :info_hash_sha1', array('info_hash_sha1' => $info_hash_sha1)
+  );
+}
+
+function fix_image_if_needed($info_hash_sha1, $source_image_full_path, $image_to_import) {
+  $existing_torrent = findTorrentByHashSha1($info_hash_sha1);
+
+  if (isset($existing_torrent['id']) && strlen($existing_torrent['image']) < 2 && strlen($image_to_import) > 2 && is_file($source_image_full_path)) {
+    echo "Fixing torrent id $existing_torrent[id]\n";
+
+    import_image($existing_torrent['id'], $source_image_full_path);
+  }
+}
+
 function import_image($torrent_id, $source_image_full_path) {
   global $torrent_img_dir;
 
@@ -127,6 +143,13 @@ function import_image($torrent_id, $source_image_full_path) {
   echo "Copy $source_image_full_path to $torrent_img_dir/$file_name";
 
   copy($source_image_full_path, $torrent_img_dir . '/' . $file_name);
+
+  successFileDownloaded($torrent_id, $random_file_part);
 }
 
+function successFileDownloaded($torrent_id, $random_file_part) {
+  q('UPDATE torrents SET image = :file_name WHERE id = :torrent_id',
+    array('torrent_id' => $torrent_id, 'file_name' => $random_file_part)
+  );
+}
 
