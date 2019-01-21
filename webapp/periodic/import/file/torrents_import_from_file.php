@@ -92,8 +92,12 @@ if ($handle) {
           $reason = $result['reason'];
           echo "$torrent[id] not inserted, reason: $reason\n<br/>";
 
-          fix_image_if_needed($torrent['info_hash_sha1'], $source_image_full_path, $torrent['image']);
+          $existing_torrent = findTorrentByHashSha1($torrent['info_hash_sha1']);
 
+          if (isset($existing_torrent['id'])) {
+            fix_image_if_needed($existing_torrent, $source_image_full_path, $torrent['image']);
+            fix_imdb_if_needed($existing_torrent, $torrent['imdb_tt']);
+          }
         } else {
           $newId    = $result['newId'];
 
@@ -116,19 +120,28 @@ if ($handle) {
 
 function findTorrentByHashSha1($info_hash_sha1) {
   return fetchRow('
-    SELECT *
+    SELECT torrents.*, torrents_imdb.imdb_tt
     FROM torrents
+    LEFT JOIN torrents_imdb ON torrents.id = torrents_imdb.torrent
     WHERE info_hash_sha1 = :info_hash_sha1', array('info_hash_sha1' => $info_hash_sha1)
   );
 }
 
-function fix_image_if_needed($info_hash_sha1, $source_image_full_path, $image_to_import) {
-  $existing_torrent = findTorrentByHashSha1($info_hash_sha1);
-
-  if (isset($existing_torrent['id']) && strlen($existing_torrent['image']) < 2 && strlen($image_to_import) > 2 && is_file($source_image_full_path)) {
+function fix_image_if_needed($existing_torrent, $source_image_full_path, $image_to_import) {
+  if (strlen($existing_torrent['image']) < 2 && strlen($image_to_import) > 2 && is_file($source_image_full_path)) {
     echo "Fixing torrent id $existing_torrent[id]\n";
 
     import_image($existing_torrent['id'], $source_image_full_path);
+  }
+}
+
+function fix_imdb_if_needed($existing_torrent, $imdb_tt) {
+  $torrent_id = $existing_torrent['id'];
+  $already_imdb_associated = $existing_torrent['imdb_tt'] > 0;
+
+  if (!$already_imdb_associated && $imdb_tt > 0) {
+    echo "Fixing imdb for torrent $torrent_id\n";
+    add_imdb_for_the_torrent($torrent_id, $imdb_tt);
   }
 }
 
