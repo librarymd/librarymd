@@ -13,7 +13,7 @@ $count = $row[0];
 
 if (!$count) {
 ?>
-<h1><?=__('Nu-s torrente')?></h1>
+<h1><?=__('Nu aveţi torrente')?></h1>
 <p><?=__('Nu aţi încărcat nici un torrent încă, aşa că pagina este goală')?></p>
 <?php
 }
