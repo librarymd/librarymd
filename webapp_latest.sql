@@ -264,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `imdb_tt` (
   `date_published` varchar(10) NOT NULL DEFAULT '',
   `bayesian_rating` tinyint(3) NOT NULL DEFAULT '0',
   `last_update` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `torrents` tinyint(3) NOT NULL DEFAULT '0',
+  `torrents` SMALLINT(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `rating_votes` (`rating`,`votes`),
   KEY `year_bayesian_rating` (`year`,`bayesian_rating`)
@@ -620,7 +620,8 @@ CREATE TABLE IF NOT EXISTS `torrents` (
   KEY `category` (`category`),
   KEY `added` (`added`),
   KEY `team` (`team`),
-  KEY `info_hash` (`info_hash`),
+  KEY `info_hash` (`info_hash`(10)),
+  KEY `info_hash_sha1` (`info_hash_sha1`(10)),
   KEY `dht_peers_update_scheduled` (`dht_peers_update_scheduled`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
