@@ -1,4 +1,5 @@
 set -ex
+git pull --ff-only
 
 # Ansible script expects webapp.tgz inside ansible directory
 rm -f ansible/webapp.tgz
