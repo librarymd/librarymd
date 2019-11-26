@@ -202,8 +202,8 @@ CREATE TABLE IF NOT EXISTS `forums` (
 
 INSERT INTO `forums` VALUES
 (0,1,'Categoria administratiei','Categoria administratiei','Categorie privatta unde discuta >=moderatorii','Categorie privatta unde discuta >=moderatorii',8,8,4,1,4,0),
-(1,2,'Library.MD','Library.MD','Evenimente, sugestii, buguri','Evenimente, sugestii, buguri',0,0,0,0,0,0);
-(2,2,'Mesaje catre staff','Mesaje catre staff','Mesaje catre staff','Mesaje catre staff',0,0,0,0,0,0);
+(1,2,'Library.MD','Library.MD','Evenimente, sugestii, buguri','Evenimente, sugestii, buguri',0,0,0,0,0,0),
+(2,3,'Mesaje catre staff','Mesaje catre staff','Mesaje catre staff','Mesaje catre staff',0,0,0,0,0,0);
 
 
 CREATE TABLE IF NOT EXISTS `forums_tags` (
@@ -483,7 +483,6 @@ LOCK TABLES `regions` WRITE;
 INSERT INTO `regions` VALUES (10,'Chişinău'),(1,'Botanica'),(2,'Buiucani'),(3,'Centru'),(4,'Ciocana'),(6,'Poşta Veche'),(5,'Rîşcani'),(7,'Telecentru'),(11,'Municipiul Chişinău'),(12,'Codru'),(13,'Cricova'),(14,'Durleşti'),(15,'Sîngera'),(16,'Vadul lui Vodă'),(17,'Vatra'),(20,'Băcioi'),(21,'Bubuieci'),(22,'Budeşti'),(23,'Ciorescu'),(24,'Coloniţa'),(25,'Condriţa'),(26,'Dumbrava'),(27,'Cruzeşti'),(28,'Ghidighici'),(29,'Grătieşti'),(30,'Stăuceni'),(31,'Tohatin'),(32,'Truşeni'),(40,'Municipiul Bălţi'),(50,'Municipiul Tighina'),(60,'Municipiul Comrat'),(70,'Municipiul Tiraspol'),(80,'Raionul Anenii Noi'),(90,'R. Basarabeasca'),(100,'R. Briceni'),(110,'R. Cahul'),(120,'R. Cantemir'),(130,'R. Călăraşi'),(140,'R. Căuşeni'),(150,'R. Cimişlia'),(160,'R. Criuleni'),(170,'R. Donduşeni'),(180,'R. Drochia'),(190,'R. Dubăsari'),(200,'R. Edineţ'),(210,'R. Faleşti'),(220,'R. Floreşti'),(230,'R. Glodeni'),(240,'R. Hînceşti'),(250,'R. Ialoveni'),(260,'R. Leova'),(270,'R. Nisporeni'),(280,'R. Ocniţa'),(290,'R. Orhei'),(300,'R. Rezina'),(310,'R. Rîşcani'),(320,'R. Sîngerei'),(330,'R. Soroca'),(340,'R. Străşeni'),(350,'R. Şoldăneşti'),(360,'R. Ştefan Vodă'),(370,'R. Taraclia'),(380,'R. Teleneşti'),(390,'R. Ungheni'),(400,'R. Vulcăneşti');
 /*!40000 ALTER TABLE `regions` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 
 CREATE TABLE IF NOT EXISTS `releasers_groups` (
