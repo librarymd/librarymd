@@ -100,7 +100,7 @@ class User {
           return false;
         } else {
           $user = self::current();
-          $deltaAddedLessThan = (time() - strtotime($user['added'])) < 60*60*24*7;
+          $deltaAddedLessThan = (time() - strtotime($user['added'])) < 60*60*24*14;
           return $deltaAddedLessThan;
         }
     }

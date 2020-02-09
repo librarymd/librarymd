@@ -125,5 +125,5 @@ $siteVariables['upload']['power_user_only'] = false;
 $siteVariables['forum']['moderators_activated'] = false;
 $siteVariables['torrents']['releasers_moderators'] = false;
 
-$siteVariables['general']['allow_fresh_new_users_write_messages'] = true;
+$siteVariables['general']['allow_fresh_new_users_write_messages'] = false;
 $siteVariables['general']['allow_anonymous_browse'] = true;

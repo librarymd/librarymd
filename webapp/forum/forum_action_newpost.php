@@ -13,7 +13,7 @@ function forum_action_post($maxsubjectlength) {
     stderr(__('Eroare'), __('Dvs. aveţi post ban şi nu puteţi scrie pe forum.'));
 
   if (User::signedUpRecently())
-    stderr(__('Eroare'), "La momentul dat nu puteti inca scrie mesaje pentru ca utilizatorul dvs. este prea nou. Asteptati cel putin 7 zile. Aceasta masura este luata pentru a discuraja utilizatorii banati sa-si creeze clone.");
+    stderr(__('Eroare'), "La momentul dat nu puteti inca scrie mesaje pentru ca utilizatorul dvs. este prea nou. Asteptati cel putin 14 zile. Aceasta masura este luata pentru a discuraja utilizatorii banati sa-si creeze clone.");
 
   $newtopic = $forumid > 0;
 
