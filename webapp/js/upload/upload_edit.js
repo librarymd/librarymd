@@ -43,7 +43,7 @@ function on_category_load() {
 	});
 
 	$j('#search_imdb').unbind().click(function() {
-		var n = '"' + $j('#movie_original_name').val() + '"';
+		var n = $j('#movie_original_name').val();
 		window.open('https://www.imdb.com/find?s=tt&q=' + encodeURIComponent(n) + '&x=0&y=0');
 	});
 
